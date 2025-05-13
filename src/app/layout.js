@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         <header>
           <Navbar></Navbar>
         </header>
-        <main>{children}</main>
+        <main className="max-w-7xl mx-auto px-2">{children}</main>
         <footer></footer>
       </body>
     </html>

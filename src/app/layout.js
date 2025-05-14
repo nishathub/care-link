@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
           <header>
             <Navbar></Navbar>
           </header>
-          <main className="max-w-7xl mx-auto px-2 flex-grow">{children}</main>
+          <main className="max-w-7xl w-full mx-auto mt-16 lg:mt-20 px-2 py-4 lg:py-8 flex-grow">{children}</main>
           <footer>
             <Footer></Footer>
           </footer>

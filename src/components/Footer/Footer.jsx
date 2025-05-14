@@ -3,7 +3,7 @@ import CareLinkLogo from "../Logo/CareLinkLogo";
 const Footer = () => {
   return (
     <footer className="bg-sky-700">
-      <div className="max-w-7xl mx-auto footer sm:footer-horizontal py-10 px-4 sm:px-0">
+      <div className="max-w-7xl mx-auto footer sm:footer-horizontal py-10 px-4 sm:px-0 text-[14px]">
         <aside className="h-full flex items-center">
           <CareLinkLogo></CareLinkLogo>
         </aside>

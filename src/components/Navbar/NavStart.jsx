@@ -24,7 +24,7 @@ const NavStart = () => {
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-md dropdown-content bg-sky-800 rounded-box z-10 mt-3 w-52 p-2 shadow capitalize"
+          className="menu menu-md dropdown-content bg-sky-700 rounded-box z-10 mt-3 w-52 p-2 shadow capitalize"
         >
           <li>
             <Link href={"/ongoing-cases"}>Ongoing Cases</Link>

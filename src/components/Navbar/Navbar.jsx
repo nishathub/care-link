@@ -4,8 +4,8 @@ import NavStart from "./NavStart";
 
 const Navbar = () => {
   return (
-    <nav className="shadow-xl bg-gradient-to-r to-sky-700">
-      <div className="navbar max-w-7xl mx-auto lg:h-20">
+    <nav className="fixed w-full top-0 shadow-xl bg-gradient-to-r to-sky-700 backdrop-blur-md">
+      <div className="navbar max-w-7xl h-16 lg:h-20 mx-auto">
         <NavStart></NavStart>
         <NavMiddle></NavMiddle>
         <NavEnd></NavEnd>

@@ -28,7 +28,7 @@ const ImageSlider = () => {
   return (
       <Swiper
         modules={[Autoplay, EffectFade]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         effect="fade"
         fadeEffect={{ crossFade: true }}
@@ -43,8 +43,9 @@ const ImageSlider = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded">
-                <h2 className="text-lg font-semibold">{image.caption}</h2>
+              <div className="absolute z-20 top-0 left-0 h-full w-full bg-black/30"></div>
+              <div className="absolute z-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 py-2 rounded">
+                <h2 className="text-white text-6xl font-bold ">{image.caption}</h2>
               </div>
             </div>
           </SwiperSlide>

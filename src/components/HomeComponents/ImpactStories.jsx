@@ -1,13 +1,13 @@
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
-const OngoingCases = () => {
+const ImpactStories = () => {
   const numberOfCards = [1, 2, 3, 4, 5, 6];
   return (
     <div>
       <div>
         <SectionHeading
-          heading={"Ongoing Cases"}
+          heading={"Impact Stories"}
           paragraph={"You can help to ease their lives"}
         ></SectionHeading>
       </div>
@@ -20,4 +20,4 @@ const OngoingCases = () => {
   );
 };
 
-export default OngoingCases;
+export default ImpactStories;

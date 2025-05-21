@@ -36,6 +36,9 @@ const NavStart = () => {
             <Link href={"/donate-now"}>Donate Now</Link>
           </li>
           <li>
+          <Link href={"/news-update"}>News</Link>
+        </li>
+          <li>
             <details>
               <summary className="">
                 Get Involved

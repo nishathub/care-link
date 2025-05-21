@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
@@ -15,6 +16,11 @@ const OngoingCases = () => {
         {numberOfCards.map((i, card) => {
           return <Card key={i}></Card>;
         })}
+      </div>
+      <div className="w-fit mx-auto mt-6">
+        <Link className="btn btn-primary w-60" href={"/"}>
+          More
+        </Link>
       </div>
     </div>
   );

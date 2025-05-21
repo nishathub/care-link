@@ -1,9 +1,9 @@
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
+import Attention from "@/components/HomeComponents/Attention";
 import ImpactStories from "@/components/HomeComponents/ImpactStories";
 import OngoingCases from "@/components/HomeComponents/OngoingCases";
 import RecentNews from "@/components/HomeComponents/RecentNews";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -20,6 +20,9 @@ export default function Home() {
         </section>
         <section>
           <ImpactStories></ImpactStories>
+        </section>
+        <section>
+          <Attention></Attention>
         </section>
         <section>
           <RecentNews></RecentNews>

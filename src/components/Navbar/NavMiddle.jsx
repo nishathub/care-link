@@ -11,9 +11,6 @@ const NavMiddle = () => {
           <Link href={"/impact-stories"}>Impact Stories</Link>
         </li>
         <li>
-          <Link href={"/donate-now"}>Donate Now</Link>
-        </li>
-        <li>
           <Link href={"/news-update"}>News</Link>
         </li>
         <li>
@@ -28,6 +25,9 @@ const NavMiddle = () => {
               </li>
             </ul>
           </details>
+        </li>
+        <li>
+          <Link className="btn btn-sm btn-primary" href={"/donate-now"}>Donate Now</Link>
         </li>
       </ul>
     </div>

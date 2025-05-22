@@ -33,16 +33,11 @@ const NavStart = () => {
             <Link href={"/impact-stories"}>Impact Stories</Link>
           </li>
           <li>
-            <Link href={"/donate-now"}>Donate Now</Link>
+            <Link href={"/news-update"}>News</Link>
           </li>
           <li>
-          <Link href={"/news-update"}>News</Link>
-        </li>
-          <li>
             <details>
-              <summary className="">
-                Get Involved
-              </summary>
+              <summary className="">Get Involved</summary>
               <ul className="w-42 bg-sky-800 right-0">
                 <li>
                   <Link href={"/sign-volunteer"}>Become a Volunteer</Link>
@@ -52,6 +47,9 @@ const NavStart = () => {
                 </li>
               </ul>
             </details>
+          </li>
+          <li>
+            <Link className="btn btn-xs btn-primary mt-2" href={"/donate-now"}>Donate Now</Link>
           </li>
         </ul>
       </div>

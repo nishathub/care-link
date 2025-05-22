@@ -1,20 +1,17 @@
 import Link from "next/link";
 import React from "react";
+import "./AttentionBanner.css";
 
-const Attention = () => {
+const AttentionBanner = () => {
   return (
     <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage:
-          "url(https://media.tehrantimes.com/d/t/2024/09/04/4/5148539.jpg?ts=1725454921705)",
-      }}
+      className="hero min-h-screen relative overflow-hidden custom-hero"
     >
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content flex-wrap-reverse">
         <div className="max-w-md">
-          <h1 className="mb-5 text-3xl lg:text-5xl font-bold">
-            Donate today to bring hope and happiness to people
+          <h1 className="mb-5 text-3xl lg:text-5xl font-bold capitalize">
+            Bring smile to the sad faces
           </h1>
           <p className="mb-5">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
@@ -35,4 +32,4 @@ const Attention = () => {
   );
 };
 
-export default Attention;
+export default AttentionBanner;

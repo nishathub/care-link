@@ -1,5 +1,5 @@
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
-import Attention from "@/components/HomeComponents/Attention";
+import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";
 import ImpactStories from "@/components/HomeComponents/ImpactStories";
 import OngoingCases from "@/components/HomeComponents/OngoingCases";
 import RecentNews from "@/components/HomeComponents/RecentNews";
@@ -22,7 +22,7 @@ export default function Home() {
           <ImpactStories></ImpactStories>
         </section>
         <section>
-          <Attention></Attention>
+          <AttentionBanner></AttentionBanner>
         </section>
         <section>
           <RecentNews></RecentNews>

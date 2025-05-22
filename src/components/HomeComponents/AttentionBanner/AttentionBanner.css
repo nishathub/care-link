@@ -1,0 +1,26 @@
+.custom-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('https://media.tehrantimes.com/d/t/2024/09/04/4/5148539.jpg?ts=1725454921705');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  animation: zoomIn 14s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.custom-hero .hero-overlay,
+.custom-hero .hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}

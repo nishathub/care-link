@@ -1,24 +1,23 @@
-const Card = () => {
+import Link from "next/link";
+
+const Card = ({date, title, description, image, donateLink = "", readMoreLink = ""}) => {
   return (
     <div className="card bg-base-100 w-80 lg:w-96 shadow-sm">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src={image}
           alt="Shoes"
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Card Title</h2>
+        <p>{date}</p>
+        <h2 className="card-title">{title}</h2>
         <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
+          {description}
         </p>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
-        <div className="card-actions justify-center">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="card-actions justify-start">
+          <Link href={donateLink} className={`${donateLink ? "" : "hidden"} btn btn-primary w-full`}>Donate</Link>
+          <Link href={readMoreLink} className={`${readMoreLink ? "" : "hidden"} btn-link text-sky-500`}>Read More</Link>
         </div>
       </div>
     </div>

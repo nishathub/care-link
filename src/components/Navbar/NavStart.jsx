@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CareLinkLogo from "../Logo/CareLinkLogo";
+import NavLinks from "./NavLinks";
 
 const NavStart = () => {
   return (
@@ -26,31 +27,7 @@ const NavStart = () => {
           tabIndex={0}
           className="menu menu-md dropdown-content bg-sky-700 rounded-box z-10 mt-3 w-52 p-2 shadow capitalize"
         >
-          <li>
-            <Link href={"/ongoing-cases"}>Ongoing Cases</Link>
-          </li>
-          <li>
-            <Link href={"/impact-stories"}>Impact Stories</Link>
-          </li>
-          <li>
-            <Link href={"/news-update"}>News</Link>
-          </li>
-          <li>
-            <details>
-              <summary className="">Get Involved</summary>
-              <ul className="w-42 bg-sky-800 right-0">
-                <li>
-                  <Link href={"/sign-volunteer"}>Become a Volunteer</Link>
-                </li>
-                <li>
-                  <Link href={"/sign-donor"}>Become a Donor</Link>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <Link className="btn btn-xs btn-primary mt-2" href={"/donate-now"}>Donate Now</Link>
-          </li>
+         <NavLinks></NavLinks>
         </ul>
       </div>
       <CareLinkLogo></CareLinkLogo>

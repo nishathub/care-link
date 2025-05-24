@@ -1,11 +1,11 @@
-import React from 'react';
-
 const SingleDonation = () => {
-    return (
-        <div>
-            Single Donation page
-        </div>
-    );
+  return (
+    <div>
+      <p>Donate single page</p>
+      <div></div>
+      <div></div>
+    </div>
+  );
 };
 
 export default SingleDonation;

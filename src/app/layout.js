@@ -20,14 +20,14 @@ const robotoMono = Roboto_Mono({
 export const metadata = {
   title: "CARE LINK - A Charity Foundation",
   description: "Donation-Charity-Non-Profit-Organization",
+  icons: {
+    icon: "/careLinkLogo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" type="image/svg+xml" href="careLinkLogo.png" />
-      </head>
       <body
         className={`${robotoMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >

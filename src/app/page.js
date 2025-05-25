@@ -1,7 +1,7 @@
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
 import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";
 import ImpactStories from "@/components/HomeComponents/ImpactStories";
-import OngoingCases from "@/components/HomeComponents/OngoingCases";
+import OngoingCasesComponent from "@/components/HomeComponents/OngoingCasesComponent";
 import RecentNews from "@/components/HomeComponents/RecentNews";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 
@@ -16,7 +16,7 @@ export default function Home() {
           <AboutCareLink></AboutCareLink>
         </section>
         <section>
-          <OngoingCases></OngoingCases>
+          <OngoingCasesComponent></OngoingCasesComponent>
         </section>
         <section>
           <ImpactStories></ImpactStories>

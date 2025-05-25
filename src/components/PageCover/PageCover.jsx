@@ -16,7 +16,7 @@ const PageCover = ({
     >
       <div className="w-full h-full px-4 flex justify-center items-center bg-black/50">
         <div className="h-fit w-fit text-gray-200">
-          <h4 className={`text-2xl lg:text-6xl uppercase`}>
+          <h4 className={`text-3xl lg:text-6xl uppercase`}>
             {pageName}
           </h4>
         </div>

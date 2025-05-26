@@ -2,8 +2,9 @@ import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
 
 // GET single project by ID
-export async function GET(request, { params }) {
+export async function GET(request, { params: paramsPromise }) {
   try {
+    const params = await paramsPromise;
     const { id } = params;
     const { ongoingProjectsCollection } = await getCollections();
 

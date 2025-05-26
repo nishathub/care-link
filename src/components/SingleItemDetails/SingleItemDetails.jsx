@@ -8,7 +8,7 @@ const SingleItemDetails = ({data}) => {
 
   return (
     <div>
-      <SectionHeading heading={data.projectTitle}></SectionHeading>
+      <SectionHeading heading={data?.projectTitle}></SectionHeading>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="max-w-2xl mx-auto w-full space-y-8">
           <div className="h-80 border rounded-lg shadow-2xl relative">
@@ -22,13 +22,13 @@ const SingleItemDetails = ({data}) => {
           </div>
           <div className="border rounded-lg shadow-2xl p-4">
             <p className="text-lg lg:text-xl font-bold text-sky-700 text-center">
-              {data.relatedQuote}
+              {data?.relatedQuote}
             </p>
           </div>
           <div className="border rounded-lg shadow-2xl p-4">
             <h6 className="font-bold text-sky-700">Expense Category</h6>
             <ul className="steps steps-vertical">
-              {data.spendCategories.map((cat, index) => {
+              {data?.spendCategories.map((cat, index) => {
                 return (
                   <li key={index} className="step">
                     {cat}
@@ -40,7 +40,7 @@ const SingleItemDetails = ({data}) => {
         </div>
         <div className="max-w-2xl mx-auto w-full space-y-8">
           <div className="border text-justify rounded-lg shadow-2xl p-4">
-            <p className="">{data.description}</p>
+            <p className="">{data?.description}</p>
           </div>
           <BankAccountCard></BankAccountCard>
           <div className="h-72 border rounded-lg shadow-2xl p-4">

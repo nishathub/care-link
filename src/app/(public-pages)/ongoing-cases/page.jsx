@@ -1,9 +1,10 @@
 import OngoingCasesComponent from "@/components/HomeComponents/OngoingCasesComponent";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
 const OngoingCases = async () => {
   return (
     <div>
-      <h1>Ongoing Projects</h1>
+        <SectionHeading heading={"Recent Activities"}></SectionHeading>
       <div>
         <OngoingCasesComponent
           hideMoreButton={true}

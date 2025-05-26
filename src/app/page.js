@@ -1,17 +1,22 @@
+import Footer from "@/components/Footer/Footer";
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
 import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";
 import ImpactStories from "@/components/HomeComponents/ImpactStories";
 import OngoingCasesComponent from "@/components/HomeComponents/OngoingCasesComponent";
 import RecentNews from "@/components/HomeComponents/RecentNews";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   return (
     <div className="">
-      <section className="overflow-hidden">
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <section className="mt-16 lg:mt-20 overflow-hidden">
         <ImageSlider></ImageSlider>
       </section>
-      <div className="max-w-7xl w-full mx-auto space-y-12 py-12 border">
+      <div className="max-w-7xl w-full mx-auto space-y-12 py-12">
         <section>
           <AboutCareLink></AboutCareLink>
         </section>
@@ -27,9 +32,10 @@ export default function Home() {
         <section>
           <RecentNews></RecentNews>
         </section>
-
-
       </div>
+      <footer>
+        <Footer></Footer>
+      </footer>
     </div>
   );
 }

@@ -42,7 +42,7 @@ const SideNavbar = () => {
   return (
     <>
       {/* Sidebar toggle for mobile */}
-      <div className="lg:hidden p-4 shadow">
+      <div className="lg:hidden py-4 shadow">
         <button onClick={() => setOpen(!open)} className="btn btn-ghost btn-sm">
           <Menu size={24} />
         </button>
@@ -52,7 +52,7 @@ const SideNavbar = () => {
       <aside
         className={`fixed z-30 lg:relative transition-all duration-300 lg:translate-x-0 ${
           open ? "translate-x-0" : "-translate-x-full"
-        } lg:flex w-64 bg-gray-300 shadow-lg flex-col h-full`}
+        } flex w-64 bg-gray-300 shadow-lg flex-col h-full`}
       >
         <div className="p-4 border-b flex justify-between">
           <p className="font-bold text-xl text-sky-700">Admin Panel</p>
@@ -82,11 +82,11 @@ const SideNavbar = () => {
         <div className="p-4 border-t">
           <div className="flex items-center gap-3">
             <Image
-              src="/avatar.png"
+              src="https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg"
               alt="User Avatar"
               width={40}
               height={40}
-              className="rounded-full"
+              className="w-10 h-10 rounded-full object-cover"
             />
             <div>
               <p className="text-sm font-semibold">Admin Name</p>

@@ -2,6 +2,9 @@
 const nextConfig = {
     images: {
     domains: ['t4.ftcdn.net'],
+  //   devIndicators: {
+  //   buildActivity: false,
+  // },
   },
 };
 

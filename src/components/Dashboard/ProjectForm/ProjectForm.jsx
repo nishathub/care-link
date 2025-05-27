@@ -38,14 +38,10 @@ const ProjectForm = () => {
 
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const cloudinaryURL = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-    console.log(cloudName);
 
     try {
-      const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        formData
-      );
-      
+      const res = await axios.post(cloudinaryURL, formData);
+
       if (res.status === 200 && res.data.secure_url && res.data.public_id) {
         return {
           secure_url: res.data.secure_url,
@@ -80,13 +76,17 @@ const ProjectForm = () => {
         cloudinaryPublicId: public_id || "",
       };
 
-      console.log("Submitted Project:", finalData);
-      // TODO: Replace this with actual API call
-      // await axios.post("/your-api-endpoint", finalData);
-
-      reset();
-      setImageFile(null);
-      alert("Project added successfully!");
+      const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
+      const postProjectRes = await axios.post(
+        `${careLinkAPI}/ongoingProjects`,
+        finalData
+      );
+      if (postProjectRes.data.insertedId) {
+        console.log(postProjectRes.data);
+        reset();
+        setImageFile(null);
+        alert("Project added successfully!");
+      }
     } catch (error) {
       console.error("Submit Error:", error);
       alert("Failed to add project.");

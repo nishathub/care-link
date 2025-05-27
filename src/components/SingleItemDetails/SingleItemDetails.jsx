@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import Image from "next/image";
 
 const SingleItemDetails = ({data}) => {
+  console.log(data);
   const imageLink =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
 
@@ -17,6 +18,7 @@ const SingleItemDetails = ({data}) => {
               alt="charity-photo"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
+              unoptimized
               className="object-cover rounded-lg"
             ></Image>
           </div>
@@ -28,7 +30,7 @@ const SingleItemDetails = ({data}) => {
           <div className="border rounded-lg shadow-2xl p-4">
             <h6 className="font-bold text-sky-700">Expense Category</h6>
             <ul className="steps steps-vertical">
-              {data?.spendCategories.map((cat, index) => {
+              {data?.expenseCategories.map((cat, index) => {
                 return (
                   <li key={index} className="step">
                     {cat}

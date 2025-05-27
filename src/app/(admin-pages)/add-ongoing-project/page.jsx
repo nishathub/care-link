@@ -1,8 +1,9 @@
+import ProjectForm from "@/components/Dashboard/ProjectForm/ProjectForm";
 
 const AddOngoingProjects = () => {
     return (
         <div>
-            Add Ongoing Projects
+            <ProjectForm></ProjectForm>
         </div>
     );
 };

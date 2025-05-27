@@ -1,4 +1,3 @@
-// app/dashboard/layout.jsx
 "use client";
 
 import SideNavbar from "@/components/Dashboard/SideNavbar/SideNavbar";
@@ -6,7 +5,7 @@ import SideNavbar from "@/components/Dashboard/SideNavbar/SideNavbar";
 
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg-sky-900">
       {/* Fixed Sidebar */}
       <SideNavbar></SideNavbar>
 

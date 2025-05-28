@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
+import FormTextInput from "@/components/FormTextInput/FormTextInput";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +32,10 @@ const ProjectForm = () => {
     setIsSubmitting(true);
     try {
       // First we upload the image to cloudinary and get url
-      const { secure_url, public_id } = await uploadImageToCloudinary(imageFile, "CareLink/OngoingProjects");
+      const { secure_url, public_id } = await uploadImageToCloudinary(
+        imageFile,
+        "CareLink/OngoingProjects"
+      );
 
       // If image upload failed but user selected a file, stop submission
       if (imageFile && !secure_url) {
@@ -77,19 +81,14 @@ const ProjectForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           {/* Project Title */}
-          <label className="form-control w-full">
-            <span className="label-text text-gray-800">Project Title*</span>
-            <input
-              type="text"
-              {...register("title", { required: true })}
-              placeholder="Project Title"
-              className="input input-bordered w-full bg-white text-gray-800"
-            />
-            {errors.projectTitle && (
-              <p className="text-red-500 mt-1">Project title is required</p>
-            )}
-          </label>
-
+          <FormTextInput
+            label="Project Title*"
+            name="title"
+            placeholder="Water for all.."
+            register={register}
+            required={true}
+            errors={errors}
+          />
           {/* Image Upload */}
           <label className="form-control w-full">
             <span className="label-text text-gray-800">Upload Image*</span>
@@ -102,15 +101,14 @@ const ProjectForm = () => {
           </label>
 
           {/* Related Quote */}
-          <label className="form-control w-full">
-            <span className="label-text text-gray-800">Related Quote</span>
-            <input
-              type="text"
-              {...register("relatedQuote")}
-              placeholder="A motivational quote..."
-              className="input input-bordered w-full bg-white text-gray-800"
-            />
-          </label>
+          <FormTextInput
+            label="Related Quote"
+            name="relatedQuote"
+            placeholder="A motivational quote.."
+            register={register}
+            required={false}
+            errors={errors}
+          />
 
           {/* Expense Categories */}
           <div>

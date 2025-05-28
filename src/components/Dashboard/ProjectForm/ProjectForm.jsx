@@ -7,6 +7,8 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
 import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
+import OverlayLoader from "@/components/FormInput/OverLayLoader";
+import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,11 +76,7 @@ const ProjectForm = () => {
       <SectionHeading heading={"Add a new Project"}></SectionHeading>
 
       <div className="bg-gray-300 p-6 rounded-md relative">
-        {isSubmitting && (
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10">
-            <p className="text-white text-lg">Submitting...</p>
-          </div>
-        )}
+        {isSubmitting && <OverlayLoader message="Submitting..." />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           {/* Project Title */}
@@ -174,15 +172,12 @@ const ProjectForm = () => {
             {errors.tag && <p className="text-red-500 mt-1">Tag is required</p>}
           </label>
 
-          {/* Hidden */}
-          <label className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              {...register("hidden")}
-              className="checkbox checkbox-primary"
-            />
-            <span className="label-text text-gray-800">Hide this project</span>
-          </label>
+          {/* Hidden Checkbox*/}
+          <FormCheckboxInput
+            label="Hide this project"
+            name="hidden"
+            register={register}
+          />
 
           {/* Submit */}
           <div>

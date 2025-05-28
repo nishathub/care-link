@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
@@ -10,6 +10,7 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
+import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,11 +26,6 @@ const ProjectForm = () => {
     defaultValues: {
       expenseCategories: [""],
     },
-  });
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "expenseCategories",
   });
 
   const onSubmit = async (data) => {
@@ -111,38 +107,13 @@ const ProjectForm = () => {
           />
 
           {/* Expense Categories */}
-          <div>
-            <span className="label-text text-gray-800">
-              Expense Categories*
-            </span>
-            <div className="space-y-2 mt-2">
-              {fields.map((field, index) => (
-                <div key={field.id} className="flex gap-2 items-center">
-                  <input
-                    {...register(`expenseCategories.${index}`, {
-                      required: "Category cannot be empty",
-                    })}
-                    placeholder={`Category ${index + 1}`}
-                    className="input input-bordered w-full bg-white text-gray-800"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => remove(index)}
-                    className="text-red-500 text-sm cursor-pointer hover:underline"
-                  >
-                    Remove
-                  </button>
-                </div>
-              ))}
-              <button
-                type="button"
-                onClick={() => append("")}
-                className="btn btn-sm bg-gray-700 text-white mt-2"
-              >
-                + Add Category
-              </button>
-            </div>
-          </div>
+          <FormDynamicFieldList
+            control={control}
+            register={register}
+            required={true}
+            name="expenseCategories"
+            label="Expense Categories"
+          />
 
           {/* Description */}
           <FormTextAreaInput

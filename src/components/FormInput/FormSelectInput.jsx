@@ -1,4 +1,4 @@
-const FormSelectInput = ({ label, register, name, required, errors, options }) => (
+const FormSelectInput = ({ label, register, name, required = false, errors, options }) => (
   <label className="form-control w-full">
     <p className="label-text text-gray-800">{label}</p>
     <select

@@ -1,4 +1,4 @@
-const FormTextInput = ({ label, name, register, required, errors, ...rest }) => (
+const FormTextInput = ({ label, name, register, required = false, errors, ...rest }) => (
   <label className="form-control w-full">
     <span className="label-text text-gray-800">{label}</span>
     <input

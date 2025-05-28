@@ -1,4 +1,4 @@
-const FormTextAreaInput = ({ label, register, name, required, errors, placeholder }) => (
+const FormTextAreaInput = ({ label, register, name, required = false, errors, placeholder }) => (
   <label className="form-control w-full">
     <span className="label-text text-gray-700">{label}</span>
     <textarea

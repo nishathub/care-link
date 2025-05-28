@@ -3,6 +3,7 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -97,9 +98,7 @@ const ProjectForm = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-2xl lg:text-3xl font-semibold mb-8 text-center text-gray-200">
-        Add New Ongoing Project
-      </h2>
+      <SectionHeading heading={"Add a new Project"}></SectionHeading>
 
       <div className="bg-gray-300 p-6 rounded-md relative">
         {isSubmitting && (
@@ -114,7 +113,7 @@ const ProjectForm = () => {
             <span className="label-text text-gray-800">Project Title*</span>
             <input
               type="text"
-              {...register("projectTitle", { required: true })}
+              {...register("title", { required: true })}
               placeholder="Project Title"
               className="input input-bordered w-full bg-white text-gray-800"
             />

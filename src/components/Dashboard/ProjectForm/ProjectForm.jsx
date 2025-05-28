@@ -5,7 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
-import FormTextInput from "@/components/FormTextInput/FormTextInput";
+import FormTextInput from "@/components/FormInput/FormTextInput";
+import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -145,18 +146,14 @@ const ProjectForm = () => {
           </div>
 
           {/* Description */}
-          <label className="form-control w-full">
-            <span className="label-text text-gray-700">Description*</span>
-            <textarea
-              {...register("description", { required: true })}
-              placeholder="Project description..."
-              rows={4}
-              className="textarea textarea-bordered w-full bg-white text-gray-800"
-            ></textarea>
-            {errors.description && (
-              <p className="text-red-500 mt-1">Description is required</p>
-            )}
-          </label>
+          <FormTextAreaInput
+            label="Description*"
+            name="description"
+            placeholder="Project description..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
 
           {/* Tag */}
           <label className="form-control w-full">

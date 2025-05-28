@@ -1,10 +1,10 @@
-const FormTextInput = ({ label, name, placeholder, register, required, errors, ...rest }) => (
+const FormTextInput = ({ label, name, register, required, errors, ...rest }) => (
   <label className="form-control w-full">
     <span className="label-text text-gray-800">{label}</span>
     <input
       {...register(name, { required })}
       className="input input-bordered w-full bg-white text-gray-800"
-      placeholder={placeholder}
+      // PLACEHOLDER IS HANDLED BY ...REST 
       {...rest}
     />
     {errors?.[name] && <p className="text-red-500 mt-1">{label} is required</p>}

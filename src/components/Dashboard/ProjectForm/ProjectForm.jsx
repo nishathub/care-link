@@ -9,6 +9,7 @@ import FormTextInput from "@/components/FormInput/FormTextInput";
 import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
+import FormSelectInput from "@/components/FormInput/FormSelectInput";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -154,23 +155,20 @@ const ProjectForm = () => {
           />
 
           {/* Tag */}
-          <label className="form-control w-full">
-            <p className="label-text text-gray-800">Tag*</p>
-            <select
-              {...register("tag", { required: true })}
-              className="select select-bordered bg-white text-gray-800"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select a tag
-              </option>
-              <option value="Livelihood">Livelihood</option>
-              <option value="Health">Health</option>
-              <option value="Education">Education</option>
-              <option value="Emergency">Emergency</option>
-            </select>
-            {errors.tag && <p className="text-red-500 mt-1">Tag is required</p>}
-          </label>
+          <FormSelectInput
+            label="Tag*"
+            name="tag"
+            register={register}
+            required={true}
+            errors={errors}
+            options={[
+              "Livelihood",
+              "Education",
+              "Health",
+              "Shelter",
+              "Emergency",
+            ]}
+          />
 
           {/* Hidden Checkbox*/}
           <FormCheckboxInput

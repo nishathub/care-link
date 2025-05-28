@@ -7,7 +7,7 @@ const FormTextInput = ({ label, name, register, required, errors, ...rest }) => 
       // PLACEHOLDER IS HANDLED BY ...REST 
       {...rest}
     />
-    {errors?.[name] && <p className="text-red-500 mt-1">{label} is required</p>}
+    {errors?.[name] && <p className="text-red-500 mt-1">{label.replace("*", "")} is required</p>}
   </label>
 );
 

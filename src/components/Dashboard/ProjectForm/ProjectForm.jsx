@@ -4,6 +4,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
+import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,44 +27,11 @@ const ProjectForm = () => {
     name: "expenseCategories",
   });
 
-  const handleImageUpload = async () => {
-    if (!imageFile) return { secure_url: null, public_id: null };
-
-    const formData = new FormData();
-    formData.append("file", imageFile);
-    formData.append(
-      "upload_preset",
-      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-    );
-    formData.append("folder", "CareLink/OngoingProjects");
-
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-    const cloudinaryURL = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-
-    try {
-      const res = await axios.post(cloudinaryURL, formData);
-
-      if (res.status === 200 && res.data.secure_url && res.data.public_id) {
-        return {
-          secure_url: res.data.secure_url,
-          public_id: res.data.public_id,
-        };
-      } else {
-        alert("Failed to upload image");
-        console.error("Cloudinary response error:", res.data);
-        return { secure_url: null, public_id: null };
-      }
-    } catch (err) {
-      console.error("Image upload error:", err);
-      alert("Image upload failed!");
-      return { secure_url: null, public_id: null };
-    }
-  };
-
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const { secure_url, public_id } = await handleImageUpload();
+      // First we upload the image to cloudinary and get url
+      const { secure_url, public_id } = await uploadImageToCloudinary(imageFile, "CareLink/OngoingProjects");
 
       // If image upload failed but user selected a file, stop submission
       if (imageFile && !secure_url) {

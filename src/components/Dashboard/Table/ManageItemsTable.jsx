@@ -22,11 +22,18 @@ const ManageItemsTable = ({
     return (
       <div className="flex justify-center items-center inset-0">
         <p className="text-red-700 text-2xl text-center">
-          {errorFetchDataMessage}
+          {errorFetchDataMessage || "Error Loading Data"}
         </p>
       </div>
     );
   }
+  if (data?.length === 0) {
+    return (
+      <p className="text-center text-2xl text-red-700">No {itemName} found.</p>
+    );
+  }
+  // A custom boolean to show/hide column
+  const showTag = data?.some((item) => item?.tag !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -41,6 +48,7 @@ const ManageItemsTable = ({
           <thead className="sticky top-0 bg-sky-800 text-white z-10">
             <tr>
               <th>#</th>
+              {showTag && <th>Tag</th>}
               <th>Image</th>
               <th>Title</th>
               <th>Edit</th>
@@ -51,13 +59,14 @@ const ManageItemsTable = ({
             {data?.map((item, index) => (
               <tr className="border-b-sky-700" key={item?._id}>
                 <td>{index + 1}</td>
+                {showTag && <td>{item?.tag || "Tag"}</td>}
                 <td>
                   <div className="flex justify-center w-16">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12 lg:w-16 lg:h-16">
                         <img
                           src={item?.imageLink}
-                          alt="Item-image"
+                          alt={`Image of ${itemName || "item"}`}
                           className="object-cover"
                         />
                       </div>

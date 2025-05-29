@@ -12,7 +12,7 @@ const FormDynamicFieldList = ({
 
   return (
     <div>
-      <span className="label-text text-gray-800">{label}*</span>
+      <span className="label-text text-gray-800">{label}</span>
       <div className="space-y-2 mt-2">
         {fields.map((field, index) => (
           <div key={field.id} className="flex gap-2 items-center">

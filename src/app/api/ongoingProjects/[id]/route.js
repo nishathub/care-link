@@ -36,7 +36,10 @@ export async function PATCH(request, { params: paramsPromise }) {
     const { id } = params;
     const updatedData = await request.json();
     const { ongoingProjectsCollection } = await getCollections();
-
+    // Removing _id field from updatedData
+    delete updatedData._id;
+    
+    console.log(id, updatedData);
     const result = await ongoingProjectsCollection.updateOne(
       { _id: new ObjectId(id) },
       { $set: updatedData }
@@ -51,7 +54,7 @@ export async function PATCH(request, { params: paramsPromise }) {
 
     return Response.json({ success: true, message: "Updated successfully" });
   } catch (error) {
-    console.error("PUT error:", error);
+    console.error("PATCH error:", error);
     return Response.json(
       { success: false, message: "Failed to update" },
       { status: 500 }

@@ -9,6 +9,7 @@ import ManageItemsTable from "@/components/Dashboard/Table/ManageItemsTable";
 const ManageProjects = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [projectIdToDelete, setProjectIdToDelete] = useState(null);
+  const [cloudinaryPublicId, setCloudinaryPublicId] = useState(null);
   const [isDeleteLoading, setDeleteLoading] = useState(false);
 
   const {
@@ -18,8 +19,9 @@ const ManageProjects = () => {
     ProjectsRefetch,
   } = useProjects();
 
-  const handleDeleteClick = (id) => {
-    setProjectIdToDelete(id);
+  const handleDeleteClick = (itemId, cloudinaryPublicId) => {
+    setProjectIdToDelete(itemId);
+    setCloudinaryPublicId(cloudinaryPublicId);
     setDeleteModalOpen(true);
   };
 
@@ -33,6 +35,7 @@ const ManageProjects = () => {
           setDeleteModalOpen={setDeleteModalOpen}
           itemName={"Project"}
           itemId={projectIdToDelete}
+          cloudinaryPublicId={cloudinaryPublicId}
           isDeleteLoading={isDeleteLoading}
           setDeleteLoading={setDeleteLoading}
           refetch={ProjectsRefetch}

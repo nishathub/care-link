@@ -7,6 +7,7 @@ const DeleteConfirmModal = ({
   setDeleteModalOpen,
   itemName = "Item",
   itemId,
+  cloudinaryPublicId,
   isDeleteLoading,
   setDeleteLoading,
   refetch,
@@ -21,6 +22,7 @@ const DeleteConfirmModal = ({
       }
     } catch (err) {
       console.error("Delete failed:", err);
+      alert("Failed to Delete!")
     } finally {
       setDeleteLoading(false);
       setDeleteModalOpen(false);

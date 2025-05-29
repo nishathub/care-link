@@ -86,7 +86,7 @@ const ManageItemsTable = ({
                 {/* TO AVOID MAKING THIS A CLIENT COMPONENT */}
                 <td>
                   <DeleteItemButton
-                    onClick={() => handleDeleteClick(item?._id)}
+                    onClick={() => handleDeleteClick(item?._id, item?.cloudinaryPublicId)}
                   ></DeleteItemButton>
                 </td>
               </tr>

@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
+import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 
 // GET single project by ID
 export async function GET(request, { params: paramsPromise }) {
@@ -38,7 +39,7 @@ export async function PATCH(request, { params: paramsPromise }) {
     const { ongoingProjectsCollection } = await getCollections();
     // Removing _id field from updatedData
     delete updatedData._id;
-    
+
     console.log(id, updatedData);
     const result = await ongoingProjectsCollection.updateOne(
       { _id: new ObjectId(id) },
@@ -65,10 +66,17 @@ export async function PATCH(request, { params: paramsPromise }) {
 // DELETE a single project by ID
 export async function DELETE(request, { params: paramsPromise }) {
   try {
+    const { ongoingProjectsCollection } = await getCollections();
     const params = await paramsPromise;
     const { id } = params;
-    const { ongoingProjectsCollection } = await getCollections();
-
+    // DELETE IMAGE FROM CLOUDINARY
+    const { cloudinaryPublicId } = await ongoingProjectsCollection.findOne({
+      _id: new ObjectId(id),
+    });
+    if (cloudinaryPublicId) {
+      await deleteImageFromCloudinary(cloudinaryPublicId);
+    }
+    // DELETE ITEM FROM DB even if the Image is not deleted
     const result = await ongoingProjectsCollection.deleteOne({
       _id: new ObjectId(id),
     });

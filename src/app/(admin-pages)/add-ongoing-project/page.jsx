@@ -151,7 +151,7 @@ const AddOngoingProjects = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-800 text-white hover:bg-sky-900"
+              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
               disabled={isSubmitting}
             >
               Add Project

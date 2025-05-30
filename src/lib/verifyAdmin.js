@@ -1,10 +1,9 @@
-import { getCollections } from "./dbCollections.js";
+import { getAdminByEmail } from "./dbCollections.js";
 import { verifyTokenJWT } from "./verifyToken.js";
 export const verifyAdmin = async () => {
-  const decoded = verifyTokenJWT(); // { id, email, role }
+  const decoded = verifyTokenJWT();
 
-  const { AdminCollection } = await getCollections();
-  const user = await AdminCollection.findOne({email: decoded?.email});
+  const user = await getAdminByEmail(decoded?.email);
 
   if (!user || user.role !== "admin") {
     throw new Error("Forbidden");

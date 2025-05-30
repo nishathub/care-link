@@ -9,6 +9,11 @@ export const getCollections = async () => {
     ImpactStoriesCollection: db.collection("ImpactStories"),
     NewsCollection: db.collection("News"),
     AdminCollection: db.collection("Admins"),
-
   };
+};
+
+export const getAdminByEmail = async (email) => {
+  const { AdminCollection } = await getCollections();
+  const user = await AdminCollection.findOne({ email: email });
+  return user;
 };

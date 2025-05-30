@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
 import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
+import { verifyAdmin } from "@/lib/verifyAdmin";
 
 // GET single project by ID
 export async function GET(request, { params: paramsPromise }) {
@@ -66,6 +67,12 @@ export async function PATCH(request, { params: paramsPromise }) {
 // DELETE a single project by ID
 export async function DELETE(request, { params: paramsPromise }) {
   try {
+    const isAdmin = await verifyAdmin();
+    console.log(isAdmin);
+    if(!isAdmin){
+      return console.log("Not admin, op abort");
+    }
+
     const { ongoingProjectsCollection } = await getCollections();
     const params = await paramsPromise;
     const { id } = params;

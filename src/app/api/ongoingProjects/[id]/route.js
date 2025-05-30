@@ -40,8 +40,7 @@ export async function PATCH(request, { params: paramsPromise }) {
     const { ongoingProjectsCollection } = await getCollections();
     // Removing _id field from updatedData
     delete updatedData._id;
-
-    console.log(id, updatedData);
+    
     const result = await ongoingProjectsCollection.updateOne(
       { _id: new ObjectId(id) },
       { $set: updatedData }
@@ -67,11 +66,7 @@ export async function PATCH(request, { params: paramsPromise }) {
 // DELETE a single project by ID
 export async function DELETE(request, { params: paramsPromise }) {
   try {
-    const isAdmin = await verifyAdmin();
-    console.log(isAdmin);
-    if(!isAdmin){
-      return console.log("Not admin, op abort");
-    }
+    await verifyAdmin(); // only admin can run this operation
 
     const { ongoingProjectsCollection } = await getCollections();
     const params = await paramsPromise;

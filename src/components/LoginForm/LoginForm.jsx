@@ -13,22 +13,33 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (formData) => {
-    console.log("Login data:", formData);
     setIsLoginLoading(true);
     setErrorText("");
 
     try {
       // Submit login request
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_CareLinkAPI}/auth/login`, formData, {
-        withCredentials: true,
-      });
-
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/auth/login`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      // if login successful, fetch user
       if (res.data.success) {
-        alert(`Login Success`);
+        const userRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_CareLinkAPI}/auth/me`,
+          {
+            withCredentials: true,
+          }
+        );
+        const userData = userRes.data;
+        console.log("user :",userData.user);
       } else {
         throw new Error(res.data.message || "Login failed");
       }
@@ -36,6 +47,7 @@ const LoginForm = () => {
       setErrorText(err?.response?.data?.message || "Login error");
     } finally {
       setIsLoginLoading(false);
+      reset();
     }
   };
 
@@ -85,7 +97,10 @@ const LoginForm = () => {
       </div>
 
       {/* Submit */}
-      <button disabled={isLoginLoading} className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white">
+      <button
+        disabled={isLoginLoading}
+        className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white"
+      >
         {isLoginLoading ? "Logging in..." : "Log In"}
       </button>
       {errorText && <p className="text-red-700">{errorText}</p>}

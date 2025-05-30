@@ -20,7 +20,8 @@ export const POST = async (req) => {
   const payload = { id: user._id, name: user.name, email: user.email, role: user.role };
   const token = signToken(payload);
   // finally cookies is set
-  cookies().set("token", token, {
+  const cookieStore = await cookies();
+  cookieStore.set("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",

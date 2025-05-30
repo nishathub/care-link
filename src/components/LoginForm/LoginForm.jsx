@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
+import axios from "axios";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   const {
     register,
@@ -13,8 +16,27 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Login data:", data);
+  const onSubmit = async (formData) => {
+    console.log("Login data:", formData);
+    setIsLoginLoading(true);
+    setErrorText("");
+
+    try {
+      // Submit login request
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_CareLinkAPI}/auth/login`, formData, {
+        withCredentials: true,
+      });
+
+      if (res.data.success) {
+        alert(`Login Success`);
+      } else {
+        throw new Error(res.data.message || "Login failed");
+      }
+    } catch (err) {
+      setErrorText(err?.response?.data?.message || "Login error");
+    } finally {
+      setIsLoginLoading(false);
+    }
   };
 
   return (
@@ -63,11 +85,12 @@ const LoginForm = () => {
       </div>
 
       {/* Submit */}
-      <button className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white">
-        Log In
+      <button disabled={isLoginLoading} className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white">
+        {isLoginLoading ? "Logging in..." : "Log In"}
       </button>
+      {errorText && <p className="text-red-700">{errorText}</p>}
     </form>
   );
-}
+};
 
 export default LoginForm;

@@ -8,6 +8,7 @@ export const getCollections = async () => {
     ongoingProjectsCollection: db.collection("OngoingProjects"),
     ImpactStoriesCollection: db.collection("ImpactStories"),
     NewsCollection: db.collection("News"),
+    AdminCollection: db.collection("Admins"),
 
   };
 };

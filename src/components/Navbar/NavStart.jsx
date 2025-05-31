@@ -1,4 +1,3 @@
-import Link from "next/link";
 import CareLinkLogo from "../Logo/CareLinkLogo";
 import NavLinks from "./NavLinks";
 

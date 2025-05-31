@@ -1,46 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import {
-  Menu,
-  LayoutDashboard,
-  PlusCircle,
-  BookOpen,
-  Newspaper,
-  FolderKanban,
-  BookMarked,
-  FileText,
-  Users,
-  HandCoins,
-  HeartHandshake,
-} from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
 import useUserStore from "@/lib/zustand/userStore";
+import SideBarLinkCollection from "./SideBarLinks";
 
 const SideNavbar = () => {
-  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const user = useUserStore((state) => state.user);
-  console.log(user);
-
-  const SidebarLink = ({ href, text, Icon }) => {
-    const isActive = pathname === href;
-    return (
-      <Link
-        href={href}
-        className={`flex items-center gap-3 py-2 px-3 rounded transition-colors 
-        ${isActive ? "bg-sky-800 text-white" : "text-gray-800 hover:text-sky-700 hover:bg-gray-200"}`}
-      >
-        <Icon
-          size={18}
-          className={`transition-colors ${isActive ? "text-white" : "text-gray-600 hover:text-sky-700"}`}
-        />
-        <span>{text}</span>
-      </Link>
-    );
-  };
+  const logout = useUserStore((state) => state.logout);
 
   return (
     <>
@@ -57,7 +29,7 @@ const SideNavbar = () => {
           open ? "translate-x-0" : "-translate-x-full"
         } flex w-64 bg-gray-300 shadow-lg flex-col h-full`}
       >
-        <div className="p-4 border-b flex justify-between">
+        <div className="p-4  shadow-lg flex justify-between">
           <p className="font-bold text-xl text-sky-700">Admin Panel</p>
           <button
             onClick={() => setOpen(!open)}
@@ -67,23 +39,14 @@ const SideNavbar = () => {
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-4 py-2 space-y-1">
-          <SidebarLink href="/dashboard" text="Dashboard" Icon={LayoutDashboard} />
-          <SidebarLink href="/add-ongoing-project" text="Add Ongoing Project" Icon={PlusCircle} />
-          <SidebarLink href="/add-impact-story" text="Add Impact Story" Icon={PlusCircle} />
-          <SidebarLink href="/add-news" text="Add News" Icon={PlusCircle} />
-          <SidebarLink href="/manage-projects" text="Manage Projects" Icon={FolderKanban} />
-          <SidebarLink href="/manage-stories" text="Manage Stories" Icon={BookOpen} />
-          <SidebarLink href="/manage-news" text="Manage News" Icon={FileText} />
-          <SidebarLink href="/manage-users" text="Manage Users" Icon={Users} />
-          <SidebarLink href="/donation-logs" text="Donation Logs" Icon={HandCoins} />
-          <SidebarLink href="/volunteers" text="Volunteers" Icon={HeartHandshake} />
-          <SidebarLink href="/donors" text="Donors" Icon={HeartHandshake} />
-        </nav>
+        <SideBarLinkCollection></SideBarLinkCollection>
 
         {/* Profile Info */}
-        <div className="p-4 border-t">
-          <div className="flex items-center gap-3">
+        <div className="p-4 relative">
+          <div
+            className="flex items-center gap-3 cursor-pointer"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
             <Image
               src="https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg"
               alt="User Avatar"
@@ -96,6 +59,22 @@ const SideNavbar = () => {
               <p className="text-xs text-gray-500">{user?.email}</p>
             </div>
           </div>
+
+          {showDropdown && (
+            <div className="absolute bottom-16 left-4 w-40 bg-white shadow-lg rounded-lg z-50">
+              <button
+                onClick={() => {
+                  logout();
+                  router.push("/login");
+                  alert("logout successful");
+                }}
+                className="w-full text-left text-red-700 px-4 py-2 hover:bg-gray-100 flex items-center rounded-lg cursor-pointer gap-2"
+              >
+                <LogOut size={16} />
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </aside>
     </>

@@ -39,37 +39,37 @@ const SideBarLinkCollection = () => {
   };
   return (
     <nav className="flex-1 overflow-y-auto px-4 py-2 space-y-1 shadow-lg">
-      <SidebarLink href="/dashboard" text="Dashboard" Icon={LayoutDashboard} />
+      <SidebarLink href="/admin/dashboard" text="Dashboard" Icon={LayoutDashboard} />
       <SidebarLink
-        href="/add-ongoing-project"
+        href="/admin/add-ongoing-project"
         text="Add Ongoing Project"
         Icon={PlusCircle}
       />
       <SidebarLink
-        href="/add-impact-story"
+        href="/admin/add-impact-story"
         text="Add Impact Story"
         Icon={PlusCircle}
       />
-      <SidebarLink href="/add-news" text="Add News" Icon={PlusCircle} />
+      <SidebarLink href="/admin/add-news" text="Add News" Icon={PlusCircle} />
       <SidebarLink
-        href="/manage-projects"
+        href="/admin/manage-projects"
         text="Manage Projects"
         Icon={FolderKanban}
       />
       <SidebarLink
-        href="/manage-stories"
+        href="/admin/manage-stories"
         text="Manage Stories"
         Icon={BookOpen}
       />
-      <SidebarLink href="/manage-news" text="Manage News" Icon={FileText} />
-      <SidebarLink href="/manage-users" text="Manage Users" Icon={Users} />
+      <SidebarLink href="/admin/manage-news" text="Manage News" Icon={FileText} />
+      <SidebarLink href="/admin/manage-users" text="Manage Users" Icon={Users} />
       <SidebarLink
-        href="/donation-logs"
+        href="/admin/donation-logs"
         text="Donation Logs"
         Icon={HandCoins}
       />
-      <SidebarLink href="/volunteers" text="Volunteers" Icon={HeartHandshake} />
-      <SidebarLink href="/donors" text="Donors" Icon={HeartHandshake} />
+      <SidebarLink href="/admin/volunteers" text="Volunteers" Icon={HeartHandshake} />
+      <SidebarLink href="/admin/donors" text="Donors" Icon={HeartHandshake} />
     </nav>
   );
 };

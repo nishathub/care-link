@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Menu, LogOut } from "lucide-react";
+import { Menu } from "lucide-react";
 import useUserStore from "@/lib/zustand/userStore";
 import SideBarLinkCollection from "./SideBarLinks";
+import Dropdown from "./Dropdown";
+import { useRehydrateUser } from "@/hooks/useRehydrateUser";
 
 const SideNavbar = () => {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  useRehydrateUser(); // to refetch user from back
   const user = useUserStore((state) => state.user);
   const logout = useUserStore((state) => state.logout);
 
@@ -60,21 +61,7 @@ const SideNavbar = () => {
             </div>
           </div>
 
-          {showDropdown && (
-            <div className="absolute bottom-16 left-4 w-40 bg-white shadow-lg rounded-lg z-50">
-              <button
-                onClick={() => {
-                  logout();
-                  router.push("/login");
-                  alert("logout successful");
-                }}
-                className="w-full text-left text-red-700 px-4 py-2 hover:bg-gray-100 flex items-center rounded-lg cursor-pointer gap-2"
-              >
-                <LogOut size={16} />
-                Logout
-              </button>
-            </div>
-          )}
+          {showDropdown && <Dropdown logout={logout}></Dropdown>}
         </div>
       </aside>
     </>

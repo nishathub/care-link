@@ -15,11 +15,15 @@ export const useRehydrateUser = () => {
             withCredentials: true,
           }
         );
-        const { user } = userRes.data;
-        // set user to zustand
-        setUser(user);
+        const { user, isAuthenticated } = userRes.data;
+        if (isAuthenticated === false || !user) {
+          setUser(null);
+        } else {
+          setUser(user);
+        }
       } catch (err) {
-        console.error("Failed to fetch user");
+        console.error("Failed to fetch user", err);
+        setUser(null);
       }
     };
     fetchUser();

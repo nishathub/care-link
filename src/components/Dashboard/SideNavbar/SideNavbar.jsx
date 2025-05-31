@@ -17,10 +17,13 @@ import {
   HandCoins,
   HeartHandshake,
 } from "lucide-react";
+import useUserStore from "@/lib/zustand/userStore";
 
 const SideNavbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const user = useUserStore((state) => state.user);
+  console.log(user);
 
   const SidebarLink = ({ href, text, Icon }) => {
     const isActive = pathname === href;
@@ -89,8 +92,8 @@ const SideNavbar = () => {
               className="w-10 h-10 rounded-full object-cover"
             />
             <div>
-              <p className="text-sm font-semibold">Admin Name</p>
-              <p className="text-xs text-gray-500">admin@example.com</p>
+              <p className="text-sm font-semibold">{user?.name}</p>
+              <p className="text-xs text-gray-500">{user?.email}</p>
             </div>
           </div>
         </div>

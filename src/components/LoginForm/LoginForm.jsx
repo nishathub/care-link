@@ -4,11 +4,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import useUserStore from "@/lib/zustand/userStore";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const router = useRouter();
+  const setUser = useUserStore((state) => state.setUser);
 
   const {
     register,
@@ -38,8 +42,16 @@ const LoginForm = () => {
             withCredentials: true,
           }
         );
-        const userData = userRes.data;
-        console.log("user :",userData.user);
+        const {user} = userRes.data;
+        if(!user || !user?.role) {
+            throw new Error ("Invalid User")
+        }
+        // set user to zustand 
+        setUser(user);
+        // redirect according to role.
+        router.push(user.role === "Admin" ? "/dashboard" : "/");
+        // alert
+        alert(`Hello ${user?.name}`);
       } else {
         throw new Error(res.data.message || "Login failed");
       }

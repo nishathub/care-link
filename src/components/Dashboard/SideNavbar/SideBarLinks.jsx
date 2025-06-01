@@ -2,6 +2,7 @@
 
 import {
   LayoutDashboard,
+  House,
   PlusCircle,
   BookOpen,
   FolderKanban,
@@ -39,6 +40,7 @@ const SideBarLinkCollection = () => {
   };
   return (
     <nav className="flex-1 overflow-y-auto px-4 py-2 space-y-1 shadow-lg">
+      <SidebarLink href="/" text="HomePage" Icon={House} />
       <SidebarLink href="/admin/dashboard" text="Dashboard" Icon={LayoutDashboard} />
       <SidebarLink
         href="/admin/add-ongoing-project"

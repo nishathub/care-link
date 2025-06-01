@@ -5,7 +5,6 @@ export const secureAxios = async (method, url, data = null, user) => {
   const methodLower = method.toLowerCase();
 
   if (methodLower === "delete") {
-    console.log(user);
     if (!user?.rank || user.rank !== "chief") {
       alert("Unauthorized Access.");
       return null;

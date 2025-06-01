@@ -7,7 +7,7 @@ const protectedRoutes = {
   "/admin": ["admin"],
   "/editor": ["admin", "editor"],
   "/volunteer": ["admin", "volunteer"],
-  "/donor-dashboard": ["admin", "donor"],
+  "/donor": ["admin", "donor"],
 };
 
 export const middleware = async (request) => {
@@ -42,5 +42,5 @@ export const middleware = async (request) => {
 };
 
 export const config = {
-  matcher: ["/admin/:path*", "/editor/:path*"],
+  matcher: ["/admin/:path*", "/editor/:path*", "/volunteer/:path*", "/donor/:path*"],
 };

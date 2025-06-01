@@ -21,7 +21,7 @@ export default function Home() {
           <AboutCareLink></AboutCareLink>
         </section>
         <section>
-          <OngoingCasesComponent></OngoingCasesComponent>
+          <OngoingCasesComponent isHomePage={true}></OngoingCasesComponent>
         </section>
         <section>
           <ImpactStories></ImpactStories>

@@ -3,8 +3,7 @@ import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
 const OngoingCasesComponent = async ({
-  hideSectionTitle = false,
-  hideMoreButton = false,
+  isHomePage = false,
 }) => {
   const getProjects = async () => {
     const careLinkApi = process.env.CareLinkAPI;
@@ -13,9 +12,11 @@ const OngoingCasesComponent = async ({
     return res.json();
   };
   const { data } = await getProjects();
+  const renderItem = isHomePage ? data.slice(0, 6) : data;
+
   return (
     <div>
-      {!hideSectionTitle && (
+      {isHomePage && (
         <div>
           <SectionHeading
             heading={"Ongoing Cases"}
@@ -24,7 +25,7 @@ const OngoingCasesComponent = async ({
         </div>
       )}
       <div className="flex flex-wrap gap-8 justify-center">
-        {data.map((project, index) => {
+        {renderItem.map((project, index) => {
           return (
             <Card
               key={index}
@@ -39,8 +40,8 @@ const OngoingCasesComponent = async ({
         })}
       </div>
       <div className="w-fit mx-auto mt-6">
-        {!hideMoreButton && (
-          <Link className="btn btn-primary w-60" href={"/"}>
+        {isHomePage && (
+          <Link className="btn btn-primary w-60" href={"/ongoing-cases"}>
             More
           </Link>
         )}

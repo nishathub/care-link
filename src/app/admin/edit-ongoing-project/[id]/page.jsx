@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
@@ -12,12 +11,17 @@ import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
 import { useParams } from "next/navigation";
+import { secureAxios } from "@/utils/secureAxios";
+import useUserStore from "@/lib/zustand/userStore";
+import axios from "axios";
 
 const UpdateOngoingProject = () => {
   const { id: projectId } = useParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [initialData, setInitialData] = useState(null);
+  const [initialDataLoading, setInitialDataLoading] = useState(false);
+  const user = useUserStore((state) => state?.user);
 
   const {
     register,
@@ -31,15 +35,18 @@ const UpdateOngoingProject = () => {
   // Fetch project data
   useEffect(() => {
     const fetchProject = async () => {
+      setInitialDataLoading(true);
       try {
         const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
         const { data } = await axios.get(
           `${careLinkAPI}/ongoingProjects/${projectId}`
         );
         setInitialData(data.data);
-        reset(data.data); 
+        reset(data.data);
       } catch (err) {
         console.error("Failed to fetch project:", err);
+      } finally {
+        setInitialDataLoading(false);
       }
     };
 
@@ -77,11 +84,12 @@ const UpdateOngoingProject = () => {
       };
 
       const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
-      const patchRes = await axios.patch(
+      const patchRes = await secureAxios(
+        "patch",
         `${careLinkAPI}/ongoingProjects/${projectId}`,
-        finalData
+        finalData,
+        user
       );
-
       if (patchRes.data.success) {
         alert("Project updated successfully!");
       } else {
@@ -95,7 +103,8 @@ const UpdateOngoingProject = () => {
     }
   };
 
-  if (!initialData) return <OverlayLoader message="Loading project..." />;
+  if (initialDataLoading) return <OverlayLoader message="Loading project..." />;
+  if (!initialDataLoading && !initialData) return <OverlayLoader message="Project Data Loading Failed" />;
 
   return (
     <div className="max-w-4xl mx-auto">

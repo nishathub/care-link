@@ -1,5 +1,6 @@
 "use client";
-import axios from "axios";
+import useUserStore from "@/lib/zustand/userStore";
+import { secureAxios } from "@/utils/secureAxios";
 
 const DeleteConfirmModal = ({
   apiBaseURL,
@@ -7,22 +8,27 @@ const DeleteConfirmModal = ({
   setDeleteModalOpen,
   itemName = "Item",
   itemId,
-  cloudinaryPublicId,
   isDeleteLoading,
   setDeleteLoading,
   refetch,
 }) => {
+  const user = useUserStore((state)=> state?.user);
   const handleConfirmDelete = async () => {
     setDeleteLoading(true);
     setDeleteModalOpen(false);
     try {
-      const deletedItem = await axios.delete(`${apiBaseURL}/${itemId}`);
-      if (deletedItem.data.success) {
+      const deleteItemRes = await secureAxios(
+        "delete",
+        `${apiBaseURL}/${itemId}`,
+        null,
+        user
+      );
+      if (deleteItemRes?.data.success) {
         alert(`${itemName} Deleted`);
       }
     } catch (err) {
       console.error("Delete failed:", err);
-      alert("Failed to Delete!")
+      alert("Failed to Delete!");
     } finally {
       setDeleteLoading(false);
       setDeleteModalOpen(false);

@@ -58,7 +58,7 @@ const AddOngoingProjects = () => {
         user
       );
       if (postProjectRes.data.insertedId) {
-        // reset();
+        reset();
         setImageFile(null);
         alert("Project added successfully!");
       }

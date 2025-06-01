@@ -17,7 +17,7 @@ export const POST = async (req) => {
     return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
   }
   // after passing two steps, we sign for jwt
-  const payload = { id: user._id, name: user.name, email: user.email, role: user.role };
+  const payload = { id: user._id, name: user.name, email: user.email, role: user.role, rank: user?.rank };
   const token = signToken(payload);
   // finally cookies is set
   const cookieStore = await cookies();

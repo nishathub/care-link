@@ -30,18 +30,18 @@ const OngoingCasesComponent = async ({
             <Card
               key={index}
               donateLink={`ongoing-cases/${project._id}`}
-              image={
+              image={ project?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
               }
-              title={project.projectTitle}
-              description={`${project.description.slice(0, 220)} ...`}
+              title={project.title}
+              description={`${project?.description?.length > 220 ? project.description.slice(0, 220) + "..." : project.description}`}
             ></Card>
           );
         })}
       </div>
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
-          <Link className="btn btn-primary w-60" href={"/ongoing-cases"}>
+          <Link className="btn btn-primary w-40" href={"/ongoing-cases"}>
             More
           </Link>
         )}

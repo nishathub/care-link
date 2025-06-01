@@ -29,7 +29,7 @@ const RecentNews = () => {
         })}
       </div>
       <div className="w-fit mx-auto mt-6">
-        <Link className="btn btn-primary w-60" href={"/"}>
+        <Link className="btn btn-primary w-40" href={"/"}>
           More
         </Link>
       </div>

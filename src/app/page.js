@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="bg-sky-200 text-gray-800">
       <header>
         <Navbar></Navbar>
       </header>

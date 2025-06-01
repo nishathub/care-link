@@ -2,10 +2,11 @@ import Link from "next/link";
 
 const Card = ({date, title, description, image, donateLink = "", readMoreLink = ""}) => {
   return (
-    <div className="card bg-base-100 w-80 lg:w-96 shadow-sm">
+    <div className="card bg-sky-100 w-80 lg:w-96 shadow-sm">
       <figure>
         <img
           src={image}
+          className="w-80 lg:w-96 h-40 lg:h-48 object-cover"
           alt="Shoes"
         />
       </figure>

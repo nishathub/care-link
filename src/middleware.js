@@ -1,5 +1,7 @@
-import { verifyAdmin } from "@/lib/verifyAdmin";
 import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
+
+const secret = new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET);
 
 const protectedRoutes = {
   "/admin": ["admin"],
@@ -10,7 +12,6 @@ const protectedRoutes = {
 
 export const middleware = async (request) => {
   const pathname = request.nextUrl.pathname;
-  console.log(pathname);
 
   // Check if this path is protected
   const matchedRoute = Object.keys(protectedRoutes).find((route) =>
@@ -19,23 +20,27 @@ export const middleware = async (request) => {
 
   if (!matchedRoute) return NextResponse.next(); // give access to unprotected routes
 
-  try {
-    const user = await verifyAdmin(); // if valid, return user data from that middleware
+  const token = request.cookies.get("token")?.value;
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 
-    if (!user) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-    const userRole = user?.role;
-    console.log(userRole);
+  try {
+    const { payload } = await jwtVerify(token, secret); // using jose
+    const userRole = payload?.role;
 
     const allowedRoles = protectedRoutes[matchedRoute]; // array of allowed roles to access protected pages
 
     if (!allowedRoles.includes(userRole)) {
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/unauthorized", request.url)); // valid user but role is not allowed
     }
-    
+
     return NextResponse.next();
   } catch (err) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
+};
+
+export const config = {
+  matcher: ["/admin/:path*", "/editor/:path*"],
 };

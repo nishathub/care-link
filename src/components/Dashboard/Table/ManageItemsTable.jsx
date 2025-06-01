@@ -11,6 +11,9 @@ const ManageItemsTable = ({
   isDeleteLoading,
   errorFetchDataMessage,
 }) => {
+  const imageFallbackLink =
+    "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
+
   if (isDataLoading || isDeleteLoading) {
     return (
       <div className="flex justify-center items-center inset-0">
@@ -65,7 +68,7 @@ const ManageItemsTable = ({
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12 lg:w-16 lg:h-16">
                         <img
-                          src={item?.imageLink}
+                          src={item?.imageLink || imageFallbackLink}
                           alt={`Image of ${itemName || "item"}`}
                           className="object-cover"
                         />
@@ -86,7 +89,9 @@ const ManageItemsTable = ({
                 {/* TO AVOID MAKING THIS A CLIENT COMPONENT */}
                 <td>
                   <DeleteItemButton
-                    onClick={() => handleDeleteClick(item?._id, item?.cloudinaryPublicId)}
+                    onClick={() =>
+                      handleDeleteClick(item?._id, item?.cloudinaryPublicId)
+                    }
                   ></DeleteItemButton>
                 </td>
               </tr>

@@ -34,6 +34,8 @@ export async function GET(request, { params: paramsPromise }) {
 // UPDATE a single project by ID
 export async function PATCH(request, { params: paramsPromise }) {
   try {
+    await verifyAdmin(); // only admin can edit
+    
     const params = await paramsPromise;
     const { id } = params;
     const updatedData = await request.json();

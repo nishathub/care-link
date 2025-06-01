@@ -29,10 +29,7 @@ const LoginForm = () => {
       // Submit login request
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_CareLinkAPI}/auth/login`,
-        formData,
-        {
-          withCredentials: true,
-        }
+        formData
       );
       // if login successful, fetch user
       if (res.data.success) {
@@ -42,11 +39,11 @@ const LoginForm = () => {
             withCredentials: true,
           }
         );
-        const {user} = userRes.data;
-        if(!user || !user?.role) {
-            throw new Error ("Invalid User")
+        const { user } = userRes.data;
+        if (!user || !user?.role) {
+          throw new Error("Invalid User");
         }
-        // set user to zustand 
+        // set user to zustand
         setUser(user);
         // redirect according to role.
         router.push(user.role === "admin" ? "admin/dashboard" : "/");

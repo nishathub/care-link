@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import axios from "axios";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
@@ -11,10 +10,13 @@ import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
+import axios from "axios";
+import useUserStore from "@/lib/zustand/userStore";
 
 const AddOngoingProjects = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
+  const user = useUserStore((state)=> state?.user);
 
   const {
     register,
@@ -49,19 +51,21 @@ const AddOngoingProjects = () => {
         cloudinaryPublicId: public_id || "",
       };
 
-      const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
+      if(!user || user?.role !== "admin") {
+       return alert("Admin Access Only");
+      }
       const postProjectRes = await axios.post(
-        `${careLinkAPI}/ongoingProjects`,
-        finalData
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`,
+        finalData,
+        {withCredentials: true}
       );
       if (postProjectRes.data.insertedId) {
-        console.log(postProjectRes.data);
-        reset();
+        // reset();
         setImageFile(null);
         alert("Project added successfully!");
       }
     } catch (error) {
-      console.error("Submit Error:", error);
+      console.error("Error:", error);
       alert("Failed to add project.");
     } finally {
       setIsSubmitting(false);

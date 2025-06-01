@@ -10,13 +10,13 @@ import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
-import axios from "axios";
 import useUserStore from "@/lib/zustand/userStore";
+import { secureAxios } from "@/utils/secureAxios";
 
 const AddOngoingProjects = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const user = useUserStore((state)=> state?.user);
+  const user = useUserStore((state) => state?.user);
 
   const {
     register,
@@ -51,13 +51,11 @@ const AddOngoingProjects = () => {
         cloudinaryPublicId: public_id || "",
       };
 
-      if(!user || user?.role !== "admin") {
-       return alert("Admin Access Only");
-      }
-      const postProjectRes = await axios.post(
+      const postProjectRes = await secureAxios(
+        "post",
         `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`,
         finalData,
-        {withCredentials: true}
+        user
       );
       if (postProjectRes.data.insertedId) {
         // reset();

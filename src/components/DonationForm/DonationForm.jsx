@@ -1,0 +1,107 @@
+'use client';
+
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { CheckCircle } from 'lucide-react';
+import useUserStore from '@/lib/zustand/userStore';
+
+const presetAmounts = [10, 25, 50, 100];
+
+export default function DonationForm() {
+  const router = useRouter();
+  const user = useUserStore((state)=> state?.user);
+  const [selectedAmount, setSelectedAmount] = useState(presetAmounts[0]);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      amount: selectedAmount,
+      name: user?.name || '',
+      contact: user?.email || '',
+    },
+  });
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    return;
+    try {
+      const res = await fetch('/api/donate/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const { url } = await res.json();
+      router.push(url); // Redirect to Stripe Checkout
+    } catch (error) {
+      console.error('Checkout error', error);
+    }
+  };
+
+  return (
+    <div className="bg-sky-100 rounded-lg shadow-2xl p-6">
+      <h2 className="text-2xl font-bold text-center mb-6">Make a Donation</h2>
+
+      {/* Preset Amount Boxes */}
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        {presetAmounts.map((amt) => (
+          <div
+            key={amt}
+            className={`p-4 rounded-lg cursor-pointer text-center border-2 transition ${
+              selectedAmount === amt
+                ? 'bg-sky-200 border-sky-700'
+                : 'bg-white border-gray-300'
+            }`}
+            onClick={() => {
+              setSelectedAmount(amt);
+            }}
+          >
+            ${amt}
+            {selectedAmount === amt && <CheckCircle className="inline ml-2" size={16} />}
+          </div>
+        ))}
+      </div>
+
+      {/* Donation Form */}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <input
+          type="hidden"
+          value={selectedAmount}
+          {...register('amount', { required: true })}
+        />
+
+        <div>
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="input input-bordered bg-sky-200 w-full"
+            {...register('name', { required: 'Name is required' })}
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="Email or Phone"
+            className="input input-bordered bg-sky-200 w-full"
+            {...register('contact', {
+              required: 'Email or phone is required',
+              minLength: { value: 5, message: 'Too short' },
+            })}
+          />
+          {errors.contact && <p className="text-red-500 text-sm">{errors.contact.message}</p>}
+        </div>
+
+        <button type="submit" className="btn btn-primary w-full">
+          Donate
+        </button>
+      </form>
+    </div>
+  );
+}

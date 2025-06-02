@@ -1,14 +1,14 @@
 const BankAccountCard = () => {
   return (
     <div className="flex items-center rounded-lg shadow-2xl overflow-hidden">
-      <div className="hidden lg:flex items-center w-36 h-40 bg-sky-300">
+      <div className="hidden lg:flex items-center w-36 h-40 bg-sky-100">
         <img
           src="/city-bank-logo-resized.png"
           className=""
           alt="city-bank-logo"
         />
       </div>
-      <div className="pl-2 flex-grow bg-sky-800 h-40 flex items-center">
+      <div className="pl-4 flex-grow bg-sky-700 text-gray-200 h-40 flex items-center">
         <ul className="">
           <li className="">
             <span className="inline-block w-32">Account Name</span>{" "}

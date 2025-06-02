@@ -30,7 +30,7 @@ export default function Home() {
           <AttentionBanner></AttentionBanner>
         </section>
         <section>
-          <RecentNews></RecentNews>
+          <RecentNews isHomePage={true}></RecentNews>
         </section>
       </div>
       <footer>

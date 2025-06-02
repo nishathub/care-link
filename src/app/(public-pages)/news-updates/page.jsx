@@ -1,10 +1,11 @@
+import RecentNews from "@/components/HomeComponents/RecentNews";
 
 const News = () => {
-    return (
-        <div>
-            News page
-        </div>
-    );
+  return (
+    <div>
+      <RecentNews isHomePage={false}></RecentNews>
+    </div>
+  );
 };
 
 export default News;

@@ -124,6 +124,7 @@ export default function DonationForm() {
           onClose={() => setShowModal(false)}
           amount={selectedAmount}
           formData={formData}
+          user={user}
         />
       </Elements>
     </div>

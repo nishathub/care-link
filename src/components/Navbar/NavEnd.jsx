@@ -11,7 +11,7 @@ const NavEnd = () => {
         Dashboard
       </Link>
       :
-      <Link className="btn btn-outline" href={"/auth/login"}>
+      <Link className="btn btn-outline" href={"/login"}>
         Login
       </Link>
     }

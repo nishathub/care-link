@@ -2,13 +2,15 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
-const StripePaymentModal = ({ isOpen, onClose, amount, formData }) => {
+const StripePaymentModal = ({ isOpen, onClose, amount, formData, user }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const createPaymentIntent = async () => {
@@ -51,7 +53,7 @@ const StripePaymentModal = ({ isOpen, onClose, amount, formData }) => {
           card,
           billing_details: {
             name: formData?.name || "Anonymous",
-            email: formData?.email || "no-reply@example.com",
+            email: formData?.contact || "no-reply@example.com",
           },
         },
       });
@@ -63,24 +65,22 @@ const StripePaymentModal = ({ isOpen, onClose, amount, formData }) => {
     }
 
     if (paymentIntent?.status === "succeeded") {
-      console.log("payment is successful");
+      console.log(
+        "paymentId :",
+        paymentIntent.id,
+        "userEmail :",
+        formData?.contact,
+        "userName :",
+        formData?.name,
+        "date :",
+        new Date(),
+        "amount :",
+        formData?.bill
+      );
       setLoading(false);
-      return;
-      try {
-        await axiosProtected.post("/userPaymentHistory", {
-          paymentId: paymentIntent.id,
-          userEmail: user?.email,
-          date: new Date(),
-          price: amount,
-          status: "processing",
-        });
-        customAlert("Payment successful!");
-        onClose();
-        setTimeout(() => {
-          navigate(user ? "/userDashboard" : "/");
-        }, 1000);
-      } catch (err) {
-        console.error("History post error", err);
+      if (user && user?.email) {
+        alert("payment successful");
+        router.push("/");
       }
     }
 
@@ -90,7 +90,7 @@ const StripePaymentModal = ({ isOpen, onClose, amount, formData }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+    <div className="fixed inset-0 backdrop-blur-sm bg-transparent z-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg relative">
         <button className="absolute top-2 right-2" onClick={onClose}>
           ✖

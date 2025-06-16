@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useRouter } from "next/navigation";
 import { CheckCircle } from "lucide-react";
 import useUserStore from "@/lib/zustand/userStore";
 import StripePaymentModal from "../StripePaymentModal/StripePaymentModal";
@@ -13,7 +12,6 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK);
 
 export default function DonationForm() {
   const presetAmounts = [10, 25, 50, 100];
-  const router = useRouter();
   const user = useUserStore((state) => state?.user);
   const [formData, setFormData] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -34,22 +32,9 @@ export default function DonationForm() {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     setFormData(data);
     setShowModal(true);
     return;
-    try {
-      const res = await fetch("/api/donate/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const { url } = await res.json();
-      router.push(url); // Redirect to Stripe Checkout
-    } catch (error) {
-      console.error("Checkout error", error);
-    }
   };
 
   return (

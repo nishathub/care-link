@@ -5,8 +5,11 @@ import useUserStore from "@/lib/zustand/userStore";
 
 export const useRehydrateUser = () => {
   const setUser = useUserStore((state) => state.setUser);
+  const setUserLoading = useUserStore((state) => state.setUserLoading);
 
   useEffect(() => {
+    setUserLoading(true);
+
     const fetchUser = async () => {
       try {
         const userRes = await axios.get(
@@ -24,6 +27,8 @@ export const useRehydrateUser = () => {
       } catch (err) {
         console.error("Failed to fetch user", err);
         setUser(null);
+      } finally {
+        setUserLoading(false);
       }
     };
     fetchUser();

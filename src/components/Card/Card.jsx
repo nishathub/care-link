@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Card = ({date, title, description, image, donateLink = "", readMoreLink = ""}) => {
+const Card = ({date, tag, title, description, image, donateLink = "", readMoreLink = ""}) => {
   return (
     <div className="card bg-sky-100 w-80 lg:w-96 shadow-sm">
       <figure>
@@ -12,6 +12,7 @@ const Card = ({date, title, description, image, donateLink = "", readMoreLink = 
       </figure>
       <div className="card-body">
         <p>{date}</p>
+        <p className="text-sky-700 text-sm font-bold ">{tag}</p>
         <h2 className="card-title">{title}</h2>
         <p>
           {description}

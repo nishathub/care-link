@@ -34,6 +34,7 @@ const OngoingCasesComponent = async ({
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
               }
               title={project.title}
+              tag={project.tag}
               description={`${project?.description?.length > 220 ? project.description.slice(0, 220) + "..." : project.description}`}
             ></Card>
           );

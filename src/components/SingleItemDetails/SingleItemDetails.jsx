@@ -32,7 +32,7 @@ const SingleItemDetails = ({ data }) => {
           <div className="bg-sky-100 rounded-lg shadow-2xl p-4">
             <h6 className="font-bold text-sky-700">Expense</h6>
             <ul className="steps steps-vertical">
-              {data?.expenseCategories.map((cat, index) => {
+              {data?.expenseCategories?.map((cat, index) => {
                 return (
                   <li key={index} className="step">
                     {cat}

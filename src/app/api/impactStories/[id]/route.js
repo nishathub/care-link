@@ -1,5 +1,7 @@
 import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
+import { verifyAdmin } from "@/lib/verifyAdmin";
+import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 
 // GET single story by ID
 export async function GET(request, { params: paramsPromise }) {

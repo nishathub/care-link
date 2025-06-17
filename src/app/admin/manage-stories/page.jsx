@@ -48,7 +48,7 @@ const ManageStories = () => {
         <ManageItemsTable
           data={allStories}
           itemName={"Stories"}
-          editBaseLink={"/admin/edit-impact-stories"}
+          editBaseLink={"/admin/edit-impact-story"}
           handleDeleteClick={handleDeleteClick}
           isDataLoading={isAllStoriesLoading}
           isDeleteLoading={isDeleteLoading}

@@ -34,6 +34,8 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
               }
               title={story.title}
               tag={story.tag}
+              views = {story.views}
+              date={story.date}
               description={`${
                 story?.description?.length > 220
                   ? story.description.slice(0, 220) + "..."

@@ -12,7 +12,7 @@ const Card = ({date, tag, title, description, image, donateLink = "", readMoreLi
       </figure>
       <div className="card-body">
         <p>{date}</p>
-        <p className="text-sky-700 text-sm font-bold ">{tag}</p>
+        <p className="text-sky-700 text-sm font-bold capitalize">{tag}</p>
         <h2 className="card-title">{title}</h2>
         <p>
           {description}

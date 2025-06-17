@@ -11,7 +11,6 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
   };
   const { data } = await getStories();
   const renderItem = isHomePage ? data.slice(0, 6) : data;
-  const numberOfCards = [1, 2, 3, 4, 5, 6];
   return (
     <div>
       {isHomePage && (
@@ -28,7 +27,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
           return (
             <Card
               key={index}
-              donateLink={`impact-stories/${story._id}`}
+              readMoreLink={`impact-stories/${story._id}`}
               image={
                 story?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

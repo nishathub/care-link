@@ -17,7 +17,13 @@ const SingleImpact = async ({ params: paramsPromise }) => {
   }
   return (
     <div>
-      <SingleItemDetails data={data}></SingleItemDetails>
+      <SingleItemDetails
+        data={data}
+        showQuote={false}
+        showBankCard={false}
+        showExpense={false}
+        showDonationForm={false}
+      ></SingleItemDetails>
     </div>
   );
 };

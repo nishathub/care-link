@@ -31,6 +31,40 @@ export async function GET(request, { params: paramsPromise }) {
   }
 }
 
+// UPDATE a single story by ID
+export async function PATCH(request, { params: paramsPromise }) {
+  try {
+    await verifyAdmin(); // only admin can edit
+    
+    const params = await paramsPromise;
+    const { id } = params;
+    const updatedData = await request.json();
+    const { ongoingProjectsCollection } = await getCollections();
+    // Removing _id field from updatedData
+    delete updatedData._id;
+    
+    const result = await ongoingProjectsCollection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: updatedData }
+    );
+
+    if (result.modifiedCount === 0) {
+      return Response.json(
+        { success: false, message: "Update failed" },
+        { status: 400 }
+      );
+    }
+
+    return Response.json({ success: true, message: "Updated successfully" });
+  } catch (error) {
+    console.error("PATCH error:", error);
+    return Response.json(
+      { success: false, message: "Failed to update" },
+      { status: 500 }
+    );
+  }
+}
+
 // DELETE a single story by ID
 export async function DELETE(request, { params: paramsPromise }) {
   try {

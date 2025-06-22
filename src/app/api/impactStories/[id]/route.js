@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
+import { verifyChief } from "@/lib/verifyChief";
 
 // GET single story by ID
 export async function GET(request, { params: paramsPromise }) {
@@ -67,7 +68,7 @@ export async function PATCH(request, { params: paramsPromise }) {
 // DELETE a single story by ID
 export async function DELETE(request, { params: paramsPromise }) {
   try {
-    await verifyAdmin(); // only admin can run this operation
+    await verifyChief(); // only chief can run this operation
 
     const { ImpactStoriesCollection } = await getCollections();
     const params = await paramsPromise;

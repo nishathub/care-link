@@ -12,11 +12,13 @@ import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
+import { useRouter } from "next/navigation";
 
 const AddOngoingProjects = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const user = useUserStore((state) => state?.user);
+  const router = useRouter();
 
   const {
     register,
@@ -61,6 +63,7 @@ const AddOngoingProjects = () => {
         reset();
         setImageFile(null);
         alert("Project added successfully!");
+        router.push("/admin/manage-projects");
       }
     } catch (error) {
       console.error("Error:", error);

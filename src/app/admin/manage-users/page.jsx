@@ -1,0 +1,62 @@
+"use client";
+
+import { useState } from "react";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
+import DeleteConfirmModal from "@/components/Dashboard/DeleteConfirmModal/DeleteConfirmModal";
+import ManageItemsTable from "@/components/Dashboard/Table/ManageItemsTable";
+import useStories from "@/hooks/useStories";
+
+const ManageStories = () => {
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [storyIdToDelete, setStoryIdToDelete] = useState(null);
+  const [isDeleteLoading, setDeleteLoading] = useState(false);
+
+  const {
+    allStories,
+    isAllStoriesLoading,
+    errorFetchStoriesMessage,
+    storiesRefetch,
+  } = useStories();
+
+  const handleDeleteClick = (itemId) => {
+    setStoryIdToDelete(itemId);
+    setDeleteModalOpen(true);
+  };
+
+  return (
+    <div className="">
+      {/* Delete Modal */}
+      <div>
+        <DeleteConfirmModal
+          apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`}
+          isDeleteModalOpen={isDeleteModalOpen}
+          setDeleteModalOpen={setDeleteModalOpen}
+          itemName={"Story"}
+          itemId={storyIdToDelete}
+          isDeleteLoading={isDeleteLoading}
+          setDeleteLoading={setDeleteLoading}
+          refetch={storiesRefetch}
+        />
+      </div>
+      <div className="">
+        <SectionHeading
+          heading="Manage Stories"
+          paragraph="List of all Impact Stories"
+        />
+      </div>
+      <div>
+        <ManageItemsTable
+          data={allStories}
+          itemName={"Stories"}
+          editBaseLink={"/admin/edit-impact-story"}
+          handleDeleteClick={handleDeleteClick}
+          isDataLoading={isAllStoriesLoading}
+          isDeleteLoading={isDeleteLoading}
+          errorFetchDataMessage={errorFetchStoriesMessage}
+        ></ManageItemsTable>
+      </div>
+    </div>
+  );
+};
+
+export default ManageStories;

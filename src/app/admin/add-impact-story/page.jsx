@@ -9,14 +9,15 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
-import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
+import { useRouter } from "next/navigation";
 
-const AddOngoingProjects = () => {
+const AddImpactStory = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const user = useUserStore((state) => state?.user);
+  const router = useRouter();
 
   const {
     register,
@@ -24,11 +25,7 @@ const AddOngoingProjects = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      expenseCategories: [""],
-    },
-  });
+  } = useForm();
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -36,7 +33,7 @@ const AddOngoingProjects = () => {
       // First we upload the image to cloudinary and get url
       const { secure_url, public_id } = await uploadImageToCloudinary(
         imageFile,
-        "CareLink/ongoingProjects"
+        "CareLink/impactStories"
       );
 
       // If image upload failed but user selected a file, stop submission
@@ -51,20 +48,21 @@ const AddOngoingProjects = () => {
         cloudinaryPublicId: public_id || "",
       };
 
-      const postProjectRes = await secureAxios(
+      const postStoryRes = await secureAxios(
         "post",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`,
         finalData,
         user
       );
-      if (postProjectRes.data.insertedId) {
+      if (postStoryRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Project added successfully!");
+        alert("Story added successfully!");
+        router.push('/admin/manage-stories');
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add project.");
+      alert("Failed to add story.");
     } finally {
       setIsSubmitting(false);
     }
@@ -72,15 +70,15 @@ const AddOngoingProjects = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Add a new Project"}></SectionHeading>
+      <SectionHeading heading={"Add a new Story"}></SectionHeading>
 
       <div className="bg-gray-300 p-6 rounded-md relative">
         {isSubmitting && <OverlayLoader message="Submitting..." />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-          {/* Project Title */}
+          {/* Story Title */}
           <FormTextInput
-            label="Project Title*"
+            label="Story Title*"
             name="title"
             placeholder="Water for all.."
             register={register}
@@ -108,20 +106,11 @@ const AddOngoingProjects = () => {
             errors={errors}
           />
 
-          {/* Expense Categories */}
-          <FormDynamicFieldList
-            control={control}
-            register={register}
-            required={true}
-            name="expenseCategories"
-            label="Expense Categories"
-          />
-
           {/* Description */}
           <FormTextAreaInput
             label="Description*"
             name="description"
-            placeholder="Project description..."
+            placeholder="Story description..."
             register={register}
             required={true}
             errors={errors}
@@ -144,7 +133,7 @@ const AddOngoingProjects = () => {
 
           {/* Hidden Checkbox*/}
           <FormCheckboxInput
-            label="Hide this project"
+            label="Hide this story"
             name="hidden"
             register={register}
           />
@@ -156,7 +145,7 @@ const AddOngoingProjects = () => {
               className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
               disabled={isSubmitting}
             >
-              Add Project
+              Add Story
             </button>
           </div>
         </form>
@@ -164,4 +153,4 @@ const AddOngoingProjects = () => {
     </div>
   );
 };
-export default AddOngoingProjects;
+export default AddImpactStory;

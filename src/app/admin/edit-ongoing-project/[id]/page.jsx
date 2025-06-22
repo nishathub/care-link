@@ -65,7 +65,7 @@ const UpdateOngoingProject = () => {
       if (imageFile) {
         const uploaded = await uploadImageToCloudinary(
           imageFile,
-          "CareLink/OngoingProjects"
+          "CareLink/ongoingProjects"
         );
         if (!uploaded?.secure_url) {
           alert("Image upload failed");

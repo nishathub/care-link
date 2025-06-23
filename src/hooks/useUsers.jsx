@@ -10,7 +10,7 @@ const useUsers = () => {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_CareLinkAPI}/users`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_CareLinkAPI}/allUsers`);
       setData(res.data.data);
       setError(null);
     } catch (err) {

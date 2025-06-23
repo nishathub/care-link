@@ -9,6 +9,7 @@ export const getCollections = async () => {
     ImpactStoriesCollection: db.collection("ImpactStories"),
     NewsCollection: db.collection("News"),
     AdminCollection: db.collection("Admins"),
+    UsersCollection: db.collection("Users"),
   };
 };
 

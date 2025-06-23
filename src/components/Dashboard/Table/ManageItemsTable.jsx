@@ -37,6 +37,10 @@ const ManageItemsTable = ({
   }
   // A custom boolean to show/hide column
   const showTag = data?.some((item) => item?.tag !== undefined);
+  const showName = data?.some((item) => item?.name !== undefined);
+  const showRole = data?.some((item) => item?.role !== undefined);
+  const showRank = data?.some((item) => item?.rank !== undefined);
+  const showTitle = data?.some((item) => item?.title !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -53,7 +57,10 @@ const ManageItemsTable = ({
               <th>#</th>
               {showTag && <th>Tag</th>}
               <th>Image</th>
-              <th>Title</th>
+              {showName && <th>Name</th>}
+              {showRole && <th>Role</th>}
+              {showRank && <th>Rank</th>}
+              {showTitle && <th>Title</th>}
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -62,7 +69,7 @@ const ManageItemsTable = ({
             {data?.map((item, index) => (
               <tr className="border-b-sky-700" key={item?._id}>
                 <td>{index + 1}</td>
-                {showTag && <td>{item?.tag || "Tag"}</td>}
+                {showTag && <td>{item?.tag || ""}</td>}
                 <td>
                   <div className="flex justify-center w-16">
                     <div className="avatar">
@@ -76,7 +83,10 @@ const ManageItemsTable = ({
                     </div>
                   </div>
                 </td>
-                <td>{item?.title || "Item Title"}</td>
+                {showName && <td>{item?.name || ""}</td>}
+                {showRole && <td>{item?.role || ""}</td>}
+                {showRank && <td>{item?.rank || ""}</td>}
+                {showTitle && <td>{item?.title || ""}</td>}
                 <td>
                   <Link
                     href={`${editBaseLink}/${item?._id}`}

@@ -4,22 +4,22 @@ import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import DeleteConfirmModal from "@/components/Dashboard/DeleteConfirmModal/DeleteConfirmModal";
 import ManageItemsTable from "@/components/Dashboard/Table/ManageItemsTable";
-import useStories from "@/hooks/useStories";
+import useUsers from "@/hooks/useUsers";
 
 const ManageStories = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [storyIdToDelete, setStoryIdToDelete] = useState(null);
+  const [storyIdToDelete, setUserIdToDelete] = useState(null);
   const [isDeleteLoading, setDeleteLoading] = useState(false);
 
   const {
-    allStories,
-    isAllStoriesLoading,
-    errorFetchStoriesMessage,
-    storiesRefetch,
-  } = useStories();
+    allUsers,
+    isAllUsersLoading,
+    errorFetchUsersMessage,
+    usersRefetch,
+  } = useUsers();
 
   const handleDeleteClick = (itemId) => {
-    setStoryIdToDelete(itemId);
+    setUserIdToDelete(itemId);
     setDeleteModalOpen(true);
   };
 
@@ -31,28 +31,28 @@ const ManageStories = () => {
           apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`}
           isDeleteModalOpen={isDeleteModalOpen}
           setDeleteModalOpen={setDeleteModalOpen}
-          itemName={"Story"}
+          itemName={"User"}
           itemId={storyIdToDelete}
           isDeleteLoading={isDeleteLoading}
           setDeleteLoading={setDeleteLoading}
-          refetch={storiesRefetch}
+          refetch={usersRefetch}
         />
       </div>
       <div className="">
         <SectionHeading
-          heading="Manage Stories"
-          paragraph="List of all Impact Stories"
+          heading="Manage Users"
+          paragraph="List of all Users"
         />
       </div>
       <div>
         <ManageItemsTable
-          data={allStories}
-          itemName={"Stories"}
-          editBaseLink={"/admin/edit-impact-story"}
+          data={allUsers}
+          itemName={"Users"}
+          editBaseLink={"/admin/edit-user"}
           handleDeleteClick={handleDeleteClick}
-          isDataLoading={isAllStoriesLoading}
+          isDataLoading={isAllUsersLoading}
           isDeleteLoading={isDeleteLoading}
-          errorFetchDataMessage={errorFetchStoriesMessage}
+          errorFetchDataMessage={errorFetchUsersMessage}
         ></ManageItemsTable>
       </div>
     </div>

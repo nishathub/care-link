@@ -1,5 +1,6 @@
 import { formatDate } from "@/utils/formateDate";
 import Link from "next/link";
+import ViewCountButton from "./ViewCountButton";
 
 const Card = ({
   date,
@@ -24,7 +25,7 @@ const Card = ({
       <div className="card-body relative">
         {showViews && (
           <p title="view" className="absolute right-6 bottom-6">
-            👁 <span>{views}</span>
+            👁 <span>{views || 0}</span>
           </p>
         )}
         <p className="text-sky-700 text-sm font-bold capitalize">{tag}</p>
@@ -32,18 +33,17 @@ const Card = ({
         <h2 className="card-title">{title}</h2>
         <p className="text-justify">{description}</p>
         <div className="card-actions justify-start">
-          <Link
-            href={donateLink}
-            className={`${donateLink ? "" : "hidden"} btn btn-primary w-full`}
-          >
-            Donate
-          </Link>
-          <Link
-            href={readMoreLink}
-            className={`${readMoreLink ? "" : "hidden"} btn-link text-sky-500`}
-          >
-            Read More
-          </Link>
+          {donateLink && (
+            <Link href={donateLink} className={`btn btn-primary w-full`}>
+              Donate
+            </Link>
+          )}
+          {readMoreLink && (
+            <ViewCountButton
+              readMoreLink={readMoreLink}
+              showViews={showViews}
+            />
+          )}
         </div>
       </div>
     </div>

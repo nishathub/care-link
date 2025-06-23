@@ -56,8 +56,8 @@ const SideNavbar = () => {
               className="w-10 h-10 rounded-full object-cover"
             />
             <div>
-              <p className="text-sm font-semibold">{user?.name}</p>
-              <p className="text-xs text-gray-500">{user?.email}</p>
+              <p className="text-sm text-sky-800 font-semibold">{user?.name}</p>
+              <p className="text-xs text-gray-600">{user?.email}</p>
             </div>
           </div>
 

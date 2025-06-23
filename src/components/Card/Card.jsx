@@ -3,6 +3,7 @@ import Link from "next/link";
 import ViewCountButton from "./ViewCountButton";
 
 const Card = ({
+  id,
   date,
   views,
   tag,
@@ -42,6 +43,8 @@ const Card = ({
             <ViewCountButton
               readMoreLink={readMoreLink}
               showViews={showViews}
+              id={id}
+              views={views}
             />
           )}
         </div>

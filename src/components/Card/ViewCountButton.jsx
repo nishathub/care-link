@@ -8,12 +8,10 @@ const ViewCountButton = ({ readMoreLink, showViews, id, views }) => {
   const router = useRouter();
   const handleViewCount = async (e) => {
     e.preventDefault();
-    console.log("view count is working");
     router.push(readMoreLink);
     const updatedData = {
       views: parseInt(views) + 1,
     };
-    console.log(updatedData);
     try {
       await axios.patch(
         `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`,

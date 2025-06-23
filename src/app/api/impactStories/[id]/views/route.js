@@ -7,7 +7,6 @@ export async function PATCH(request, { params: paramsPromise }) {
     const params = await paramsPromise;
     const { id } = params;
     const updatedData = await request.json();
-    console.log(updatedData);
     const { ImpactStoriesCollection } = await getCollections();
    
     const result = await ImpactStoriesCollection.updateOne(

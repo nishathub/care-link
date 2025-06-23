@@ -41,6 +41,7 @@ const ManageItemsTable = ({
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
+  const showStatus = data?.some((item) => item?.hidden !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -55,6 +56,7 @@ const ManageItemsTable = ({
           <thead className="sticky top-0 bg-sky-800 text-white z-10">
             <tr>
               <th>#</th>
+              {showStatus && <th>Status</th>}
               {showTag && <th>Tag</th>}
               <th>Image</th>
               {showName && <th>Name</th>}
@@ -69,6 +71,15 @@ const ManageItemsTable = ({
             {data?.map((item, index) => (
               <tr className="border-b-sky-700" key={item?._id}>
                 <td>{index + 1}</td>
+                {showStatus && (
+                  <td>
+                    {item?.hidden ? (
+                      <p className="text-red-600">Hide</p>
+                    ) : (
+                      <p className="text-green-600">Display</p>
+                    )}
+                  </td>
+                )}
                 {showTag && <td>{item?.tag || ""}</td>}
                 <td>
                   <div className="flex justify-center w-16">

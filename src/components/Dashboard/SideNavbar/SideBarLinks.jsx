@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const SideBarLinkCollection = ({ user }) => {
+const SideBarLinkCollection = ({ user, isUserLoading }) => {
   const pathname = usePathname();
   const SidebarLink = ({ href, text, Icon }) => {
     const isActive = pathname === href;
@@ -38,6 +38,9 @@ const SideBarLinkCollection = ({ user }) => {
       </Link>
     );
   };
+  if(isUserLoading) {
+    return <p>Loading...</p>
+  }
   if (user?.role === "admin") {
     return (
       <nav className="flex-1 overflow-y-auto px-4 py-2 space-y-1 shadow-lg">

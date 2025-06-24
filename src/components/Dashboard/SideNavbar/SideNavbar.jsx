@@ -13,6 +13,7 @@ const SideNavbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   useRehydrateUser(); // to refetch user from back
   const user = useUserStore((state) => state?.user);
+  const isUserLoading = useUserStore((state) => state?.isUserLoading);
   const logout = useUserStore((state) => state?.logout);
 
   return (
@@ -45,7 +46,7 @@ const SideNavbar = () => {
           </button>
         </div>
 
-        <SideBarLinkCollection user={user}></SideBarLinkCollection>
+        <SideBarLinkCollection user={user} isUserLoading={isUserLoading}></SideBarLinkCollection>
 
         {/* Profile Info */}
         <div className="p-4 relative">

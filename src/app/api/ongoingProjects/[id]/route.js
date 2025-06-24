@@ -3,6 +3,7 @@ import { getCollections } from "@/lib/dbCollections";
 import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 import { verifyChief } from "@/lib/verifyChief";
 import { verifyOperator } from "@/lib/verifyOperator";
+import { verifyTokenJWT } from "@/lib/verifyToken";
 
 // GET single project by ID
 export async function GET(request, { params: paramsPromise }) {
@@ -36,14 +37,26 @@ export async function GET(request, { params: paramsPromise }) {
 export async function PATCH(request, { params: paramsPromise }) {
   try {
     await verifyOperator(); // admin and vol can edit
-    
+
     const params = await paramsPromise;
     const { id } = params;
     const updatedData = await request.json();
-    const { ongoingProjectsCollection } = await getCollections();
+
     // Removing _id field from updatedData
     delete updatedData._id;
-    
+
+    // if volunteer, one can edit only the item he posted.
+    const user = await verifyTokenJWT();
+    if (user?.role === "volunteer") {
+      if (user?.name !== updatedData?.author) {
+        return Response.json(
+          { success: false, message: "Update failed" },
+          { status: 400 }
+        );
+      }
+    }
+
+    const { ongoingProjectsCollection } = await getCollections();
     const result = await ongoingProjectsCollection.updateOne(
       { _id: new ObjectId(id) },
       { $set: updatedData }

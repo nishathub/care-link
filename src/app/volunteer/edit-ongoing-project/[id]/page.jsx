@@ -56,6 +56,12 @@ const UpdateOngoingProject = () => {
 
   // Submit updated data
   const onSubmit = async (data) => {
+    if (user?.name !== initialData?.author) {
+      alert("Unauthorized!");
+      router.push("/volunteer/manage-projects");
+      console.error("You can only edit your posted item");
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -93,7 +99,7 @@ const UpdateOngoingProject = () => {
       );
       if (patchRes.data.success) {
         alert("Project updated successfully!");
-        router.push("/volunteer/manage-projects")
+        router.push("/volunteer/manage-projects");
       } else {
         alert("No changes detected.");
       }
@@ -106,7 +112,6 @@ const UpdateOngoingProject = () => {
   };
 
   if (initialDataLoading) return <OverlayLoader message="Loading project..." />;
-  if (!initialDataLoading && !initialData) return <OverlayLoader message="Project Data Loading Failed" />;
 
   return (
     <div className="max-w-4xl mx-auto">

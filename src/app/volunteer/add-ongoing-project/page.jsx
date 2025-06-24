@@ -51,6 +51,8 @@ const AddOngoingProjects = () => {
         ...data,
         imageLink: secure_url || "",
         cloudinaryPublicId: public_id || "",
+        author: user?.name,
+        approved: false,
       };
 
       const postProjectRes = await secureAxios(

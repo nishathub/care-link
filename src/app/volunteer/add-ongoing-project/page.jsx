@@ -65,7 +65,7 @@ const AddOngoingProjects = () => {
         reset();
         setImageFile(null);
         alert("Project added successfully!");
-        router.push("/admin/manage-projects");
+        router.push("/volunteer/manage-projects");
       }
     } catch (error) {
       console.error("Error:", error);

@@ -46,7 +46,13 @@ const LoginForm = () => {
         // set user to zustand
         setUser(user);
         // redirect according to role.
-        router.push(user.role === "admin" ? "admin/dashboard" : "/");
+        router.push(
+          user.role === "admin"
+            ? "admin/dashboard"
+            : user.role === "volunteer"
+            ? "volunteer/dashboard"
+            : "/"
+        );
         // alert
         alert(`Hello ${user?.name}`);
       } else {

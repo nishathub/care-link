@@ -13,8 +13,8 @@ export const getCollections = async () => {
   };
 };
 
-export const getAdminByEmail = async (email) => {
-  const { AdminCollection } = await getCollections();
-  const user = await AdminCollection.findOne({ email: email });
+export const getUserByEmail = async (email) => {
+  const { UsersCollection } = await getCollections();
+  const user = await UsersCollection.findOne({ email: email });
   return user;
 };

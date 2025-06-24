@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
-import { getAdminByEmail } from "@/lib/dbCollections";
+import { getUserByEmail } from "@/lib/dbCollections";
 import { signToken } from "@/lib/jwt";
 
 export const POST = async (req) => {
   const { email, password } = await req.json();
   // we check if the email is from a stored admin object in the database.
-  const user = await getAdminByEmail(email);
+  const user = await getUserByEmail(email);
   if (!user) {
     return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
   }

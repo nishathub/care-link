@@ -1,5 +1,5 @@
 import { getCollections } from "@/lib/dbCollections";
-import { verifyAdmin } from "@/lib/verifyAdmin";
+import { verifyOperator } from "@/lib/verifyOperator";
 
 export async function GET() {
   try {
@@ -18,7 +18,7 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    await verifyAdmin(); // only admin can post
+    await verifyOperator(); // only admin and volunteer can post
 
     const body = await req.json();
     const { ongoingProjectsCollection } = await getCollections();

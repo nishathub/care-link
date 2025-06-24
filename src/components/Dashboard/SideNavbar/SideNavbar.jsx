@@ -12,8 +12,8 @@ const SideNavbar = () => {
   const [open, setOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   useRehydrateUser(); // to refetch user from back
-  const user = useUserStore((state) => state.user);
-  const logout = useUserStore((state) => state.logout);
+  const user = useUserStore((state) => state?.user);
+  const logout = useUserStore((state) => state?.logout);
 
   return (
     <>
@@ -31,7 +31,12 @@ const SideNavbar = () => {
         } flex w-64 bg-gray-300 shadow-lg flex-col h-full`}
       >
         <div className="p-4  shadow-lg flex justify-between">
-          <p className="font-bold text-xl text-sky-700">Admin Panel</p>
+          {user?.role === "volunteer" && (
+            <p className="font-bold text-xl text-sky-700">Volunteer Console</p>
+          )}
+          {user?.role === "admin" && (
+            <p className="font-bold text-xl text-sky-700">Admin Console</p>
+          )}
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden btn btn-ghost btn-sm"
@@ -40,7 +45,7 @@ const SideNavbar = () => {
           </button>
         </div>
 
-        <SideBarLinkCollection></SideBarLinkCollection>
+        <SideBarLinkCollection user={user}></SideBarLinkCollection>
 
         {/* Profile Info */}
         <div className="p-4 relative">

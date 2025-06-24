@@ -1,8 +1,8 @@
 import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
 import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
-import { verifyAdmin } from "@/lib/verifyAdmin";
 import { verifyChief } from "@/lib/verifyChief";
+import { verifyOperator } from "@/lib/verifyOperator";
 
 // GET single project by ID
 export async function GET(request, { params: paramsPromise }) {
@@ -35,7 +35,7 @@ export async function GET(request, { params: paramsPromise }) {
 // UPDATE a single story by ID
 export async function PATCH(request, { params: paramsPromise }) {
   try {
-    await verifyAdmin(); // only admin can edit
+    await verifyOperator(); // admin and vol can edit
     
     const params = await paramsPromise;
     const { id } = params;

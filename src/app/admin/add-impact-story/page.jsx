@@ -47,6 +47,7 @@ const AddImpactStory = () => {
         imageLink: secure_url || "",
         cloudinaryPublicId: public_id || "",
         views: 0,
+        date: new Date(),
       };
 
       const postStoryRes = await secureAxios(

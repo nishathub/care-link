@@ -10,7 +10,7 @@ export const secureAxios = async (method, url, data = null, user) => {
       return null;
     }
   } else {
-    if (!user || user.role !== "admin") {
+    if (!user || user.role !== "admin" || user.role !== "volunteer") {
       alert("Unauthorized Access");
       return null;
     }

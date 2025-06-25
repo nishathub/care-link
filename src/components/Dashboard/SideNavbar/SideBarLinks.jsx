@@ -38,8 +38,8 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
       </Link>
     );
   };
-  if(isUserLoading) {
-    return <p>Loading...</p>
+  if (isUserLoading) {
+    return <p>Loading...</p>;
   }
   if (user?.role === "admin") {
     return (
@@ -110,11 +110,10 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           Icon={PlusCircle}
         />
         <SidebarLink
-          href="/volunteer/add-impact-story"
-          text="Add Impact Story"
-          Icon={PlusCircle}
+          href="/volunteer/manage-projects"
+          text="Manage Projects"
+          Icon={FolderKanban}
         />
-        <SidebarLink href="/volunteer/add-news" text="Add News" Icon={PlusCircle} />
       </nav>
     );
   }

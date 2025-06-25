@@ -97,7 +97,7 @@ const ManageItemsTable = ({
                   </div>
                 </td>
                 {showStatus && (
-                  <td>
+                  <td title="hide/display">
                     <DisplayToggle id={item?._id} hidden={item?.hidden} refetch={itemsRefetch}/>
                   </td>
                 )}

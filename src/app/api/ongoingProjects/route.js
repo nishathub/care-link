@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const { ongoingProjectsCollection } = await getCollections();
     // filter object if volunteer
-    let filter = {};
+    let filter = {approved : {$ne : "pending"}};
     const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {

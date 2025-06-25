@@ -4,6 +4,8 @@ import DeleteItemButton from "./DeleteItemButton";
 
 const ManageItemsTable = ({
   data,
+  isChief,
+  isUserLoading,
   itemName,
   editBaseLink,
   handleDeleteClick,
@@ -14,13 +16,14 @@ const ManageItemsTable = ({
   const imageFallbackLink =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
 
-  if (isDataLoading || isDeleteLoading) {
+  if (isDataLoading || isDeleteLoading || isUserLoading) {
     return (
       <div className="flex justify-center items-center inset-0">
         <p>Loading...</p>
       </div>
     );
   }
+
   if (errorFetchDataMessage) {
     return (
       <div className="flex justify-center items-center inset-0">
@@ -35,13 +38,16 @@ const ManageItemsTable = ({
       <p className="text-center text-2xl text-red-700">No {itemName} found.</p>
     );
   }
+
   // A custom boolean to show/hide column
   const showTag = data?.some((item) => item?.tag !== undefined);
+  const showViews = data?.some((item) => item?.views !== undefined);
   const showName = data?.some((item) => item?.name !== undefined);
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
-  const showStatus = data?.some((item) => item?.hidden !== undefined);
+  const showStatus = data?.some((item) => item?.hidden !== undefined);  
+  const showVerification = data?.some((item) => item?.approved !== undefined);  
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -56,31 +62,23 @@ const ManageItemsTable = ({
           <thead className="sticky top-0 bg-sky-800 text-white z-10">
             <tr>
               <th>#</th>
-              {showStatus && <th>Status</th>}
-              {showTag && <th>Tag</th>}
               <th>Image</th>
+              {showStatus && <th>Status</th>}
+              {showVerification && <th>Verification</th>}
+              {showTag && <th>Tag</th>}
+              {showViews && <th>Views</th>}
               {showName && <th>Name</th>}
               {showRole && <th>Role</th>}
               {showRank && <th>Rank</th>}
               {showTitle && <th>Title</th>}
               <th>Edit</th>
-              <th>Delete</th>
+              {isChief && <th>Delete</th>}
             </tr>
           </thead>
           <tbody>
             {data?.map((item, index) => (
               <tr className="border-b-sky-700" key={item?._id}>
                 <td>{index + 1}</td>
-                {showStatus && (
-                  <td>
-                    {item?.hidden ? (
-                      <p className="text-red-600">Hide</p>
-                    ) : (
-                      <p className="text-green-600">Display</p>
-                    )}
-                  </td>
-                )}
-                {showTag && <td>{item?.tag || ""}</td>}
                 <td>
                   <div className="flex justify-center w-16">
                     <div className="avatar">
@@ -94,6 +92,26 @@ const ManageItemsTable = ({
                     </div>
                   </div>
                 </td>
+                {showStatus && (
+                  <td>
+                    {item?.hidden ? (
+                      <p className="text-red-600">Hidden</p>
+                    ) : (
+                      <p className="text-green-600">Display</p>
+                    )}
+                  </td>
+                )}
+                {showVerification && (
+                  <td>
+                    {item?.approved ? (
+                      <p className="text-green-600">Approved</p>
+                    ) : (
+                      <p className="text-pink-600">Pending</p>
+                    )}
+                  </td>
+                )}
+                {showTag && <td>{item?.tag || ""}</td>}
+                {showViews && <td>{item?.views}</td>}
                 {showName && <td>{item?.name || ""}</td>}
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}
@@ -108,13 +126,15 @@ const ManageItemsTable = ({
                   </Link>
                 </td>
                 {/* TO AVOID MAKING THIS A CLIENT COMPONENT */}
-                <td>
-                  <DeleteItemButton
-                    onClick={() =>
-                      handleDeleteClick(item?._id, item?.cloudinaryPublicId)
-                    }
-                  ></DeleteItemButton>
-                </td>
+                {isChief && (
+                  <td>
+                    <DeleteItemButton
+                      onClick={() =>
+                        handleDeleteClick(item?._id, item?.cloudinaryPublicId)
+                      }
+                    ></DeleteItemButton>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

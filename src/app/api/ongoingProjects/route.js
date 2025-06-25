@@ -22,7 +22,6 @@ export async function GET() {
         console.warn("Invalid or expired token:");
       }
     }
-    console.log(filter);
     const project = await ongoingProjectsCollection.find(filter).toArray();
 
     return Response.json({ success: true, data: project });

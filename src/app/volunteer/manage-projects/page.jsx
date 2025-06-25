@@ -11,6 +11,8 @@ const ManageProjects = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [projectIdToDelete, setProjectIdToDelete] = useState(null);
   const [isDeleteLoading, setDeleteLoading] = useState(false);
+  const isChief = useUserStore((state) => state?.isChief);
+  const isUserLoading = useUserStore((state) => state?.isUserLoading);
 
   const {
     allProjects: allProjects,
@@ -48,6 +50,8 @@ const ManageProjects = () => {
       <div>
         <ManageItemsTable
           data={allProjects}
+          isChief={isChief}
+          isUserLoading={isUserLoading}
           itemName={"Projects"}
           editBaseLink={"/volunteer/edit-ongoing-project"}
           handleDeleteClick={handleDeleteClick}

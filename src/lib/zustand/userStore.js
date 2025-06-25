@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useUserStore = create((set) => ({
-  isUserLoading: false,
+  isUserLoading: true,
   user: null,
   isAdmin: false,
   isChief: false,
@@ -9,8 +9,8 @@ const useUserStore = create((set) => ({
   setUser: (user) =>
     set({
       user,
-      isAdmin: user?.role === "Admin",
-      isChief: user?.rank === "Chief",
+      isAdmin: user?.role === "admin",
+      isChief: user?.rank === "chief",
     }),
   logout: () => set({ user: null, isAdmin: false, isChief: false }),
   setUserLoading: (loading) => set({ isUserLoading: loading }),

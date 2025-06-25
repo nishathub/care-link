@@ -1,6 +1,7 @@
 import { Edit, Maximize } from "lucide-react";
 import Link from "next/link";
 import DeleteItemButton from "./DeleteItemButton";
+import DisplayToggle from "./DisplayToggle";
 
 const ManageItemsTable = ({
   isReviewProjects = 1,
@@ -96,11 +97,7 @@ const ManageItemsTable = ({
                 </td>
                 {showStatus && (
                   <td>
-                    <input
-                      type="checkbox"
-                      checked={item?.hidden === false}
-                      className="toggle border-red-600 bg-red-500 checked:border-green-500 checked:bg-green-400 checked:text-green-800"
-                    />
+                    <DisplayToggle id={item?._id} hidden={item?.hidden}/>
                   </td>
                 )}
                 {showVerification && (

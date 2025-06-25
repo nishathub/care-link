@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import useProjects from "@/hooks/useProjects";
 import DeleteConfirmModal from "@/components/Dashboard/DeleteConfirmModal/DeleteConfirmModal";
 import ManageItemsTable from "@/components/Dashboard/Table/ManageItemsTable";
+import useUserStore from "@/lib/zustand/userStore";
 
 const ManageProjects = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -18,7 +19,7 @@ const ManageProjects = () => {
     ProjectsRefetch,
   } = useProjects();
 
-  const handleDeleteClick = (itemId,) => {
+  const handleDeleteClick = (itemId) => {
     setProjectIdToDelete(itemId);
     setDeleteModalOpen(true);
   };

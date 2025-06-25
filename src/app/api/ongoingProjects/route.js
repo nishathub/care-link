@@ -1,10 +1,29 @@
-import { getCollections } from "@/lib/dbCollections";
+import { getCollections, getUserByEmail } from "@/lib/dbCollections";
+import { verifyToken } from "@/lib/jwt";
 import { verifyOperator } from "@/lib/verifyOperator";
+import { cookies } from "next/headers";
 
 export async function GET() {
   try {
     const { ongoingProjectsCollection } = await getCollections();
-    const project = await ongoingProjectsCollection.find().toArray();
+    // filter object if volunteer
+    let filter = {};
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+      try {
+        const decoded = verifyToken(token);
+        const user = await getUserByEmail(decoded?.email);
+
+        if (user?.role === "volunteer") {
+          filter = { author: user.name };
+        }
+      } catch (err) {
+        console.warn("Invalid or expired token:");
+      }
+    }
+    console.log(filter);
+    const project = await ongoingProjectsCollection.find(filter).toArray();
 
     return Response.json({ success: true, data: project });
   } catch (error) {

@@ -59,7 +59,6 @@ const UpdateOngoingProject = () => {
     if (user?.name !== initialData?.author) {
       alert("Unauthorized!");
       router.push("/volunteer/manage-projects");
-      console.error("You can only edit your posted item");
       return;
     }
     setIsSubmitting(true);

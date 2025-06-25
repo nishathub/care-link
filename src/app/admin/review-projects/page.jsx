@@ -43,8 +43,8 @@ const ManageProjects = () => {
       </div>
       <div className="">
         <SectionHeading
-          heading="Manage Projects"
-          paragraph="List of all Ongoing Projects"
+          heading="Review Projects"
+          paragraph="List of all Pending Projects"
         />
       </div>
       <div>

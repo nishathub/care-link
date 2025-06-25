@@ -64,7 +64,7 @@ const ManageItemsTable = ({
             <tr>
               <th>#</th>
               <th>Image</th>
-              {showStatus && <th>Status</th>}
+              {showStatus && <th>Display</th>}
               {showVerification && <th>Verification</th>}
               {showTag && <th>Tag</th>}
               {showViews && <th>Views</th>}
@@ -96,11 +96,11 @@ const ManageItemsTable = ({
                 </td>
                 {showStatus && (
                   <td>
-                    {item?.hidden ? (
-                      <p className="text-red-600">Hidden</p>
-                    ) : (
-                      <p className="text-green-600">Display</p>
-                    )}
+                    <input
+                      type="checkbox"
+                      checked={item?.hidden === false}
+                      className="toggle border-red-600 bg-red-500 checked:border-green-500 checked:bg-green-400 checked:text-green-800"
+                    />
                   </td>
                 )}
                 {showVerification && (

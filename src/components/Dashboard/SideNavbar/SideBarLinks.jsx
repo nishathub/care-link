@@ -51,7 +51,7 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           Icon={LayoutDashboard}
         />
         <SidebarLink
-          href="/admin/add-ongoing-project"
+          href="/volunteer/add-ongoing-project"
           text="Add Ongoing Project"
           Icon={PlusCircle}
         />
@@ -62,7 +62,7 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
         />
         <SidebarLink href="/admin/add-news" text="Add News" Icon={PlusCircle} />
         <SidebarLink
-          href="/admin/manage-projects"
+          href="/volunteer/manage-projects"
           text="Manage Projects"
           Icon={FolderKanban}
         />

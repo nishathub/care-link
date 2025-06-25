@@ -1,8 +1,9 @@
-import { Edit } from "lucide-react";
+import { Edit, Maximize } from "lucide-react";
 import Link from "next/link";
 import DeleteItemButton from "./DeleteItemButton";
 
 const ManageItemsTable = ({
+  isReviewProjects = 1,
   data,
   isChief,
   isUserLoading,
@@ -46,8 +47,8 @@ const ManageItemsTable = ({
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
-  const showStatus = data?.some((item) => item?.hidden !== undefined);  
-  const showVerification = data?.some((item) => item?.approved !== undefined);  
+  const showStatus = data?.some((item) => item?.hidden !== undefined);
+  const showVerification = data?.some((item) => item?.approved !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -71,6 +72,7 @@ const ManageItemsTable = ({
               {showRole && <th>Role</th>}
               {showRank && <th>Rank</th>}
               {showTitle && <th>Title</th>}
+              {isReviewProjects && <th>Expand</th>}
               <th>Edit</th>
               {isChief && <th>Delete</th>}
             </tr>
@@ -103,10 +105,10 @@ const ManageItemsTable = ({
                 )}
                 {showVerification && (
                   <td>
-                    {item?.approved ? (
+                    {item?.approved === true ? (
                       <p className="text-green-600">Approved</p>
                     ) : (
-                      <p className="text-pink-600">Pending</p>
+                      <p className="text-pink-600">{item?.approved}</p>
                     )}
                   </td>
                 )}
@@ -116,6 +118,17 @@ const ManageItemsTable = ({
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}
                 {showTitle && <td>{item?.title || ""}</td>}
+                {isReviewProjects && (
+                  <td>
+                    <Link
+                      href={`${editBaseLink}/${item?._id}`}
+                      className="cursor-pointer text-blue-600"
+                      title="Edit"
+                    >
+                      <Maximize className="w-5 h-5" />
+                    </Link>
+                  </td>
+                )}
                 <td>
                   <Link
                     href={`${editBaseLink}/${item?._id}`}

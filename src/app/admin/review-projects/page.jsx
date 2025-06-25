@@ -19,7 +19,7 @@ const ManageProjects = () => {
     isAllProjectLoading,
     errorFetchProjectsMessage,
     ProjectsRefetch,
-  } = useProjects();
+  } = useProjects("pendings");
 
   const handleDeleteClick = (itemId) => {
     setProjectIdToDelete(itemId);

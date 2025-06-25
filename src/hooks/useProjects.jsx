@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useProjects = () => {
+const useProjects = (apiSlug="") => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const useProjects = () => {
   const fetchProjects = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${apiSlug}`);
       setData(res.data.data);
       setError(null);
     } catch (err) {

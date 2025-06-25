@@ -1,13 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import axios from "axios";
 
-const DisplayToggle = ({id, hidden}) => {
-  const [checked, setChecked] = useState(false);
-  const handleDisplayToggle = () => {
-    setChecked(!checked);
-    console.log(id)
-  }
+const DisplayToggle = ({ id, hidden, refetch }) => {
+  const handleDisplayToggle = async () => {
+    const updatedData = {
+      hidden: !hidden,
+    };
+    try {
+      const updateRes = await axios.patch(
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${id}/display`,
+        updatedData
+      );
+      if (updateRes.data.success) {
+        refetch();
+      }
+    } catch (error) {
+      console.log("display toggle update error");
+    }
+  };
   return (
     <input
       type="checkbox"

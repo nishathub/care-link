@@ -51,6 +51,7 @@ const ManageProjects = () => {
         <ManageItemsTable
           data={allProjects}
           isChief={isChief}
+          itemsRefetch={ProjectsRefetch}
           isUserLoading={isUserLoading}
           itemName={"Projects"}
           editBaseLink={"/volunteer/edit-ongoing-project"}

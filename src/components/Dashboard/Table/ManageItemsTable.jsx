@@ -4,7 +4,7 @@ import DeleteItemButton from "./DeleteItemButton";
 import DisplayToggle from "./DisplayToggle";
 
 const ManageItemsTable = ({
-  isReviewProjects = 1,
+  isReviewProjects = false,
   data,
   isChief,
   isUserLoading,
@@ -14,6 +14,7 @@ const ManageItemsTable = ({
   isDataLoading,
   isDeleteLoading,
   errorFetchDataMessage,
+  itemsRefetch,
 }) => {
   const imageFallbackLink =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
@@ -97,7 +98,7 @@ const ManageItemsTable = ({
                 </td>
                 {showStatus && (
                   <td>
-                    <DisplayToggle id={item?._id} hidden={item?.hidden}/>
+                    <DisplayToggle id={item?._id} hidden={item?.hidden} refetch={itemsRefetch}/>
                   </td>
                 )}
                 {showVerification && (

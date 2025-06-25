@@ -52,6 +52,7 @@ const ManageProjects = () => {
           data={allProjects}
           isChief={isChief}
           isReviewProjects={true}
+          itemsRefetch={ProjectsRefetch}
           isUserLoading={isUserLoading}
           itemName={"Projects"}
           editBaseLink={"/volunteer/edit-ongoing-project"}

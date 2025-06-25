@@ -9,7 +9,7 @@ const DisplayToggle = ({ id, hidden, refetch }) => {
     };
     try {
       const updateRes = await axios.patch(
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${id}/display`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${id}/singleAction`,
         updatedData
       );
       if (updateRes.data.success) {

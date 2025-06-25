@@ -49,7 +49,7 @@ const ManageItemsTable = ({
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
-  const showStatus = data?.some((item) => item?.hidden !== undefined);
+  const showStatus = data?.some((item) => item?.hidden !== undefined && !isReviewProjects);
   const showVerification = data?.some((item) => item?.approved !== undefined);
 
   return (
@@ -119,7 +119,7 @@ const ManageItemsTable = ({
                 {isReviewProjects && (
                   <td>
                     <Link
-                      href={`${editBaseLink}/${item?._id}`}
+                      href={`project-review/${item?._id}`}
                       className="cursor-pointer text-blue-600"
                       title="Edit"
                     >

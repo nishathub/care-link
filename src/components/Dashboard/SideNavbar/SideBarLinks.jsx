@@ -10,6 +10,7 @@ import {
   Users,
   HandCoins,
   HeartHandshake,
+  ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -65,6 +66,11 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           href="/volunteer/manage-projects"
           text="Manage Projects"
           Icon={FolderKanban}
+        />
+        <SidebarLink
+          href="/admin/review-projects"
+          text="Review Projects"
+          Icon={ShieldCheck}
         />
         <SidebarLink
           href="/admin/manage-stories"

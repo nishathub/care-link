@@ -11,6 +11,8 @@ const ManageProjects = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [projectIdToDelete, setProjectIdToDelete] = useState(null);
   const [isDeleteLoading, setDeleteLoading] = useState(false);
+  const user = useUserStore((state) => state?.user);
+  const isVolunteer = user?.role === "volunteer";
   const isChief = useUserStore((state) => state?.isChief);
   const isUserLoading = useUserStore((state) => state?.isUserLoading);
 
@@ -51,6 +53,7 @@ const ManageProjects = () => {
         <ManageItemsTable
           data={allProjects}
           isChief={isChief}
+          isVolunteer={isVolunteer}
           itemsRefetch={ProjectsRefetch}
           isUserLoading={isUserLoading}
           itemName={"Projects"}

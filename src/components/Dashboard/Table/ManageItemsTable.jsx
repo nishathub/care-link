@@ -7,6 +7,7 @@ const ManageItemsTable = ({
   isReviewProjects = false,
   data,
   isChief,
+  isVolunteer=false,
   isUserLoading,
   itemName,
   editBaseLink,
@@ -50,7 +51,7 @@ const ManageItemsTable = ({
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
-  const showStatus = data?.some((item) => item?.hidden !== undefined && !isReviewProjects);
+  const showStatus = data?.some((item) => item?.hidden !== undefined && !isReviewProjects && !isVolunteer);
   const showVerification = data?.some((item) => item?.approved !== undefined);
 
   return (

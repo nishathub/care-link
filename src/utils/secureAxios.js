@@ -11,7 +11,6 @@ export const secureAxios = async (method, url, data = null, user) => {
     }
   } else {
     if (!user || (user.role !== "admin" && user.role !== "volunteer")) {
-      console.log('hit second block: ', user.role)
       alert("Unauthorized Access");
       return null;
     }

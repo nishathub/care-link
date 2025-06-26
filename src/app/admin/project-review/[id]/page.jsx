@@ -1,13 +1,25 @@
-'use client';
-import { useParams } from "next/navigation";
+import ProjectReviewDetails from "@/components/ProjectReview/ProjectReviewDetails";
+import { notFound } from "next/navigation";
 
-const page = () => {
-    const { id: projectId } = useParams();
-    return (
-        <div>
-            This is project review page. project id : {projectId}
-        </div>
-    );
+const ProjectReview = async ({ params: paramsPromise }) => {
+  const careLinkApi = process.env.CareLinkAPI;
+  const params = await paramsPromise;
+  const {id} = params;
+  const res = await fetch(`${careLinkApi}/ongoingProjects/${id}`);
+  if (!res.ok) {
+    notFound();
+  }
+
+  const { data } = await res.json();
+
+  if (!data) {
+    notFound();
+  }
+  return (
+    <div>
+        <ProjectReviewDetails data={data}/>
+    </div>
+  );
 };
 
-export default page;
+export default ProjectReview;

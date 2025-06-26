@@ -44,6 +44,7 @@ const ManageItemsTable = ({
 
   // A custom boolean to show/hide column
   const showTag = data?.some((item) => item?.tag !== undefined);
+  const showAuthor = data?.some((item) => item?.author !== undefined);
   const showViews = data?.some((item) => item?.views !== undefined);
   const showName = data?.some((item) => item?.name !== undefined);
   const showRole = data?.some((item) => item?.role !== undefined);
@@ -69,6 +70,7 @@ const ManageItemsTable = ({
               {showStatus && <th>Display</th>}
               {showVerification && <th>Verification</th>}
               {showTag && <th>Tag</th>}
+              {showAuthor && <th>Author</th>}
               {showViews && <th>Views</th>}
               {showName && <th>Name</th>}
               {showRole && <th>Role</th>}
@@ -111,6 +113,7 @@ const ManageItemsTable = ({
                   </td>
                 )}
                 {showTag && <td>{item?.tag || ""}</td>}
+                {showAuthor && <td>{item?.author || ""}</td>}
                 {showViews && <td>{item?.views}</td>}
                 {showName && <td>{item?.name || ""}</td>}
                 {showRole && <td>{item?.role || ""}</td>}

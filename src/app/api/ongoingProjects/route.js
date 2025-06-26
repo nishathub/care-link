@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const { ongoingProjectsCollection } = await getCollections();
     // filter object if volunteer
-    let filter = {approved : true};
+    let filter = {approved : true, hidden: false};
     const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
@@ -15,6 +15,9 @@ export async function GET() {
         const decoded = verifyToken(token);
         const user = await getUserByEmail(decoded?.email);
 
+        if (user?.role === "admin") {
+          filter = {approved : true};
+        }
         if (user?.role === "volunteer") {
           filter = { author: user.name };
         }

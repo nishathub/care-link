@@ -119,7 +119,7 @@ const ManageItemsTable = ({
                 {isReviewProjects && (
                   <td>
                     <Link
-                      href={`project-review/${item?._id}`}
+                      href={`review-projects/${item?._id}`}
                       className="cursor-pointer text-blue-600"
                       title="Edit"
                     >

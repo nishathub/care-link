@@ -2,7 +2,7 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 import { ObjectId } from "mongodb";
 import { getCollections } from "@/lib/dbCollections";
 
-// UPDATE a single story display property only by ID
+// UPDATE a single story single property by ID
 export async function PATCH(request, { params: paramsPromise }) {
   try {
     await verifyAdmin(); // only admin can edit

@@ -52,7 +52,7 @@ const AddOngoingProjects = () => {
         imageLink: secure_url || "",
         cloudinaryPublicId: public_id || "",
         author: user?.name,
-        approved: false,
+        approved: "pending",
       };
 
       const postProjectRes = await secureAxios(

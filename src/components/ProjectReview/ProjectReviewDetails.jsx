@@ -3,10 +3,12 @@
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import axios from "axios";
+import { secureAxios } from "@/utils/secureAxios";
+import useUserStore from "@/lib/zustand/userStore";
 
-const ProjectReviewDetails = ({data}) => {
+const ProjectReviewDetails = ({ data }) => {
   const router = useRouter();
+  const user = useUserStore((state) => state?.user);
   const fallbackImage =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
 
@@ -15,15 +17,17 @@ const ProjectReviewDetails = ({data}) => {
       approved: "rejected",
     };
     try {
-      const updateRes = await axios.patch(
+      const updateRes = await secureAxios(
+        "patch",
         `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${data?._id}/singleAction`,
-        updatedData
+        updatedData,
+        user
       );
       if (updateRes.data.success) {
-        router.push("/admin/review-projects")
+        router.push("/admin/review-projects");
       }
     } catch (error) {
-      console.log("display toggle update error");
+      console.log("verification update error");
     }
   };
   const handleApprove = async () => {
@@ -31,15 +35,17 @@ const ProjectReviewDetails = ({data}) => {
       approved: true,
     };
     try {
-      const updateRes = await axios.patch(
+      const updateRes = await secureAxios(
+        "patch",
         `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${data?._id}/singleAction`,
-        updatedData
+        updatedData,
+        user
       );
       if (updateRes.data.success) {
-        router.push("/volunteer/manage-projects")
+        router.push("/volunteer/manage-projects");
       }
     } catch (error) {
-      console.log("display toggle update error");
+      console.log("verification update error");
     }
   };
 
@@ -72,8 +78,7 @@ const ProjectReviewDetails = ({data}) => {
             {data?.hidden ? "Yes" : "No"}
           </p>
           <p>
-            <span className="font-semibold">Approved:</span>{" "}
-            {data?.approved}
+            <span className="font-semibold">Approved:</span> {data?.approved}
           </p>
         </div>
 
@@ -94,9 +99,7 @@ const ProjectReviewDetails = ({data}) => {
           <h3 className="font-semibold text-lg mb-2 text-gray-800">
             Full Description
           </h3>
-          <p className=" text-justify leading-relaxed">
-            {data?.description}
-          </p>
+          <p className=" text-justify leading-relaxed">{data?.description}</p>
         </div>
 
         {/* Image Preview */}

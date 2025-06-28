@@ -8,13 +8,11 @@ const DonatePage = async ({
 }) => {
   const getProjects = async () => {
     const careLinkApi = process.env.CareLinkAPI;
-    const res = await fetch(`${careLinkApi}/ongoingProjects`);
+    const res = await fetch(`${careLinkApi}/donationPackages`);
     if (!res.ok) throw new Error("Failed to fetch");
     return res.json();
   };
   const { data } = await getProjects();
-  const renderItem = isHomePage ? data.slice(0, 6) : data;
-
   return (
     <div>
       {isHomePage && (
@@ -25,11 +23,11 @@ const DonatePage = async ({
         </div>
       )}
       <div className="flex flex-wrap gap-8 justify-center">
-        {renderItem.map((project, index) => {
+        {data.map((project, index) => {
           return (
             <Card
               key={index}
-              donateLink={`ongoing-cases/${project._id}`}
+              donateLink={`donate-now/${project._id}`}
               image={ project?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
               }

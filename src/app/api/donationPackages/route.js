@@ -4,9 +4,9 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 export async function GET() {
   try {
     const { DonationPackages } = await getCollections();
-    const stories = await DonationPackages.find().toArray();
+    const packages = await DonationPackages.find().toArray();
 
-    return Response.json({ success: true, data: stories });
+    return Response.json({ success: true, data: packages });
   } catch (error) {
     console.error("GET error:", error);
     return Response.json(

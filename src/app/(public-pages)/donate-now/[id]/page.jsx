@@ -17,7 +17,7 @@ const SingleDonationPackage = async ({ params: paramsPromise }) => {
   }
   return (
     <div>
-      <SingleItemDetails data={data}></SingleItemDetails>
+      <SingleItemDetails data={data} showQuote={false} showExpense={false}></SingleItemDetails>
     </div>
   );
 };

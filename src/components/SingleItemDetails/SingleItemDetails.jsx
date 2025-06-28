@@ -37,6 +37,22 @@ const SingleItemDetails = ({
               </p>
             </div>
           )}
+          {data?.quote1 && (
+            <div className="text-center bg-sky-100 rounded-lg shadow-2xl p-4">
+              <Quote className="text-sky-700 w-8 lg:w-12 h-auto mx-auto"></Quote>
+              <p className="text-lg lg:text-xl italic font-semibold mt-2">
+                {data?.quote1}
+              </p>
+            </div>
+          )}
+          {data?.quote2 && (
+            <div className="text-center bg-sky-100 rounded-lg shadow-2xl p-4">
+              <p className="text-lg lg:text-xl font-semibold mt-2">
+                {data?.quote2}
+              </p>
+            </div>
+          )}
+         
           {showExpense && (
             <div className="bg-sky-100 rounded-lg shadow-2xl p-4">
               <h6 className="font-bold text-sky-700">Expense</h6>

@@ -4,7 +4,9 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 export async function GET() {
   try {
     const { DonationPackages } = await getCollections();
-    const packages = await DonationPackages.find().toArray();
+    // Skip the hidden packages
+    const filter = {hidden : false};
+    const packages = await DonationPackages.find(filter).toArray();
 
     return Response.json({ success: true, data: packages });
   } catch (error) {

@@ -20,7 +20,11 @@ const images = [
   },
   {
     src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751085899/sponsor-orphan-donation_e6o0i9.jpg",
-    caption: "Own the Smile",
+    caption: "Sponsor One Child",
+  },
+  {
+    src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751103501/Feni-Photo-flood_cn97e4.jpg",
+    caption: "Stay Beside the Flood Affected People",
   },
 ];
 

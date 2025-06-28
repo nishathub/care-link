@@ -10,6 +10,7 @@ export const getCollections = async () => {
     NewsCollection: db.collection("News"),
     AdminCollection: db.collection("Admins"),
     UsersCollection: db.collection("Users"),
+    DonationPackages: db.collection("DonationPackages"),
   };
 };
 

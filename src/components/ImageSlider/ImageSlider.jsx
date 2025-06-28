@@ -7,20 +7,20 @@ import "swiper/css/effect-fade";
 
 const images = [
   {
-    src: "https://t4.ftcdn.net/jpg/03/20/40/93/360_F_320409321_niyM6DAO166WLJuEX8EOXCMvWwKSWDfA.jpg",
-    caption: "Slide 1",
+    src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751085899/winter-cloths-donation_ipqg62.jpg",
+    caption: "Winter Cloths Distribution",
   },
   {
-    src: "https://media.istockphoto.com/id/1498170916/photo/a-couple-is-taking-a-bag-of-food-at-the-food-and-clothes-bank.jpg?s=612x612&w=0&k=20&c=0fnD_g46lvoZ5NdzX5zYOSM4PzM95ezfs5uMe9D1QKs=",
-    caption: "Slide 2",
+    src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751085900/orphane-children-donation_ijnf9p.jpg",
+    caption: "Orphans Deserve Optimism",
   },
   {
-    src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhcml0eXxlbnwwfHwwfHx8MA%3D%3D",
-    caption: "Slide 3",
+    src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751085902/disability-donation_qoo1ib.png",
+    caption: "Aid for Disables",
   },
   {
-    src: "https://www.habitatla.org/wp-content/uploads/group-shot1.jpg",
-    caption: "Slide 4",
+    src: "https://res.cloudinary.com/dntewbvod/image/upload/v1751085899/sponsor-orphan-donation_e6o0i9.jpg",
+    caption: "Own the Smile",
   },
 ];
 

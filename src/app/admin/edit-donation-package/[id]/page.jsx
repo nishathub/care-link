@@ -9,7 +9,7 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
 import useUserStore from "@/lib/zustand/userStore";
 import axios from "axios";
@@ -21,6 +21,7 @@ const UpdateDonationPackage = () => {
   const [initialData, setInitialData] = useState(null);
   const [initialDataLoading, setInitialDataLoading] = useState(false);
   const user = useUserStore((state) => state?.user);
+  const router = useRouter();
 
   const {
     register,
@@ -85,12 +86,13 @@ const UpdateDonationPackage = () => {
       const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
       const patchRes = await secureAxios(
         "patch",
-        `${careLinkAPI}/donationPackages/${storyId}`,
+        `${careLinkAPI}/donationPackages/${packageId}`,
         finalData,
         user
       );
       if (patchRes.data.success) {
         alert("Package updated successfully!");
+        router.push("/admin/manage-donation-packages")
       } else {
         alert("No changes detected.");
       }

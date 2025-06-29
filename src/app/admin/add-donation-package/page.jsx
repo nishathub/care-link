@@ -138,6 +138,7 @@ const AddDonationPackage = () => {
               "Shelter",
               "Flood",
               "Orphan",
+              "General",
             ]}
           />
 

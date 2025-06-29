@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const usePackages = () => {
+const useDonationPackages = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,4 +33,4 @@ const usePackages = () => {
   };
 };
 
-export default usePackages;
+export default useDonationPackages;

@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
@@ -9,75 +9,111 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
-import useUserStore from "@/lib/zustand/userStore";
+import { useParams } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
-import { useRouter } from "next/navigation";
+import useUserStore from "@/lib/zustand/userStore";
+import axios from "axios";
 
-const AddDonationPackage = () => {
+const UpdateDonationPackage = () => {
+  const { id: packageId } = useParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
+  const [initialData, setInitialData] = useState(null);
+  const [initialDataLoading, setInitialDataLoading] = useState(false);
   const user = useUserStore((state) => state?.user);
-  const router = useRouter();
 
   const {
     register,
     control,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
+  // Fetch story data
+  useEffect(() => {
+    const fetchStory = async () => {
+      setInitialDataLoading(true);
+      try {
+        const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
+        const { data } = await axios.get(
+          `${careLinkAPI}/donationPackages/${packageId}`
+        );
+        setInitialData(data.data);
+        reset(data.data);
+      } catch (err) {
+        console.error("Failed to fetch package:", err);
+      } finally {
+        setInitialDataLoading(false);
+      }
+    };
+
+    if (packageId) fetchStory();
+  }, [packageId, reset]);
+
+  // Submit updated data
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    try {
-      // First we upload the image to cloudinary and get url
-      const { secure_url, public_id } = await uploadImageToCloudinary(
-        imageFile,
-        "CareLink/donationPackages"
-      );
 
-      // If image upload failed but user selected a file, stop submission
-      if (imageFile && !secure_url) {
-        setIsSubmitting(false);
-        return;
+    try {
+      let imageURL = initialData?.imageLink || "";
+      let cloudinaryPublicId = initialData?.cloudinaryPublicId || "";
+
+      // If a new image was selected
+      if (imageFile) {
+        const uploaded = await uploadImageToCloudinary(
+          imageFile,
+          "CareLink/donationPackages"
+        );
+        if (!uploaded?.secure_url) {
+          alert("Image upload failed");
+          setIsSubmitting(false);
+          return;
+        }
+
+        imageURL = uploaded.secure_url;
+        cloudinaryPublicId = uploaded.public_id;
       }
 
       const finalData = {
         ...data,
-        imageLink: secure_url || "",
-        cloudinaryPublicId: public_id || "",
-        date: new Date(),
+        imageLink: imageURL,
+        cloudinaryPublicId,
       };
 
-      const postStoryRes = await secureAxios(
-        "post",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/donationPackages`,
+      const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
+      const patchRes = await secureAxios(
+        "patch",
+        `${careLinkAPI}/donationPackages/${storyId}`,
         finalData,
         user
       );
-      if (postStoryRes.data.insertedId) {
-        reset();
-        setImageFile(null);
-        alert("Package added successfully!");
-        router.push('/admin/manage-donation-packages');
+      if (patchRes.data.success) {
+        alert("Package updated successfully!");
+      } else {
+        alert("No changes detected.");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to add package.");
+    } catch (err) {
+      console.error("Update failed:", err);
+      alert("Update failed.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  if (initialDataLoading) return <OverlayLoader message="Loading package..." />;
+  if (!initialDataLoading && !initialData) return <OverlayLoader message="Package Data Loading Failed" />;
+
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Add a new Package"}></SectionHeading>
+      <SectionHeading heading={"Edit Project"} />
 
       <div className="bg-gray-300 p-6 rounded-md relative">
-        {isSubmitting && <OverlayLoader message="Submitting..." />}
+        {isSubmitting && <OverlayLoader message="Updating..." />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-          {/* Story Title */}
+         {/* Story Title */}
           <FormTextInput
             label="Package Title*"
             name="title"
@@ -86,9 +122,10 @@ const AddDonationPackage = () => {
             required={true}
             errors={errors}
           />
-          {/* Image Upload */}
-          <label className="form-control w-full">
-            <span className="label-text text-gray-800">Upload Image*</span>
+         <label className="form-control w-full">
+            <span className="label-text text-gray-800">
+              Upload New Image (optional)
+            </span>
             <input
               type="file"
               accept="image/*"
@@ -155,7 +192,7 @@ const AddDonationPackage = () => {
               className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
               disabled={isSubmitting}
             >
-              Add Package
+              Update Package
             </button>
           </div>
         </form>
@@ -163,4 +200,5 @@ const AddDonationPackage = () => {
     </div>
   );
 };
-export default AddDonationPackage;
+
+export default UpdateDonationPackage;

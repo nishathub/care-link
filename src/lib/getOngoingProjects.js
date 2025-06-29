@@ -1,12 +1,12 @@
-import { getCollections } from "@/lib/mongo";
-import { verifyToken, getUserByEmail } from "@/lib/auth";
 import { cookies } from "next/headers";
+import { getCollections, getUserByEmail } from "./dbCollections";
+import { verifyToken } from "./jwt";
 
 export async function getOngoingProjects() {
   const { ongoingProjectsCollection } = await getCollections();
   let filter = { approved: true, hidden: false };
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
 
   if (token) {

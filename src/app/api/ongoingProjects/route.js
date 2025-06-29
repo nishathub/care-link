@@ -1,4 +1,4 @@
-import { getCollections, getUserByEmail } from "@/lib/dbCollections";
+import { getCollections } from "@/lib/dbCollections";
 import { getOngoingProjects } from "@/lib/getOngoingProjects";
 import { verifyOperator } from "@/lib/verifyOperator";
 

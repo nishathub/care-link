@@ -4,15 +4,9 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const OngoingCasesComponent = async ({
   isHomePage = false,
+  data=[],
 }) => {
-  const getProjects = async () => {
-    const careLinkApi = process.env.CareLinkAPI;
-    const res = await fetch(`${careLinkApi}/ongoingProjects`);
-    if (!res.ok) throw new Error("Failed to fetch");
-    return res.json();
-  };
-  const { data } = await getProjects();
-  const renderItem = isHomePage ? data.slice(0, 6) : data;
+  const renderItem = isHomePage ? data?.slice(0, 6) : data;
 
   return (
     <div>
@@ -25,7 +19,7 @@ const OngoingCasesComponent = async ({
         </div>
       )}
       <div className="flex flex-wrap gap-8 justify-center">
-        {renderItem.map((project, index) => {
+        {renderItem?.map((project, index) => {
           return (
             <Card
               key={index}

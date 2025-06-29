@@ -2,28 +2,25 @@ import { cookies } from "next/headers";
 import { getCollections, getUserByEmail } from "./dbCollections";
 import { verifyToken } from "./jwt";
 
-export const getOngoingProjects = async () => {
-  const { ongoingProjectsCollection } = await getCollections();
-  let filter = { approved: true, hidden: false };
-
+export const getDonationPackages = async () => {
+  const { DonationPackages } = await getCollections();
+  // Skip the hidden packages for public
+  let filter = { hidden: false };
+  // all for admin
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
-
   if (token) {
     try {
       const decoded = verifyToken(token);
       const user = await getUserByEmail(decoded?.email);
 
       if (user?.role === "admin") {
-        filter = { approved: true };
-      } else if (user?.role === "volunteer") {
-        filter = { author: user.name };
+        filter = {};
       }
     } catch (err) {
       console.warn("Invalid or expired token:");
     }
   }
-
-  const projects = await ongoingProjectsCollection.find(filter).toArray();
-  return projects;
-}
+  const packages = await DonationPackages.find(filter).toArray();
+  return packages;
+};

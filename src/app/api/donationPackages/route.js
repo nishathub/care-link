@@ -1,30 +1,10 @@
-import { getCollections, getUserByEmail } from "@/lib/dbCollections";
-import { verifyToken } from "@/lib/jwt";
+import { getCollections } from "@/lib/dbCollections";
+import { getDonationPackages } from "@/lib/getDonationPackages";
 import { verifyAdmin } from "@/lib/verifyAdmin";
-import { cookies } from "next/headers";
 
 export async function GET() {
   try {
-    const { DonationPackages } = await getCollections();
-    // Skip the hidden packages for public
-    let filter = { hidden: false };
-    // all for admin
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-      try {
-        const decoded = verifyToken(token);
-        const user = await getUserByEmail(decoded?.email);
-
-        if (user?.role === "admin") {
-          filter = {};
-        }
-      } catch (err) {
-        console.warn("Invalid or expired token:");
-      }
-    }
-    const packages = await DonationPackages.find(filter).toArray();
-
+    const packages = await getDonationPackages();
     return Response.json({ success: true, data: packages });
   } catch (error) {
     console.error("GET error:", error);

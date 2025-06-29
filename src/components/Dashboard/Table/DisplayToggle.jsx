@@ -2,21 +2,21 @@
 
 import axios from "axios";
 
-const DisplayToggle = ({ id, hidden, refetch }) => {
+const DisplayToggle = ({ id, hidden, refetch, middleAPI, afterIdAPI=""}) => {
   const handleDisplayToggle = async () => {
     const updatedData = {
       hidden: !hidden,
     };
     try {
       const updateRes = await axios.patch(
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects/${id}/singleAction`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/${middleAPI}/${id}/${afterIdAPI}`,
         updatedData
       );
       if (updateRes.data.success) {
         refetch();
       }
     } catch (error) {
-      console.log("display toggle update error");
+      console.error("display toggle update error");
     }
   };
   return (

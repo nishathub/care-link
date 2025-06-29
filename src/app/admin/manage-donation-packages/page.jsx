@@ -54,10 +54,13 @@ const ManageDonationPackages = () => {
           isUserLoading={isUserLoading}
           itemName={"Packages"}
           editBaseLink={"/admin/edit-donation-package"}
+          middleAPI={"donationPackages"}
+          afterIdAPI={""}
           handleDeleteClick={handleDeleteClick}
           isDataLoading={isAllPackagesLoading}
           isDeleteLoading={isDeleteLoading}
           errorFetchDataMessage={errorFetchPackagesMessage}
+          itemsRefetch={packagesRefetch}
         ></ManageItemsTable>
       </div>
     </div>

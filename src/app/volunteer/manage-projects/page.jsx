@@ -58,6 +58,8 @@ const ManageProjects = () => {
           isUserLoading={isUserLoading}
           itemName={"Projects"}
           editBaseLink={"/volunteer/edit-ongoing-project"}
+          afterIdAPI={"singleAction"}
+          middleAPI={"ongoingProjects"}
           handleDeleteClick={handleDeleteClick}
           isDataLoading={isAllProjectLoading}
           isDeleteLoading={isDeleteLoading}

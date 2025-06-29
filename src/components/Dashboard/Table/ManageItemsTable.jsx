@@ -5,9 +5,11 @@ import DisplayToggle from "./DisplayToggle";
 
 const ManageItemsTable = ({
   isReviewProjects = false,
+  afterIdAPI,
+  middleAPI,
   data,
   isChief,
-  isVolunteer=false,
+  isVolunteer = false,
   isUserLoading,
   itemName,
   editBaseLink,
@@ -51,7 +53,9 @@ const ManageItemsTable = ({
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
-  const showStatus = data?.some((item) => item?.hidden !== undefined && !isReviewProjects && !isVolunteer);
+  const showStatus = data?.some(
+    (item) => item?.hidden !== undefined && !isReviewProjects && !isVolunteer
+  );
   const showVerification = data?.some((item) => item?.approved !== undefined);
 
   return (
@@ -101,7 +105,13 @@ const ManageItemsTable = ({
                 </td>
                 {showStatus && (
                   <td title="hide/display">
-                    <DisplayToggle id={item?._id} hidden={item?.hidden} refetch={itemsRefetch}/>
+                    <DisplayToggle
+                      id={item?._id}
+                      hidden={item?.hidden}
+                      refetch={itemsRefetch}
+                      afterIdAPI={afterIdAPI}
+                      middleAPI={middleAPI}
+                    />
                   </td>
                 )}
                 {showVerification && (

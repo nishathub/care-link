@@ -1,7 +1,7 @@
 import ImpactStoriesComponent from "@/components/HomeComponents/ImpactStoriesComponent";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
-const ImpactStories = () => {
+const ImpactStories = async () => {
   return (
     <div>
       <SectionHeading heading={"Success Stories"}></SectionHeading>

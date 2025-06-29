@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import { getOngoingProjects } from "@/lib/getOngoingProjects";
 
-const OngoingCasesComponent = async ({
-  isHomePage = false,
-  data=[],
-}) => {
-  const renderItem = isHomePage ? data?.slice(0, 6) : data;
+const OngoingCasesComponent = async ({ isHomePage = false }) => {
+  const data = await getOngoingProjects();
+  const renderItem = isHomePage ? data?.slice(0, 3) : data;
 
   return (
     <div>
@@ -24,12 +23,17 @@ const OngoingCasesComponent = async ({
             <Card
               key={index}
               donateLink={`ongoing-cases/${project._id}`}
-              image={ project?.imageLink ||
+              image={
+                project?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
               }
               title={project.title}
               tag={project.tag}
-              description={`${project?.description?.length > 220 ? project.description.slice(0, 220) + "..." : project.description}`}
+              description={`${
+                project?.description?.length > 220
+                  ? project.description.slice(0, 220) + "..."
+                  : project.description
+              }`}
             ></Card>
           );
         })}

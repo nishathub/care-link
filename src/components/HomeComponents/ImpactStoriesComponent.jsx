@@ -1,16 +1,11 @@
 import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import { getImpactStories } from "@/lib/getImpactStories";
 
 const ImpactStoriesComponent = async ({ isHomePage = false }) => {
-  const getStories = async () => {
-    const careLinkApi = process.env.CareLinkAPI;
-    const res = await fetch(`${careLinkApi}/impactStories`);
-    if (!res.ok) throw new Error("Failed to fetch");
-    return res.json();
-  };
-  const { data } = await getStories();
-  const renderItem = isHomePage ? data.slice(0, 6) : data;
+  const data = await getImpactStories();
+  const renderItem = isHomePage ? data.slice(0, 3) : data;
   return (
     <div>
       {isHomePage && (
@@ -27,7 +22,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
           return (
             <Card
               key={index}
-              showViews = {true}
+              showViews={true}
               id={story?._id}
               readMoreLink={`impact-stories/${story._id}`}
               image={
@@ -36,7 +31,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
               }
               title={story.title}
               tag={story.tag}
-              views = {story.views}
+              views={story.views}
               date={story.date}
               description={`${
                 story?.description?.length > 220

@@ -54,10 +54,12 @@ const ManageStories = () => {
           isUserLoading={isUserLoading}
           itemName={"Stories"}
           editBaseLink={"/admin/edit-impact-story"}
+          middleAPI={"impactStories"}
           handleDeleteClick={handleDeleteClick}
           isDataLoading={isAllStoriesLoading}
           isDeleteLoading={isDeleteLoading}
           errorFetchDataMessage={errorFetchStoriesMessage}
+          itemsRefetch={storiesRefetch}
         ></ManageItemsTable>
       </div>
     </div>

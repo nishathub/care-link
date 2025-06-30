@@ -16,7 +16,7 @@ const DonatePage = async ({ isHomePage = true }) => {
           return (
             <Card
               key={index}
-              donateLink={`donate-now/${project._id}`}
+              donateLink={`donate-now/${project._id?.toString()}`}
               image={
                 project?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

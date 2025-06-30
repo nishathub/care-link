@@ -1,23 +1,22 @@
 import SingleItemDetails from "@/components/SingleItemDetails/SingleItemDetails";
+import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 
 const SingleDonationPackage = async ({ params: paramsPromise }) => {
-  const careLinkApi = process.env.CareLinkAPI;
   const params = await paramsPromise;
-  const {id} = params;
-  const res = await fetch(`${careLinkApi}/donationPackages/${id}`);
-  if (!res.ok) {
-    notFound();
-  }
-
-  const { data } = await res.json();
+  const { id } = params;
+  const data = await getSingleItemById("package", id);
 
   if (!data) {
     notFound();
   }
   return (
     <div>
-      <SingleItemDetails data={data} showQuote={false} showExpense={false}></SingleItemDetails>
+      <SingleItemDetails
+        data={data}
+        showQuote={false}
+        showExpense={false}
+      ></SingleItemDetails>
     </div>
   );
 };

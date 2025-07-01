@@ -23,6 +23,7 @@ const NewsComponent = async ({ isHomePage = false }) => {
             <Card
               key={index}
               showViews={true}
+              itemName={"news"}
               id={item?._id.toString()}
               tag={item?.tag}
               views={item?.views}

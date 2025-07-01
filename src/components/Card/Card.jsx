@@ -13,6 +13,7 @@ const Card = ({
   donateLink = "",
   readMoreLink = "",
   showViews = false,
+  itemName="",
 }) => {
   return (
     <div className="card bg-sky-100 w-80 lg:w-96 shadow-sm">
@@ -51,6 +52,7 @@ const Card = ({
             <ViewCountButton
               readMoreLink={readMoreLink}
               showViews={showViews}
+              itemName = {itemName}
               id={id}
               views={views}
             />

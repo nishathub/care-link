@@ -4,8 +4,18 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ViewCountButton = ({ readMoreLink, showViews, id, views }) => {
+const ViewCountButton = ({
+  readMoreLink,
+  showViews,
+  id,
+  views,
+  itemName = "story",
+}) => {
   const router = useRouter();
+  const apiLink =
+    itemName === "story"
+      ? `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`
+      : `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}`;
   const handleViewCount = async (e) => {
     e.preventDefault();
     router.push(readMoreLink);
@@ -14,7 +24,7 @@ const ViewCountButton = ({ readMoreLink, showViews, id, views }) => {
     };
     try {
       await axios.patch(
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`,
+        apiLink,
         updatedData
       );
     } catch (error) {

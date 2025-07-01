@@ -57,6 +57,7 @@ const ManageItemsTable = ({
     (item) => item?.hidden !== undefined && !isReviewProjects && !isVolunteer
   );
   const showVerification = data?.some((item) => item?.approved !== undefined);
+  const showJournalist = data?.some((item) => item?.journalist !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -77,6 +78,7 @@ const ManageItemsTable = ({
               {showTag && <th>Tag</th>}
               {showAuthor && <th>Author</th>}
               {showViews && <th>Views</th>}
+              {showJournalist && <th>Journalist</th>}
               {showName && <th>Name</th>}
               {showRole && <th>Role</th>}
               {showRank && <th>Rank</th>}
@@ -126,6 +128,7 @@ const ManageItemsTable = ({
                 {showTag && <td>{item?.tag || ""}</td>}
                 {showAuthor && <td>{item?.author || ""}</td>}
                 {showViews && <td>{item?.views}</td>}
+                {showJournalist && <td>{item?.journalist}</td>}
                 {showName && <td>{item?.name || ""}</td>}
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}

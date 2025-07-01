@@ -1,4 +1,4 @@
-import RecentNews from "@/components/HomeComponents/RecentNews";
+import RecentNews from "@/components/HomeComponents/NewsComponent";
 
 const News = () => {
   return (

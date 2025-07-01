@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import { getNews } from "@/lib/getNews";
 
-const RecentNews = ({ isHomePage = false }) => {
-  const numberOfCards = [1, 2, 3];
+const NewsComponent = async ({ isHomePage = false }) => {
+  const newsCollection = await getNews();
+  const renderItem = isHomePage ? newsCollection?.slice(0, 3) : newsCollection;
+
   return (
     <div>
       {isHomePage && (
@@ -15,24 +18,25 @@ const RecentNews = ({ isHomePage = false }) => {
         </div>
       )}
       <div className="flex flex-wrap gap-8 justify-center">
-        {numberOfCards.map((i, card) => {
+        {renderItem?.map((item, index) => {
           return (
             <Card
-              key={i}
-              date={"📅 May 21, 2025"}
-              readMoreLink="/"
+              key={index}
+              date={item?.date}
+              readMoreLink={`/news-updates/${item?._id.toString()}`}
               image={
+                item?.imageLink ||
                 "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
               }
-              title={"Card Title"}
-              description={"Short description of the news ..."}
+              title={item?.title}
+              description={item?.description}
             ></Card>
           );
         })}
       </div>
       {isHomePage && (
         <div className="w-fit mx-auto mt-6">
-          <Link className="btn btn-primary w-40" href={"/"}>
+          <Link className="btn btn-primary w-40" href={"/news-updates"}>
             More
           </Link>
         </div>
@@ -41,4 +45,4 @@ const RecentNews = ({ isHomePage = false }) => {
   );
 };
 
-export default RecentNews;
+export default NewsComponent;

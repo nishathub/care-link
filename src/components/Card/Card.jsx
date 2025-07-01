@@ -30,7 +30,7 @@ const Card = ({
           </p>
         )}
         <p className="text-sky-700 text-sm font-bold capitalize">{tag}</p>
-        <p>{date ? formatDate(date) : ""}</p>
+        <p className="text-sky-800">{date ? formatDate(date) : ""}</p>
         <h2 className="card-title">{title}</h2>
         <p className="text-justify">{description}</p>
         <div className="card-actions justify-start">

@@ -2,11 +2,10 @@ import Footer from "@/components/Footer/Footer";
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
 import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";
 import ImpactStoriesComponent from "@/components/HomeComponents/ImpactStoriesComponent";
-import ImpactStories from "@/components/HomeComponents/ImpactStoriesComponent";
 import OngoingCasesComponent from "@/components/HomeComponents/OngoingCasesComponent";
-import RecentNews from "@/components/HomeComponents/RecentNews";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import Navbar from "@/components/Navbar/Navbar";
+import NewsComponent from "@/components/HomeComponents/NewsComponent";
 
 export default function Home() {
   return (
@@ -31,7 +30,7 @@ export default function Home() {
           <AttentionBanner></AttentionBanner>
         </section>
         <section>
-          <RecentNews isHomePage={true}></RecentNews>
+          <NewsComponent isHomePage={true}></NewsComponent>
         </section>
       </div>
       <footer>

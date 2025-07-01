@@ -22,6 +22,9 @@ const NewsComponent = async ({ isHomePage = false }) => {
           return (
             <Card
               key={index}
+              showViews={true}
+              id={item?._id.toString()}
+              views={item?.views}
               date={item?.date}
               readMoreLink={`/news-updates/${item?._id.toString()}`}
               image={

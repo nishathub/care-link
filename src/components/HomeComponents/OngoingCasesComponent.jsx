@@ -29,11 +29,7 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
               }
               title={project.title}
               tag={project.tag}
-              description={`${
-                project?.description?.length > 220
-                  ? project.description.slice(0, 220) + "..."
-                  : project.description
-              }`}
+              description={project.description}
             ></Card>
           );
         })}

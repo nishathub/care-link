@@ -36,7 +36,11 @@ const Card = ({
           </p>
         </div>
         <h2 className="card-title">{title}</h2>
-        <p className="text-justify">{description}</p>
+        <p className="text-justify">
+          {description?.length > 220
+            ? description.slice(0, 220) + "..."
+            : description}
+        </p>
         <div className="card-actions justify-start">
           {donateLink && (
             <Link href={donateLink} className={`btn btn-primary w-full`}>

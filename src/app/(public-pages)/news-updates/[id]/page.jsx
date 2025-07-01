@@ -1,10 +1,11 @@
+import { getSingleItemById } from "@/lib/getSingleItemById";
 
-const SingleNews = () => {
-    return (
-        <div>
-            Single News page
-        </div>
-    );
+const SingleNews = async ({ params: paramsPromise }) => {
+  const params = await paramsPromise;
+  const { id } = params;
+  const newsItem = await getSingleItemById("news", id);
+
+  return <div>Single News page</div>;
 };
 
 export default SingleNews;

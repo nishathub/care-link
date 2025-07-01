@@ -47,7 +47,8 @@ const AddNews = () => {
         cloudinaryPublicId: public_id || "",
         views: 0,
         date: new Date(),
-        tag: "news"
+        tag: "news",
+        journalist: user?.name,
       };
 
       const postStoryRes = await secureAxios(
@@ -60,7 +61,7 @@ const AddNews = () => {
         reset();
         setImageFile(null);
         alert("News added successfully!");
-        router.push('/admin/manage-news');
+        router.push("/admin/manage-news");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -72,8 +73,7 @@ const AddNews = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Add a new News"}></SectionHeading>
-
+      <SectionHeading heading={"Add a News"}></SectionHeading>
       <div className="bg-gray-300 p-6 rounded-md relative">
         {isSubmitting && <OverlayLoader message="Submitting..." />}
 
@@ -88,15 +88,6 @@ const AddNews = () => {
             errors={errors}
           />
 
-          {/* News Journalist */}
-          <FormTextInput
-            label="Journalist Name*"
-            name="journalist"
-            placeholder="Mr. "
-            register={register}
-            required={true}
-            errors={errors}
-          />
           {/* Image Upload */}
           <label className="form-control w-full">
             <span className="label-text text-gray-800">Upload Image*</span>

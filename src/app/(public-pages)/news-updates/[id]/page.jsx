@@ -14,7 +14,7 @@ const SingleNews = async ({ params: paramsPromise }) => {
   const filteredNews = newsCollection.filter(
     (item) => item._id.toString() !== id
   );
-  const { title, imageLink, description, date, author, views } = newsItem;
+  const { title, imageLink, description, date, journalist, views } = newsItem;
   const fallbackImage =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
 
@@ -23,14 +23,16 @@ const SingleNews = async ({ params: paramsPromise }) => {
   }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-      <div className="col-span-1 lg:col-span-3 space-y-8">
-        <p className="mb-4 flex items-center gap-2">
-          <span>
-            <CalendarDays />
-          </span>{" "}
-          {formatDate(date)}
-        </p>
-        <h2 className="text-2xl font-bold">{title}</h2>
+      <div className="col-span-1 lg:col-span-3 space-y-8 relative">
+        <div className="">
+          <p className="mb-4 flex items-center gap-2">
+            <span>
+              <CalendarDays />
+            </span>{" "}
+            {formatDate(date)}
+          </p>
+          <h2 className="text-2xl font-bold">{title}</h2>
+        </div>
         <div className="h-96 lg:h-[450px] rounded-lg shadow-2xl relative">
           <Image
             src={imageLink ? imageLink : fallbackImage}
@@ -46,7 +48,7 @@ const SingleNews = async ({ params: paramsPromise }) => {
             <span>
               <User />
             </span>
-            {author}
+            {journalist}
           </p>
           <p className="flex items-center gap-1">
             <span>

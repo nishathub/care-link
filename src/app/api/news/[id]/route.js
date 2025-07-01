@@ -1,5 +1,7 @@
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import { verifyChief } from "@/lib/verifyChief";
+import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 import { ObjectId } from "mongodb";
 
 // GET single news by ID
@@ -59,6 +61,43 @@ export async function PATCH(request, { params: paramsPromise }) {
     console.error("PATCH error:", error);
     return Response.json(
       { success: false, message: "Failed to update" },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE a single news by ID
+export async function DELETE(request, { params: paramsPromise }) {
+  try {
+    await verifyChief(); // only chief can run this operation
+
+    const { NewsCollection } = await getCollections();
+    const params = await paramsPromise;
+    const { id } = params;
+    // DELETE IMAGE FROM CLOUDINARY
+    const { cloudinaryPublicId } = await NewsCollection.findOne({
+      _id: new ObjectId(id),
+    });
+    if (cloudinaryPublicId) {
+      await deleteImageFromCloudinary(cloudinaryPublicId);
+    }
+    // DELETE ITEM FROM DB even if the Image is not deleted
+    const result = await NewsCollection.deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    if (result.deletedCount === 0) {
+      return Response.json(
+        { success: false, message: "Delete failed" },
+        { status: 400 }
+      );
+    }
+
+    return Response.json({ success: true, message: "Deleted successfully" });
+  } catch (error) {
+    console.error("DELETE error:", error);
+    return Response.json(
+      { success: false, message: "Failed to delete" },
       { status: 500 }
     );
   }

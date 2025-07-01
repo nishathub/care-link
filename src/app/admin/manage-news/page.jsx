@@ -31,7 +31,7 @@ const ManageNews = () => {
       {/* Delete Modal */}
       <div>
         <DeleteConfirmModal
-          apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/donationPackages`}
+          apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/news`}
           isDeleteModalOpen={isDeleteModalOpen}
           setDeleteModalOpen={setDeleteModalOpen}
           itemName={"News"}

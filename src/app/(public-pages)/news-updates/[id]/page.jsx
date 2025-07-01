@@ -55,43 +55,7 @@ const SingleNews = async ({ params: paramsPromise }) => {
             {views}
           </p>
         </div>
-        <p className="text-justify">
-          {description} Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Consectetur quaerat a saepe, blanditiis explicabo sint ipsa
-          commodi at doloremque, distinctio dignissimos? Officiis at est maxime
-          ea fuga pariatur facere dolores nam libero beatae qui eligendi eius
-          reprehenderit unde aliquam totam provident non accusamus laboriosam
-          quae dolor quidem, labore ducimus? Dolor dolores, odit dicta atque
-          asperiores excepturi eaque reprehenderit laudantium impedit magnam ea
-          cupiditate enim aperiam non distinctio tempora commodi sunt corporis
-          maxime ex provident beatae! Cum repellat, maiores dignissimos
-          similique dicta dolores adipisci beatae alias iure voluptate eum earum
-          fugit excepturi unde deleniti. Accusantium natus perferendis officia
-          obcaecati ratione nesciunt quia commodi fuga dicta illum. Totam
-          similique accusantium molestiae quasi, nam nesciunt neque
-          reprehenderit ipsam, atque architecto vitae. Quos dolorum fugit
-          aspernatur? Dignissimos sit odit debitis ipsa quo corrupti aspernatur,
-          nihil neque! Voluptate neque nisi unde odio itaque maxime fugiat nemo
-          quidem iusto ut vitae debitis, repellat vero officia a dolores
-          blanditiis possimus eligendi, incidunt molestiae recusandae
-          distinctio? Placeat quidem optio ipsum perferendis natus aperiam
-          beatae atque voluptatum quasi corporis, magni inventore fuga
-          exercitationem! Repellat fugiat dolore porro architecto. Rerum nihil
-          vel quia ab deleniti aperiam. Dicta nobis reiciendis numquam dolorum
-          pariatur porro optio, et eos esse. Consequatur repudiandae laborum
-          similique doloremque tempora facilis quaerat obcaecati molestias. Nisi
-          similique eius assumenda repudiandae nulla odit ea nemo recusandae nam
-          tempora quibusdam, aspernatur cum, excepturi mollitia quae inventore
-          nostrum adipisci dolore ipsa dolores fuga? Perferendis odit rerum
-          corrupti dolore optio fugiat quas amet quidem doloremque. Cum amet
-          recusandae a beatae doloremque nostrum consectetur rerum veritatis
-          earum, sed itaque voluptatum exercitationem quibusdam culpa aliquam,
-          quisquam nemo sit non voluptas, at dignissimos! Autem reprehenderit
-          voluptas est error aliquam dolorum aspernatur debitis soluta, placeat
-          excepturi dignissimos laudantium nisi modi veniam dolores laborum quod
-          consequatur non, accusamus, id veritatis sequi eaque. Quas, nisi!
-          Repellendus, nisi consectetur.
-        </p>
+        <p className="text-justify">{description}</p>
       </div>
       <div className="col-span-1 pt-12">
         <div className="sticky top-20 max-h-screen overflow-auto">

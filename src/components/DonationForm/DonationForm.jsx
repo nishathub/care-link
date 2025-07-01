@@ -73,6 +73,7 @@ export default function DonationForm() {
         />
 
         <div>
+          <p className="mb-2 text-sm"><label >Name</label></p>
           <input
             type="text"
             placeholder="Your Name"
@@ -85,6 +86,7 @@ export default function DonationForm() {
         </div>
 
         <div>
+          <p className="mb-2 text-sm"><label >Contact</label></p>
           <input
             type="text"
             placeholder="Email or Phone"

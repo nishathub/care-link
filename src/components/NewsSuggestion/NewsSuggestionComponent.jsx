@@ -9,7 +9,7 @@ const NewsSuggestionComponent = ({newsCollection}) => {
         {newsCollection?.map((item, index) => (
           <Link
             className="font-semibold"
-            href={`/news-update/${item?._id}`}
+            href={`/news-updates/${item?._id}`}
             key={index}
           >
             <h4>{item?.title}</h4>

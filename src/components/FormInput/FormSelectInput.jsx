@@ -6,7 +6,7 @@ const FormSelectInput = ({ label, register, name, required = false, errors, opti
       className="select select-bordered bg-white text-gray-800"
       defaultValue=""
     >
-      <option value="" disabled>Select a {name.toLowerCase()}</option>
+      <option value="" disabled>Select {name.toLowerCase()}</option>
       {options.map((option) => (
         <option key={option} value={option}>{option}</option>
       ))}

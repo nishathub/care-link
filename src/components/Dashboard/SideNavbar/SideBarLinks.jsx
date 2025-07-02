@@ -11,6 +11,7 @@ import {
   HandCoins,
   HeartHandshake,
   ShieldCheck,
+  CircleDollarSign,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -62,6 +63,7 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           Icon={PlusCircle}
         />
         <SidebarLink href="/admin/add-news" text="Add News" Icon={PlusCircle} />
+        <SidebarLink href="/admin/add-donation-package" text="Add Package" Icon={PlusCircle} />
         <SidebarLink
           href="/volunteer/manage-projects"
           text="Manage Projects"
@@ -81,6 +83,11 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           href="/admin/manage-news"
           text="Manage News"
           Icon={FileText}
+        />
+        <SidebarLink
+          href="/admin/manage-donation-packages"
+          text="Manage Packages"
+          Icon={CircleDollarSign}
         />
         <SidebarLink
           href="/admin/manage-users"

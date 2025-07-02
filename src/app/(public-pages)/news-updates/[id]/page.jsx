@@ -14,6 +14,11 @@ const SingleNews = async ({ params: paramsPromise }) => {
   const filteredNews = newsCollection.filter(
     (item) => item._id.toString() !== id
   );
+  // serialize id
+  const plainFilteredNews = filteredNews.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
   const { title, imageLink, description, date, journalist, views } = newsItem;
   const fallbackImage =
     "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
@@ -61,7 +66,7 @@ const SingleNews = async ({ params: paramsPromise }) => {
       </div>
       <div className="col-span-1 pt-12">
         <div className="sticky top-20 max-h-screen overflow-auto">
-          <NewsSuggestionComponent newsCollection={filteredNews} />
+          <NewsSuggestionComponent newsCollection={plainFilteredNews} />
         </div>
       </div>
     </div>

@@ -9,8 +9,6 @@ import useUserStore from "@/lib/zustand/userStore";
 const ProjectReviewDetails = ({ data }) => {
   const router = useRouter();
   const user = useUserStore((state) => state?.user);
-  const fallbackImage =
-    "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
 
   const handleReject = async () => {
     const updatedData = {
@@ -107,15 +105,19 @@ const ProjectReviewDetails = ({ data }) => {
           <h3 className="font-semibold text-lg mb-2 text-gray-800">
             Attached Image
           </h3>
-          <div className="h-80 max-w-xl rounded-lg shadow-2xl relative">
-            <Image
-              src={data?.imageLink || fallbackImage}
-              alt="charity-photo"
-              fill
-              unoptimized
-              className="object-cover rounded-lg"
-            ></Image>
-          </div>
+          {data?.imageLink ? (
+            <div className="h-80 max-w-xl rounded-lg shadow-2xl relative">
+              <Image
+                src={data?.imageLink}
+                alt="charity-photo"
+                fill
+                unoptimized
+                className="object-cover rounded-lg"
+              ></Image>
+            </div>
+          ) : (
+            <p>No image attached</p>
+          )}
         </div>
 
         {/* Approve/Reject Buttons */}

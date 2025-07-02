@@ -9,15 +9,35 @@ export const POST = async (req) => {
   // we check if the email is from a stored admin object in the database.
   const user = await getUserByEmail(email);
   if (!user) {
-    return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Invalid email or password" },
+      { status: 401 }
+    );
   }
   // then we cross check the password
   const isValid = await bcrypt.compare(password, user.password);
   if (!isValid) {
-    return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Invalid email or password" },
+      { status: 401 }
+    );
+  }
+  if (user.role === "volunteer") {
+    if (!user.approved) {
+      return NextResponse.json(
+        { message: "Forbidden" },
+        { status: 403 }
+      );
+    }
   }
   // after passing two steps, we sign for jwt
-  const payload = { id: user._id, name: user.name, email: user.email, role: user.role, rank: user?.rank };
+  const payload = {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    rank: user?.rank,
+  };
   const token = signToken(payload);
   // finally cookies is set
   const cookieStore = await cookies();
@@ -29,5 +49,5 @@ export const POST = async (req) => {
     path: "/",
   });
 
-  return NextResponse.json({success: true, message: "Login successful" });
+  return NextResponse.json({ success: true, message: "Login successful" });
 };

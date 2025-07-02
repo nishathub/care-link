@@ -9,15 +9,14 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
-import useUserStore from "@/lib/zustand/userStore";
-import { secureAxios } from "@/utils/secureAxios";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { Eye } from "lucide-react";
 
 const VolunteerRegistration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const user = useUserStore((state) => state?.user);
+  const [isVisible, setVisible] = useState(false);
   const router = useRouter();
 
   const {
@@ -26,6 +25,10 @@ const VolunteerRegistration = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const handlePasswordVisibility = () => {
+    setVisible(!isVisible);
+  };
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -44,14 +47,16 @@ const VolunteerRegistration = () => {
 
       const finalData = {
         ...data,
-        profilePhoto: imageLink,
+        imageLink: imageLink,
         cloudinaryPublicId: public_id,
         approved: false,
-        date: new Date(),
+        createdAt: new Date(),
+        role: "volunteer",
+
       };
 
       const postRes = await axios.post(
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/volunteers`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/allUsers`,
         finalData
       );
 
@@ -101,6 +106,25 @@ const VolunteerRegistration = () => {
               required={true}
               errors={errors}
             />
+            {/* Password */}
+            <div className="relative">
+              <button
+                onClick={() => setVisible(!isVisible)}
+                type="button"
+                className="absolute z-10 right-5 top-1/2 text-sky-700 cursor-pointer"
+              >
+                <Eye />
+              </button>
+              <FormTextInput
+                label="Password*"
+                name="password"
+                type={isVisible ? "text" : "password"}
+                placeholder="*********"
+                register={register}
+                required={true}
+                errors={errors}
+              />
+            </div>
 
             {/* Phone Number */}
             <FormTextInput

@@ -1,8 +1,11 @@
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import bcrypt from "bcryptjs";
 
 export async function GET() {
   try {
+    await verifyAdmin(); // only admins get all user collection
+
     const { UsersCollection } = await getCollections();
     const users = await UsersCollection.find().toArray();
 
@@ -18,12 +21,20 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    await verifyAdmin(); // only admin can post
-
     const body = await req.json();
+    const { password } = body;
+    if (!password) {
+      throw new Error("Password is required");
+    }
+    //hash password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    //new userData
+    const newUserData = { ...body, password: hashedPassword };
+
     const { UsersCollection } = await getCollections();
 
-    const result = await UsersCollection.insertOne(body);
+    const result = await UsersCollection.insertOne(newUserData);
 
     return Response.json({ success: true, insertedId: result.insertedId });
   } catch (error) {

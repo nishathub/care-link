@@ -23,6 +23,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
             <Card
               key={index}
               showViews={true}
+              itemName={"story"}
               id={story?._id?.toString()}
               readMoreLink={`impact-stories/${story?._id?.toString()}`}
               image={

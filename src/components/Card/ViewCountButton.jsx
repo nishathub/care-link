@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import { updateViewCount } from "@/utils/updateViewCount";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -9,37 +9,25 @@ const ViewCountButton = ({
   showViews,
   id,
   views,
-  itemName = "story",
+  itemName,
 }) => {
   const router = useRouter();
   const apiLink =
     itemName === "story"
       ? `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`
       : `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}`;
-  const handleViewCount = async (e) => {
-    e.preventDefault();
+  const handleViewCount = async () => {
     router.push(readMoreLink);
-    const updatedData = {
-      views: parseInt(views) + 1,
-    };
-    try {
-      await axios.patch(
-        apiLink,
-        updatedData
-      );
-    } catch (error) {
-      console.log("view count update error");
-    }
+    updateViewCount(views, apiLink);
   };
   if (showViews) {
     return (
-      <a
+      <button
         onClick={handleViewCount}
-        href={readMoreLink}
-        className={`btn-link text-sky-500`}
+        className={`btn-link text-sky-500 cursor-pointer`}
       >
         Read More
-      </a>
+      </button>
     );
   }
   return (

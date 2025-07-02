@@ -10,9 +10,12 @@ const ProjectReview = async ({ params: paramsPromise }) => {
   if (!data) {
     notFound();
   }
+  // serialize _id to a plain string
+  const plainData = {...data, _id: data._id.toString()};
+  
   return (
     <div>
-        <ProjectReviewDetails data={data}/>
+        <ProjectReviewDetails data={plainData}/>
     </div>
   );
 };

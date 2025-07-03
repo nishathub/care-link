@@ -21,10 +21,10 @@ const NavLinks = () => {
           <summary className="">Get Involved</summary>
           <ul className="w-42 bg-sky-800 right-0 capitalize tracking-normal">
             <li>
-              <Link className={`${pathName === "/sign-volunteer" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/sign-volunteer"}>Become a Volunteer</Link>
+              <Link className={`${pathName === "/register-volunteer" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/register-volunteer"}>Become a Volunteer</Link>
             </li>
             <li>
-              <Link className={`${pathName === "/sign-donor" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/sign-donor"}>Become a Donor</Link>
+              <Link className={`${pathName === "/register-donor" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/register-donor"}>Become a Donor</Link>
             </li>
           </ul>
         </details>

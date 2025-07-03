@@ -1,4 +1,4 @@
-import ProjectReviewDetails from "@/components/ProjectReview/ProjectReviewDetails";
+import ProjectReviewDetails from "@/components/Dashboard/ProjectReview/ProjectReviewDetails";
 import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 

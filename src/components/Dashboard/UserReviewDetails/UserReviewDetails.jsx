@@ -17,7 +17,7 @@ const UserReviewDetails = ({ data }) => {
     try {
       const updateRes = await secureAxios(
         "patch",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/users/${data?._id}`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/allUsers/${data?._id}`,
         updatedData,
         user
       );
@@ -36,7 +36,7 @@ const UserReviewDetails = ({ data }) => {
     try {
       const updateRes = await secureAxios(
         "patch",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/users/${data?._id}`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/allUsers/${data?._id}`,
         updatedData,
         user
       );

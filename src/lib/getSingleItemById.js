@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { getCollections } from "./dbCollections";
+import { verifyAdmin } from "./verifyAdmin";
 
 export const getSingleItemById = async (itemName, id) => {
   const {
@@ -7,6 +8,7 @@ export const getSingleItemById = async (itemName, id) => {
     ImpactStoriesCollection,
     NewsCollection,
     DonationPackages,
+    UsersCollection,
   } = await getCollections();
 
   if (itemName === "package") {
@@ -26,6 +28,12 @@ export const getSingleItemById = async (itemName, id) => {
   }
   if (itemName === "news") {
     return await NewsCollection.findOne({
+      _id: new ObjectId(id),
+    });
+  }
+  if (itemName === "user") {
+    await verifyAdmin();
+    return await UsersCollection.findOne({
       _id: new ObjectId(id),
     });
   }

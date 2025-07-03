@@ -37,6 +37,7 @@ export const POST = async (req) => {
     email: user.email,
     role: user.role,
     rank: user?.rank,
+    imageLink: user?.imageLink,
   };
   const token = signToken(payload);
   // finally cookies is set

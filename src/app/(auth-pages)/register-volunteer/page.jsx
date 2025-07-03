@@ -64,7 +64,7 @@ const VolunteerRegistration = () => {
         reset();
         setImageFile(null);
         alert("Registration submitted! Please check your email");
-        router.push("/");
+        router.push("/registration-success");
       }
     } catch (error) {
       console.error("Error:", error);

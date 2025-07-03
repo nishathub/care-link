@@ -1,7 +1,7 @@
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import { sendWelcomeEmail } from "@/utils/sendMail";
 import bcrypt from "bcryptjs";
-import { Resend } from "resend";
 
 export async function GET() {
   try {
@@ -38,30 +38,7 @@ export async function POST(req) {
     const result = await UsersCollection.insertOne(newUserData);
 
     //send mail
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { data, error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: email,
-      subject: "Welcome to CareLink Family",
-      html: `<h1>Hi ${name}!</h1>
-       <p>Thanks for registering with <strong>CareLink</strong>!</p> 
-       <p>Please keep patience until we check and approve your profile.</p>
-       <p>
-         Best regards,<br />
-         The <strong>CareLink</strong> Team
-       </p>`,
-    });
-
-    if (error) {
-      console.error("mail error: ", error)
-      return Response.json(
-        {
-          success: false,
-          message: "Registration successful, but email failed to send.",
-        },
-        { status: 500 }
-      );
-    }
+    await sendWelcomeEmail({recipientMail: email, name: name});
 
     return Response.json({
       success: true,

@@ -25,8 +25,8 @@ export const POST = async (req) => {
   if (user.role === "volunteer") {
     if (!user.approved) {
       return NextResponse.json(
-        { message: "Forbidden" },
-        { status: 403 }
+        { message: "Invalid email or password" },
+        { status: 401 }
       );
     }
   }

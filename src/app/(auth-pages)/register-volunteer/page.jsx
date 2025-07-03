@@ -63,7 +63,7 @@ const VolunteerRegistration = () => {
       if (postRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Registration submitted! Please wait for approval.");
+        alert("Registration submitted! Please check your email");
         router.push("/");
       }
     } catch (error) {

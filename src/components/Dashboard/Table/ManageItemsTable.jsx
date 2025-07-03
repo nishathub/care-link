@@ -5,6 +5,7 @@ import DisplayToggle from "./DisplayToggle";
 
 const ManageItemsTable = ({
   isReviewProjects = false,
+  isManageUsers= false,
   afterIdAPI,
   middleAPI,
   data,
@@ -58,6 +59,7 @@ const ManageItemsTable = ({
   );
   const showVerification = data?.some((item) => item?.approved !== undefined);
   const showJournalist = data?.some((item) => item?.journalist !== undefined);
+  const showAvailability = data?.some((item) => item?.availableNow !== undefined);
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -75,6 +77,7 @@ const ManageItemsTable = ({
               <th>Image</th>
               {showStatus && <th>Display</th>}
               {showVerification && <th>Verification</th>}
+              {showAvailability && <th>Available Now</th>}
               {showTag && <th>Tag</th>}
               {showAuthor && <th>Author</th>}
               {showViews && <th>Views</th>}
@@ -83,8 +86,8 @@ const ManageItemsTable = ({
               {showRole && <th>Role</th>}
               {showRank && <th>Rank</th>}
               {showTitle && <th>Title</th>}
-              {isReviewProjects && <th>Expand</th>}
-              <th>Edit</th>
+              {(isReviewProjects || isManageUsers) && <th>Expand</th>}
+              {!showRole && <th>Edit</th>}
               {isChief && <th>Delete</th>}
             </tr>
           </thead>
@@ -121,10 +124,20 @@ const ManageItemsTable = ({
                     {item?.approved === true ? (
                       <p className="text-green-600">Approved</p>
                     ) : (
-                      <p className="text-pink-600">{item?.approved}</p>
+                      <p className="text-pink-600">{item?.approved || "Pending"}</p>
                     )}
                   </td>
                 )}
+                {showAvailability && (
+                  <td>
+                    {item?.availableNow === true ? (
+                      <p className="text-green-600">Yes</p>
+                    ) : (
+                      <p className="text-pink-600">No</p>
+                    )}
+                  </td>
+                )}
+                
                 {showTag && <td>{item?.tag || ""}</td>}
                 {showAuthor && <td>{item?.author || ""}</td>}
                 {showViews && <td>{item?.views}</td>}
@@ -133,10 +146,10 @@ const ManageItemsTable = ({
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}
                 {showTitle && <td>{item?.title || ""}</td>}
-                {isReviewProjects && (
+                {(isReviewProjects || isManageUsers) && (
                   <td>
                     <Link
-                      href={`review-projects/${item?._id}`}
+                      href={isReviewProjects ? `review-projects/${item?._id}` : `manage-users/${item?._id}`}
                       className="cursor-pointer text-blue-600"
                       title="Edit"
                     >
@@ -144,15 +157,17 @@ const ManageItemsTable = ({
                     </Link>
                   </td>
                 )}
-                <td>
-                  <Link
-                    href={`${editBaseLink}/${item?._id}`}
-                    className="cursor-pointer text-blue-600"
-                    title="Edit"
-                  >
-                    <Edit className="w-5 h-5" />
-                  </Link>
-                </td>
+                {!showRole && (
+                  <td>
+                    <Link
+                      href={`${editBaseLink}/${item?._id}`}
+                      className="cursor-pointer text-blue-600"
+                      title="Edit"
+                    >
+                      <Edit className="w-5 h-5" />
+                    </Link>
+                  </td>
+                )}
                 {/* TO AVOID MAKING THIS A CLIENT COMPONENT */}
                 {isChief && (
                   <td>

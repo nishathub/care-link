@@ -44,6 +44,7 @@ const ManageStories = () => {
         <ManageItemsTable
           data={allUsers}
           isChief={isChief}
+          isManageUsers={true}
           isUserLoading={isUserLoading}
           itemName={"Users"}
           editBaseLink={"/admin/edit-user"}

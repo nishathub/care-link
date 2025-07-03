@@ -7,9 +7,9 @@ import ManageItemsTable from "@/components/Dashboard/Table/ManageItemsTable";
 import useUsers from "@/hooks/useUsers";
 import useUserStore from "@/lib/zustand/userStore";
 
-const ManageStories = () => {
+const ManageUsers = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [storyIdToDelete, setUserIdToDelete] = useState(null);
+  const [userIdToDelete, setUserIdToDelete] = useState(null);
   const [isDeleteLoading, setDeleteLoading] = useState(false);
   const isChief = useUserStore((state) => state?.isChief);
   const isUserLoading = useUserStore((state) => state?.isUserLoading);
@@ -27,11 +27,11 @@ const ManageStories = () => {
       {/* Delete Modal */}
       <div>
         <DeleteConfirmModal
-          apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`}
+          apiBaseURL={`${process.env.NEXT_PUBLIC_CareLinkAPI}/allUsers`}
           isDeleteModalOpen={isDeleteModalOpen}
           setDeleteModalOpen={setDeleteModalOpen}
           itemName={"User"}
-          itemId={storyIdToDelete}
+          itemId={userIdToDelete}
           isDeleteLoading={isDeleteLoading}
           setDeleteLoading={setDeleteLoading}
           refetch={usersRefetch}
@@ -58,4 +58,4 @@ const ManageStories = () => {
   );
 };
 
-export default ManageStories;
+export default ManageUsers;

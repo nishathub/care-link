@@ -43,11 +43,17 @@ export async function POST(req) {
       from: "onboarding@resend.dev",
       to: email,
       subject: "Welcome to CareLink Family",
-      html: `<h1>Hi ${name}!</h1> <br> <p>Thanks for registering. Please keep patience until we check and approve your profile.</p>`,
+      html: `<h1>Hi ${name}!</h1>
+       <p>Thanks for registering with <strong>CareLink</strong>!</p> 
+       <p>Please keep patience until we check and approve your profile.</p>
+       <p>
+         Best regards,<br />
+         The <strong>CareLink</strong> Team
+       </p>`,
     });
 
     if (error) {
-      console.error(error);
+      console.error("mail error: ", error)
       return Response.json(
         {
           success: false,
@@ -63,7 +69,7 @@ export async function POST(req) {
       insertedId: result.insertedId,
     });
   } catch (error) {
-    console.error("POST error:", error);
+    console.error("POST error:");
     return Response.json(
       { success: false, message: "Registration Failed" },
       { status: 500 }

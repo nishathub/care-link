@@ -26,7 +26,7 @@ const Dropdown = ({ logout }) => {
     }
   };
   return (
-    <div className="absolute bottom-16 left-4 w-40 bg-white shadow-lg rounded-lg z-50">
+    <div className="absolute bottom-16 right-4 w-40 bg-white shadow-lg rounded-lg z-50">
       <button
         onClick={handleLogout}
         disabled={isLoggingOut}

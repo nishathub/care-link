@@ -49,7 +49,7 @@ const VolunteerRegistration = () => {
         ...data,
         imageLink: imageLink,
         cloudinaryPublicId: public_id,
-        approved: false,
+        approved: "pending",
         createdAt: new Date(),
         role: "volunteer",
 

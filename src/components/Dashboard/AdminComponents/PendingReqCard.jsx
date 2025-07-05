@@ -28,7 +28,7 @@ const PendingReqCard = () => {
             <div className="bg-blue-100 p-3 rounded-full">{item.icon}</div>
             <div>
               <h3 className="text-lg font-semibold">{item.label}</h3>
-              <p className="text-2xl font-bold">{item.count}</p>
+              <p className="text-2xl md:text-3xl font-bold">{item.count}</p>
             </div>
           </div>
           <span className="text-sm underline">View</span>

@@ -10,29 +10,44 @@ export const getAdminStats = async () => {
       DonationPackages,
     } = await getCollections();
 
-    const totalProjects =
-      await ongoingProjectsCollection.countDocuments({approved: true});
+    const approvedProjects = await ongoingProjectsCollection.countDocuments({
+      approved: true,
+    });
+    const pendingProjects = await ongoingProjectsCollection.countDocuments({
+      approved: "pending",
+    });
     const totalStories = await ImpactStoriesCollection.estimatedDocumentCount();
     const totalNews = await NewsCollection.estimatedDocumentCount();
     const totalPackages = await DonationPackages.estimatedDocumentCount();
-    const totalVolunteers = await UsersCollection.countDocuments({
+    const approvedVolunteers = await UsersCollection.countDocuments({
       role: "volunteer",
       approved: true,
     });
-    const totalDonors = await UsersCollection.countDocuments({
+    const pendingVolunteers = await UsersCollection.countDocuments({
+      role: "volunteer",
+      approved: "pending",
+    });
+    const approvedDonors = await UsersCollection.countDocuments({
       role: "donor",
       approved: true,
     });
+    const pendingDonors = await UsersCollection.countDocuments({
+      role: "donor",
+      approved: "pending",
+    });
 
     return {
-      totalProjects,
+      approvedProjects,
       totalStories,
       totalNews,
       totalPackages,
-      totalVolunteers,
-      totalDonors,
+      approvedVolunteers,
+      approvedDonors,
+      pendingDonors,
+      pendingProjects,
+      pendingVolunteers
     };
   } catch (error) {
-    console.error("error getting admin stats", error)
+    console.error("error getting admin stats", error);
   }
-}
+};

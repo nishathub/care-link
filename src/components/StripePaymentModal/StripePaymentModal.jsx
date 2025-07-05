@@ -82,10 +82,19 @@ const StripePaymentModal = ({
         title: title,
         status: "pending",
       };
-      
-      setLoading(false);
-      alert("payment successful");
-      router.push("/");
+      try {
+        const LogRes = await axios.post(
+          `${process.env.NEXT_PUBLIC_CareLinkAPI}/donationLogs`,
+          finalData
+        );
+        if (LogRes.data.insertedId) {
+          setLoading(false);
+          alert("payment successful");
+          router.push("/");
+        }
+      } catch (error) {
+        console.error("donation log post err")
+      }
     }
 
     setLoading(false);

@@ -11,6 +11,7 @@ export const getCollections = async () => {
     AdminCollection: db.collection("Admins"),
     UsersCollection: db.collection("Users"),
     DonationPackages: db.collection("DonationPackages"),
+    DonationLogs: db.collection("DonationLogs"),
   };
 };
 

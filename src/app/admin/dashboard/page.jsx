@@ -1,16 +1,11 @@
 
-import AdminStats from "@/components/Dashboard/AdminComponents/AdminStats";
+import AdminStatsCard from "@/components/Dashboard/AdminComponents/AdminStatsCard";
+import PendingReqCard from "@/components/Dashboard/AdminComponents/PendingReqCard";
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 import { UserCheck, ClipboardList } from "lucide-react";
 import Link from "next/link";
 
 const AdminDashboard = () => {
-  // Example data
-  const stats = [
-    { label: "Total Donations", value: "$25,400" },
-    { label: "Active Volunteers", value: "320" },
-    { label: "Pending Reviews", value: "12" },
-  ];
 
   const recentDonations = [
     {
@@ -57,28 +52,11 @@ const AdminDashboard = () => {
       <TopDashboard />
 
       {/* Stats Cards */}
-      <AdminStats />
+      <AdminStatsCard />
       
 
        {/* Pending Requests Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {pending.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="flex items-center justify-between bg-sky-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition"
-          >
-            <div className="flex items-center gap-4">
-              <div className="bg-blue-100 p-3 rounded-full">{item.icon}</div>
-              <div>
-                <h3 className="text-lg font-semibold">{item.label}</h3>
-                <p className="text-2xl font-bold">{item.count}</p>
-              </div>
-            </div>
-            <span className="text-sm underline">View</span>
-          </Link>
-        ))}
-      </div>
+       <PendingReqCard/>
 
       {/* Recent Donations Table */}
       <div className="bg-sky-100 p-6 rounded-2xl shadow-md overflow-x-auto">

@@ -1,4 +1,4 @@
-const AdminStats = () => {
+const AdminStatsCard = () => {
   // Example data
   const stats = [
     { label: "Total Donations", value: "$25,400" },
@@ -17,4 +17,4 @@ const AdminStats = () => {
   );
 };
 
-export default AdminStats;
+export default AdminStatsCard;

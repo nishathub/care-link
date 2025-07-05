@@ -50,6 +50,7 @@ export async function DELETE(request, { params: paramsPromise }) {
     const { cloudinaryPublicId, role, rank } = await UsersCollection.findOne({
       _id: new ObjectId(id),
     });
+    // PROTECT THE CHIEF FROM ACCIDENTALLY GET DELETED
     if (role === "admin" && rank === "chief") {
       return Response.json(
         { success: false, message: "Delete Failed" },

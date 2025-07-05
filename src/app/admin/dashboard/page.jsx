@@ -1,11 +1,9 @@
-"use client";
 
-import useUserStore from "@/lib/zustand/userStore";
+import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 import { UserCheck, ClipboardList } from "lucide-react";
 import Link from "next/link";
 
 const AdminDashboard = () => {
-  const user = useUserStore((state) => state?.user);
   // Example data
   const stats = [
     { label: "Total Donations", value: "$25,400" },
@@ -54,18 +52,8 @@ const AdminDashboard = () => {
 
   return (
     <main className="flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
-      {/* Top Navbar */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl text-sky-800 font-bold">Admin Dashboard</h1>
-        <div className="flex items-center gap-4">
-          <span className="font-medium text-sky-800">Admin</span>
-          <img
-            src={user?.imageLink}
-            alt="Admin Avatar"
-            className="w-10 h-10 rounded-full object-cover"
-          />
-        </div>
-      </div>
+      {/* Top Dashboard */}
+      <TopDashboard></TopDashboard>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">

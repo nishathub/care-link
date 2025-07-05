@@ -1,4 +1,5 @@
 
+import AdminStats from "@/components/Dashboard/AdminComponents/AdminStats";
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 import { UserCheck, ClipboardList } from "lucide-react";
 import Link from "next/link";
@@ -53,20 +54,11 @@ const AdminDashboard = () => {
   return (
     <main className="flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
       {/* Top Dashboard */}
-      <TopDashboard></TopDashboard>
+      <TopDashboard />
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="bg-sky-100 p-6 rounded-2xl shadow-md"
-          >
-            <h2 className="text-sm">{stat.label}</h2>
-            <p className="text-2xl font-bold">{stat.value}</p>
-          </div>
-        ))}
-      </div>
+      <AdminStats />
+      
 
        {/* Pending Requests Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

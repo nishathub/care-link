@@ -16,8 +16,8 @@ const AdminStatsCard = async () => {
     { label: "Impact Stories", value: totalStories, link: "/admin/manage-stories" },
     { label: "News", value: totalNews, link: "/admin/manage-news" },
     { label: "Donation Packages", value: totalPackages, link: "/admin/manage-donation-packages" },
-    { label: "Active Volunteers", value: approvedVolunteers, link: "/admin/manage-volunteers" },
-    { label: "Active Donors", value: approvedDonors, link: "/admin/manage-donors" },
+    { label: "Active Volunteers", value: approvedVolunteers, link: "/admin/manage-users" },
+    { label: "Active Donors", value: approvedDonors, link: "/admin/manage-users" },
   ];
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">

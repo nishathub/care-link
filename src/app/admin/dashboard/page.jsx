@@ -6,7 +6,7 @@ import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 const AdminDashboard = async () => {
   
   return (
-    <main className="flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
+    <main className="mt-12 lg:mt-0 flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
       {/* Top Dashboard */}
       <TopDashboard />
 

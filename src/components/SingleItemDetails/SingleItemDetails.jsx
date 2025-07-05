@@ -75,7 +75,7 @@ const SingleItemDetails = ({
           {showBankCard && <BankAccountCard></BankAccountCard>}
           {showDonationForm && (
             <div className="">
-              <DonationForm></DonationForm>
+              <DonationForm tag={data?.tag} title={data?.title}></DonationForm>
             </div>
           )}
         </div>

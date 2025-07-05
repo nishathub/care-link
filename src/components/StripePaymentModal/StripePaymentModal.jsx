@@ -4,7 +4,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const StripePaymentModal = ({ isOpen, onClose, amount, formData, user }) => {
+const StripePaymentModal = ({
+  isOpen,
+  onClose,
+  amount,
+  formData,
+  user,
+  tag,
+  title,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
@@ -53,7 +61,6 @@ const StripePaymentModal = ({ isOpen, onClose, amount, formData, user }) => {
           card,
           billing_details: {
             name: formData?.name || "Anonymous",
-            email: formData?.contact || "no-reply@example.com",
           },
         },
       });
@@ -65,23 +72,20 @@ const StripePaymentModal = ({ isOpen, onClose, amount, formData, user }) => {
     }
 
     if (paymentIntent?.status === "succeeded") {
-      console.log(
-        "paymentId :",
-        paymentIntent.id,
-        "userEmail :",
-        formData?.contact,
-        "userName :",
-        formData?.name,
-        "date :",
-        new Date(),
-        "amount :",
-        formData?.bill
-      );
+      const finalData = {
+        paymentId: paymentIntent.id,
+        contact: formData?.contact,
+        donor: formData?.name,
+        date: new Date(),
+        amount: formData?.bill,
+        tag: tag,
+        title: title,
+        status: "pending",
+      };
+      
       setLoading(false);
-      if (user && user?.email) {
-        alert("payment successful");
-        router.push("/");
-      }
+      alert("payment successful");
+      router.push("/");
     }
 
     setLoading(false);

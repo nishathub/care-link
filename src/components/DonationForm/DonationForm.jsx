@@ -10,7 +10,7 @@ import StripePaymentModal from "../StripePaymentModal/StripePaymentModal";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK);
 
-export default function DonationForm() {
+export default function DonationForm({title, tag}) {
   const presetAmounts = [10, 25, 50, 100];
   const user = useUserStore((state) => state?.user);
   const [formData, setFormData] = useState(null);
@@ -112,6 +112,8 @@ export default function DonationForm() {
           amount={selectedAmount}
           formData={formData}
           user={user}
+          tag={tag}
+          title={title}
         />
       </Elements>
     </div>

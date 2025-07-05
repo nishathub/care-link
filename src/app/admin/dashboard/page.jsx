@@ -3,7 +3,8 @@ import PendingReqCard from "@/components/Dashboard/AdminComponents/PendingReqCar
 import RecentDonationTable from "@/components/Dashboard/AdminComponents/RecentDonationTable";
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 
-const AdminDashboard = () => {
+const AdminDashboard = async () => {
+  
   return (
     <main className="flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
       {/* Top Dashboard */}

@@ -11,7 +11,7 @@ export const getAdminStats = async () => {
     } = await getCollections();
 
     const totalProjects =
-      await ongoingProjectsCollection.estimatedDocumentCount();
+      await ongoingProjectsCollection.countDocuments({approved: true});
     const totalStories = await ImpactStoriesCollection.estimatedDocumentCount();
     const totalNews = await NewsCollection.estimatedDocumentCount();
     const totalPackages = await DonationPackages.estimatedDocumentCount();
@@ -32,5 +32,7 @@ export const getAdminStats = async () => {
       totalVolunteers,
       totalDonors,
     };
-  } catch (error) {}
+  } catch (error) {
+    console.error("error getting admin stats", error)
+  }
 }

@@ -26,10 +26,6 @@ const VolunteerRegistration = () => {
     formState: { errors },
   } = useForm();
 
-  const handlePasswordVisibility = () => {
-    setVisible(!isVisible);
-  };
-
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {

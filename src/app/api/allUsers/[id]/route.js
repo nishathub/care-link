@@ -2,6 +2,7 @@ import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import { verifyChief } from "@/lib/verifyChief";
 import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
+import { sendApprovalMail } from "@/utils/sendMail";
 import { ObjectId } from "mongodb";
 
 // UPDATE a single user by ID
@@ -13,6 +14,7 @@ export async function PATCH(request, { params: paramsPromise }) {
     const { id } = params;
     const updatedData = await request.json();
     const { UsersCollection } = await getCollections();
+    const user = await UsersCollection.findOne({ _id: new ObjectId(id) });
     // Removing _id field from updatedData
     delete updatedData._id;
 
@@ -26,6 +28,16 @@ export async function PATCH(request, { params: paramsPromise }) {
         { success: false, message: "Update failed" },
         { status: 400 }
       );
+    }
+    if (user?.approved !== true && updatedData.approved === true) {
+      try {
+        await sendApprovalMail({
+          recipientMail: user?.email,
+          name: user?.name,
+        });
+      } catch (error) {
+        console.error("failed to send approved mail")
+      }
     }
 
     return Response.json({ success: true, message: "Updated successfully" });

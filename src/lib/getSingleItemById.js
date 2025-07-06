@@ -9,10 +9,16 @@ export const getSingleItemById = async (itemName, id) => {
     NewsCollection,
     DonationPackages,
     UsersCollection,
+    DonationLogs,
   } = await getCollections();
 
   if (itemName === "package") {
     return await DonationPackages.findOne({
+      _id: new ObjectId(id),
+    });
+  }
+  if (itemName === "log") {
+    return await DonationLogs.findOne({
       _id: new ObjectId(id),
     });
   }

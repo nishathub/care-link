@@ -2,11 +2,13 @@ import { Edit, Maximize } from "lucide-react";
 import Link from "next/link";
 import DeleteItemButton from "./DeleteItemButton";
 import DisplayToggle from "./DisplayToggle";
+import { formatDate } from "@/utils/formateDate";
 
 const ManageItemsTable = ({
   isReviewProjects = false,
-  isManageUsers= false,
-  afterIdAPI ="",
+  isManageUsers = false,
+  isManageDonation = false,
+  afterIdAPI = "",
   middleAPI,
   data,
   isChief,
@@ -48,9 +50,13 @@ const ManageItemsTable = ({
 
   // A custom boolean to show/hide column
   const showTag = data?.some((item) => item?.tag !== undefined);
+  const showImage = data?.some((item) => item?.imageLink !== undefined);
   const showAuthor = data?.some((item) => item?.author !== undefined);
   const showViews = data?.some((item) => item?.views !== undefined);
   const showName = data?.some((item) => item?.name !== undefined);
+  const showDonor = data?.some((item) => item?.donor !== undefined);
+  const showDate = data?.some((item) => item?.date !== undefined);
+  const showAmount = data?.some((item) => item?.amount !== undefined);
   const showRole = data?.some((item) => item?.role !== undefined);
   const showRank = data?.some((item) => item?.rank !== undefined);
   const showTitle = data?.some((item) => item?.title !== undefined);
@@ -59,7 +65,9 @@ const ManageItemsTable = ({
   );
   const showVerification = data?.some((item) => item?.approved !== undefined);
   const showJournalist = data?.some((item) => item?.journalist !== undefined);
-  const showAvailability = data?.some((item) => item?.availableNow !== undefined);
+  const showAvailability = data?.some(
+    (item) => item?.availableNow !== undefined
+  );
 
   return (
     <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
@@ -74,10 +82,13 @@ const ManageItemsTable = ({
           <thead className="sticky top-0 bg-sky-800 text-white z-10">
             <tr>
               <th>#</th>
-              <th>Image</th>
+              {showImage && <th>Image</th>}
               {showStatus && <th>Display</th>}
               {showVerification && <th>Verification</th>}
               {showAvailability && <th>Available Now</th>}
+              {showDonor && <th>Donor</th>}
+              {showDate && <th>Date</th>}
+              {showAmount && <th>Amount</th>}
               {showTag && <th>Tag</th>}
               {showAuthor && <th>Author</th>}
               {showViews && <th>Views</th>}
@@ -87,7 +98,7 @@ const ManageItemsTable = ({
               {showRank && <th>Rank</th>}
               {showTitle && <th>Title</th>}
               {(isReviewProjects || isManageUsers) && <th>Expand</th>}
-              {!showRole && <th>Edit</th>}
+              {(!showRole && !isManageDonation) && <th>Edit</th>}
               {isChief && <th>Delete</th>}
             </tr>
           </thead>
@@ -95,19 +106,21 @@ const ManageItemsTable = ({
             {data?.map((item, index) => (
               <tr className="border-b-sky-700" key={item?._id}>
                 <td>{index + 1}</td>
-                <td>
-                  <div className="flex justify-center w-16">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12 lg:w-16 lg:h-16">
-                        <img
-                          src={item?.imageLink || imageFallbackLink}
-                          alt={`Image of ${itemName || "item"}`}
-                          className="object-cover"
-                        />
+                {showImage && (
+                  <td>
+                    <div className="flex justify-center w-16">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12 lg:w-16 lg:h-16">
+                          <img
+                            src={item?.imageLink || imageFallbackLink}
+                            alt={`Image of ${itemName || "item"}`}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
+                  </td>
+                )}
                 {showStatus && (
                   <td title="hide/display">
                     <DisplayToggle
@@ -124,7 +137,9 @@ const ManageItemsTable = ({
                     {item?.approved === true ? (
                       <p className="text-green-600">Approved</p>
                     ) : (
-                      <p className="text-pink-600">{item?.approved || "Pending"}</p>
+                      <p className="text-pink-600">
+                        {item?.approved || "Pending"}
+                      </p>
                     )}
                   </td>
                 )}
@@ -137,7 +152,10 @@ const ManageItemsTable = ({
                     )}
                   </td>
                 )}
-                
+
+                {showDonor && <td>{item?.donor || ""}</td>}
+                {showDate && <td>{formatDate(item?.date) || ""}</td>}
+                {showAmount && <td>{item?.amount || ""}</td>}
                 {showTag && <td>{item?.tag || ""}</td>}
                 {showAuthor && <td>{item?.author || ""}</td>}
                 {showViews && <td>{item?.views}</td>}
@@ -149,7 +167,11 @@ const ManageItemsTable = ({
                 {(isReviewProjects || isManageUsers) && (
                   <td>
                     <Link
-                      href={isReviewProjects ? `review-projects/${item?._id}` : `manage-users/${item?._id}`}
+                      href={
+                        isReviewProjects
+                          ? `review-projects/${item?._id}`
+                          : `manage-users/${item?._id}`
+                      }
                       className="cursor-pointer text-blue-600"
                       title="Edit"
                     >
@@ -157,7 +179,7 @@ const ManageItemsTable = ({
                     </Link>
                   </td>
                 )}
-                {!showRole && (
+                {(!showRole && !isManageDonation)  && (
                   <td>
                     <Link
                       href={`${editBaseLink}/${item?._id}`}

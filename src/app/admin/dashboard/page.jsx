@@ -16,8 +16,6 @@ const AdminDashboard = async () => {
       {/* Pending Requests Cards */}
       <PendingReqCard />
 
-      {/* Recent Donations Table */}
-      <RecentDonationTable />
     </main>
   );
 };

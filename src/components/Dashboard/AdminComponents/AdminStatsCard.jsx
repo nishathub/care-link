@@ -22,7 +22,7 @@ const AdminStatsCard = async () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       {stats.map((stat) => (
-        <Link href={stat.link} key={stat.label} className="bg-sky-100 p-6 rounded-2xl shadow-md">
+        <Link href={stat.link} key={stat.label} className="bg-sky-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
           <h2 className="text-sm">{stat.label}</h2>
           <p className="text-2xl md:text-3xl font-bold">{stat.value}</p>
         </Link>

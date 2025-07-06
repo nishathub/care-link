@@ -17,6 +17,9 @@ export const getAdminStats = async () => {
     const pendingProjects = await ongoingProjectsCollection.countDocuments({
       approved: "pending",
     });
+    const pendingDonationLogs = await DonationLogs.countDocuments({
+      approved: "pending",
+    });
     const totalStories = await ImpactStoriesCollection.estimatedDocumentCount();
     const totalNews = await NewsCollection.estimatedDocumentCount();
     const totalPackages = await DonationPackages.estimatedDocumentCount();
@@ -49,6 +52,7 @@ export const getAdminStats = async () => {
       pendingProjects,
       pendingVolunteers,
       donationLogs,
+      pendingDonationLogs,
     };
   } catch (error) {
     console.error("error getting admin stats", error);

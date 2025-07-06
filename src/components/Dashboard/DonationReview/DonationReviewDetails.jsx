@@ -17,7 +17,7 @@ const DonationReviewDetails = ({ data }) => {
     try {
       const updateRes = await secureAxios(
         "patch",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/donation-logs/${data?._id}`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/donationLogs/${data?._id}`,
         updatedData,
         user
       );
@@ -31,12 +31,12 @@ const DonationReviewDetails = ({ data }) => {
 
   const handleApprove = async () => {
     const updatedData = {
-      approved: "approved",
+      approved: true,
     };
     try {
       const updateRes = await secureAxios(
         "patch",
-        `${process.env.NEXT_PUBLIC_CareLinkAPI}/donation-logs/${data?._id}`,
+        `${process.env.NEXT_PUBLIC_CareLinkAPI}/donationLogs/${data?._id}`,
         updatedData,
         user
       );

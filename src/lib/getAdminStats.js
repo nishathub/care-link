@@ -8,6 +8,7 @@ export const getAdminStats = async () => {
       NewsCollection,
       UsersCollection,
       DonationPackages,
+      DonationLogs,
     } = await getCollections();
 
     const approvedProjects = await ongoingProjectsCollection.countDocuments({
@@ -19,6 +20,7 @@ export const getAdminStats = async () => {
     const totalStories = await ImpactStoriesCollection.estimatedDocumentCount();
     const totalNews = await NewsCollection.estimatedDocumentCount();
     const totalPackages = await DonationPackages.estimatedDocumentCount();
+    const donationLogs = await DonationLogs.find().toArray();
     const approvedVolunteers = await UsersCollection.countDocuments({
       role: "volunteer",
       approved: true,
@@ -45,7 +47,8 @@ export const getAdminStats = async () => {
       approvedDonors,
       pendingDonors,
       pendingProjects,
-      pendingVolunteers
+      pendingVolunteers,
+      donationLogs,
     };
   } catch (error) {
     console.error("error getting admin stats", error);

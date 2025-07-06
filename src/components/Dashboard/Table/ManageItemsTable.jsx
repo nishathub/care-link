@@ -6,7 +6,7 @@ import DisplayToggle from "./DisplayToggle";
 const ManageItemsTable = ({
   isReviewProjects = false,
   isManageUsers= false,
-  afterIdAPI,
+  afterIdAPI ="",
   middleAPI,
   data,
   isChief,

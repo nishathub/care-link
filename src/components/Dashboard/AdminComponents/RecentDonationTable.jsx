@@ -1,27 +1,7 @@
-const RecentDonationTable = () => {
-  const recentDonations = [
-    {
-      id: 1,
-      donor: "John Doe",
-      amount: "$200",
-      date: "2025-07-02",
-      status: "Completed",
-    },
-    {
-      id: 2,
-      donor: "Jane Smith",
-      amount: "$150",
-      date: "2025-07-01",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      donor: "Robert Johnson",
-      amount: "$500",
-      date: "2025-06-30",
-      status: "Completed",
-    },
-  ];
+import { getAdminStats } from "@/lib/getAdminStats";
+
+const RecentDonationTable = async () => {
+  const {donationLogs} = await getAdminStats();
 
   return (
     <div className="bg-sky-100 p-6 rounded-2xl shadow-md overflow-auto">
@@ -39,7 +19,7 @@ const RecentDonationTable = () => {
           </tr>
         </thead>
         <tbody>
-          {recentDonations.map((donation, index) => (
+          {donationLogs?.map((donation, index) => (
             <tr key={donation.id} className="border-b">
               <td className="py-2 px-4">{index + 1}</td>
               <td className="py-2 px-4">{donation.donor}</td>

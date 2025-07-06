@@ -14,25 +14,25 @@ const PendingReqCard = async () => {
     {
       label: "Pending Volunteers",
       count: pendingVolunteers,
-      icon: <HeartHandshake className="w-8 h-8 text-sky-800" />,
+      icon: <HeartHandshake className="w-6 sm:w-8 text-sky-800" />,
       href: "/admin/manage-users",
     },
     {
       label: "Pending Donors",
       count: pendingDonors,
-      icon: <User className="w-8 h-8 text-sky-800" />,
+      icon: <User className="w-6 sm:w-8 text-sky-800" />,
       href: "/admin/manage-users",
     },
     {
       label: "Review Projects",
       count: pendingProjects,
-      icon: <ClipboardList className="w-8 h-8 text-sky-800" />,
+      icon: <ClipboardList className="w-6 sm:w-8 text-sky-800" />,
       href: "/admin/review-projects",
     },
     {
       label: "Review Donation",
       count: pendingDonationLogs,
-      icon: <HandCoins className="w-8 h-8 text-sky-800" />,
+      icon: <HandCoins className="w-6 sm:w-8 text-sky-800" />,
       href: "/admin/donation-logs",
     },
   ];
@@ -44,13 +44,13 @@ const PendingReqCard = async () => {
           href={item.href}
           className={`${
             item.count ? "bg-pink-200" : "bg-sky-100"
-          } p-6 rounded-2xl shadow-md hover:shadow-lg transition`}
+          } p-3 sm:p-6 rounded-2xl shadow-md hover:shadow-lg transition`}
         >
-          <div className="flex items-center gap-4">
-            <div className="bg-sky-200 p-3 rounded-full">{item.icon}</div>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="bg-sky-200 p-2 sm:p-3 rounded-full">{item.icon}</div>
             <div>
-              <h3 className="text-lg font-semibold">{item.label}</h3>
-              <p className="text-2xl md:text-3xl font-bold">{item.count}</p>
+              <h3 className="text-base sm:text-lg font-semibold">{item.label}</h3>
+              <p className="text-xl sm:text-3xl font-bold">{item.count}</p>
             </div>
           </div>
         </Link>

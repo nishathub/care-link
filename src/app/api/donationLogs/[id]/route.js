@@ -1,7 +1,6 @@
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import { verifyChief } from "@/lib/verifyChief";
-import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 import { ObjectId } from "mongodb";
 
 // UPDATE a single log by ID

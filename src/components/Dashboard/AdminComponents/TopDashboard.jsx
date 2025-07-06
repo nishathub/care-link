@@ -14,11 +14,11 @@ const TopDashboard = () => {
   }
   return (
     <div className="flex justify-between items-center mb-8">
-      <h1 className="text-2xl text-sky-800 font-bold capitalize">
+      <h1 className="text-lg sm:text-2xl text-sky-800 font-bold capitalize">
         {user?.role} Dashboard
       </h1>
       <div className="flex items-center gap-4 relative">
-        <span className="font-medium text-sky-800 capitalize">
+        <span className="text-sm sm:text-md font-medium text-sky-800 capitalize">
           {user?.role}
         </span>
         <img

@@ -97,8 +97,10 @@ const ManageItemsTable = ({
               {showRole && <th>Role</th>}
               {showRank && <th>Rank</th>}
               {showTitle && <th>Title</th>}
-              {(isReviewProjects || isManageUsers) && <th>Expand</th>}
-              {(!showRole && !isManageDonation) && <th>Edit</th>}
+              {(isReviewProjects || isManageUsers || isManageDonation) && (
+                <th>Expand</th>
+              )}
+              {!showRole && !isManageDonation && <th>Edit</th>}
               {isChief && <th>Delete</th>}
             </tr>
           </thead>
@@ -164,22 +166,24 @@ const ManageItemsTable = ({
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}
                 {showTitle && <td>{item?.title || ""}</td>}
-                {(isReviewProjects || isManageUsers) && (
+                {(isReviewProjects || isManageUsers || isManageDonation) && (
                   <td>
                     <Link
                       href={
                         isReviewProjects
                           ? `review-projects/${item?._id}`
+                          : isManageDonation
+                          ? `donation-logs/${item?._id}`
                           : `manage-users/${item?._id}`
                       }
                       className="cursor-pointer text-blue-600"
-                      title="Edit"
+                      title="Expand"
                     >
                       <Maximize className="w-5 h-5" />
                     </Link>
                   </td>
                 )}
-                {(!showRole && !isManageDonation)  && (
+                {!showRole && !isManageDonation && (
                   <td>
                     <Link
                       href={`${editBaseLink}/${item?._id}`}

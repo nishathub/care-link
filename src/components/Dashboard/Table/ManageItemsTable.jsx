@@ -70,7 +70,7 @@ const ManageItemsTable = ({
   );
 
   return (
-    <div className="bg-gray-300 text-gray-800 p-4 rounded-md">
+    <div className="bg-gray-300 text-gray-800 p-4 rounded-md max-w-[calc(100vw-16px)] overflow-auto">
       <div className="flex justify-between items-center mb-4">
         <h4 className="text-lg lg:text-2xl font-semibold">
           Total {itemName}: {data?.length}
@@ -165,7 +165,7 @@ const ManageItemsTable = ({
                 {showName && <td>{item?.name || ""}</td>}
                 {showRole && <td>{item?.role || ""}</td>}
                 {showRank && <td>{item?.rank || ""}</td>}
-                {showTitle && <td>{item?.title || ""}</td>}
+                {showTitle && <td className="min-w-48">{item?.title || ""}</td>}
                 {(isReviewProjects || isManageUsers || isManageDonation) && (
                   <td>
                     <Link

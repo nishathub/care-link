@@ -1,5 +1,7 @@
 import { getCollections } from "@/lib/dbCollections";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import { verifyChief } from "@/lib/verifyChief";
+import deleteImageFromCloudinary from "@/utils/deleteImageFromCloudinary";
 import { ObjectId } from "mongodb";
 
 // GET single donate package by ID
@@ -64,3 +66,39 @@ export async function PATCH(request, { params: paramsPromise }) {
   }
 }
 
+// DELETE a single package by ID
+export async function DELETE(request, { params: paramsPromise }) {
+  try {
+    await verifyChief(); // only chief can run this operation
+
+    const { DonationPackages } = await getCollections();
+    const params = await paramsPromise;
+    const { id } = params;
+    // DELETE IMAGE FROM CLOUDINARY
+    const { cloudinaryPublicId, role, rank } = await DonationPackages.findOne({
+      _id: new ObjectId(id),
+    });
+    if (cloudinaryPublicId) {
+      await deleteImageFromCloudinary(cloudinaryPublicId);
+    }
+    // DELETE ITEM FROM DB even if the Image is not deleted
+    const result = await DonationPackages.deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    if (result.deletedCount === 0) {
+      return Response.json(
+        { success: false, message: "Delete failed" },
+        { status: 400 }
+      );
+    }
+
+    return Response.json({ success: true, message: "Deleted successfully" });
+  } catch (error) {
+    console.error("DELETE error:", error);
+    return Response.json(
+      { success: false, message: "Failed to delete" },
+      { status: 500 }
+    );
+  }
+}

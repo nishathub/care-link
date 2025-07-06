@@ -75,7 +75,7 @@ export async function DELETE(request, { params: paramsPromise }) {
     const params = await paramsPromise;
     const { id } = params;
     // DELETE IMAGE FROM CLOUDINARY
-    const { cloudinaryPublicId, role, rank } = await DonationPackages.findOne({
+    const { cloudinaryPublicId } = await DonationPackages.findOne({
       _id: new ObjectId(id),
     });
     if (cloudinaryPublicId) {

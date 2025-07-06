@@ -1,16 +1,5 @@
 import { getAdminStats } from "@/lib/getAdminStats";
-import {
-  User,
-  ClipboardList,
-  HeartHandshake,
-  BookOpen,
-  FolderKanban,
-  FileText,
-  Users,
-  HandCoins,
-  ShieldCheck,
-  CircleDollarSign,
-} from "lucide-react";
+import { User, ClipboardList, HeartHandshake, HandCoins } from "lucide-react";
 import Link from "next/link";
 
 const PendingReqCard = async () => {

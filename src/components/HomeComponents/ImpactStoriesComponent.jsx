@@ -13,6 +13,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
           <SectionHeading
             heading={"Impact Stories"}
             paragraph={"Your Donation Matters"}
+            textColor="black"
           ></SectionHeading>
         </div>
       )}

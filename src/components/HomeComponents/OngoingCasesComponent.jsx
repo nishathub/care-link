@@ -14,6 +14,7 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
           <SectionHeading
             heading={"Ongoing Cases"}
             paragraph={"You can help to ease their lives"}
+            textColor="black"
           ></SectionHeading>
         </div>
       )}

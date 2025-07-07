@@ -3,7 +3,7 @@ import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
 import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";
 import ImpactStoriesComponent from "@/components/HomeComponents/ImpactStoriesComponent";
 import OngoingCasesComponent from "@/components/HomeComponents/OngoingCasesComponent";
-import ImageSlider from "@/components/ImageSlider/ImageSlider";
+import ImageSlider from "@/components/HomeComponents/ImageSlider/ImageSlider";
 import Navbar from "@/components/Navbar/Navbar";
 import NewsComponent from "@/components/HomeComponents/NewsComponent";
 

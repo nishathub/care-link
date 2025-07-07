@@ -1,4 +1,4 @@
-import DonationReviewDetails from "@/components/Dashboard/DonationReview/DonationReviewDetails";
+import ReviewDetails from "@/components/Dashboard/ReviewDetails/ReviewDetails";
 import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ const DonationLogReview = async ({ params: paramsPromise }) => {
   
   return (
     <div>
-        <DonationReviewDetails data={plainData}/>
+        <ReviewDetails type={"donation"} data={plainData}/>
     </div>
   );
 };

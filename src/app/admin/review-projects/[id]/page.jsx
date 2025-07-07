@@ -1,4 +1,4 @@
-import ProjectReviewDetails from "@/components/Dashboard/ProjectReview/ProjectReviewDetails";
+import ReviewDetails from "@/components/Dashboard/ReviewDetails/ReviewDetails";
 import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ const ProjectReview = async ({ params: paramsPromise }) => {
   
   return (
     <div>
-        <ProjectReviewDetails data={plainData}/>
+        <ReviewDetails type={"project"} data={plainData}/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import UserReviewDetails from "@/components/Dashboard/UserReviewDetails/UserReviewDetails";
+import ReviewDetails from "@/components/Dashboard/ReviewDetails/ReviewDetails";
 import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ const UserReview = async ({ params: paramsPromise }) => {
   
   return (
     <div>
-    <UserReviewDetails data={plainData}/>
+    <ReviewDetails type={"user"} data={plainData}/>
     </div>
   );
 };

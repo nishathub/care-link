@@ -80,7 +80,7 @@ const StripePaymentModal = ({
         amount: formData?.bill,
         tag: tag,
         title: title,
-        status: "pending",
+        approved: "pending",
       };
       try {
         const LogRes = await axios.post(

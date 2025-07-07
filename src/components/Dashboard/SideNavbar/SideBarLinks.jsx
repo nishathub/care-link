@@ -99,12 +99,6 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           text="Donation Logs"
           Icon={HandCoins}
         />
-        <SidebarLink
-          href="/admin/volunteers"
-          text="Volunteers"
-          Icon={HeartHandshake}
-        />
-        <SidebarLink href="/admin/donors" text="Donors" Icon={HeartHandshake} />
       </nav>
     );
   }

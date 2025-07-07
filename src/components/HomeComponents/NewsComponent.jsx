@@ -42,7 +42,7 @@ const NewsComponent = async ({ isHomePage = false }) => {
       </div>
       {isHomePage && (
         <div className="w-fit mx-auto mt-6">
-          <Link className="btn btn-primary w-40" href={"/news-updates"}>
+          <Link className="btn bg-sky-800 hover:bg-sky-700 w-40" href={"/news-updates"}>
             More
           </Link>
         </div>

@@ -37,7 +37,7 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
       </div>
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
-          <Link className="btn btn-primary w-40" href={"/ongoing-cases"}>
+          <Link className="btn bg-sky-800 hover:bg-sky-700 w-40" href={"/ongoing-cases"}>
             More
           </Link>
         )}

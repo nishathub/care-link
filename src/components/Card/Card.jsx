@@ -44,7 +44,7 @@ const Card = ({
         </p>
         <div className="card-actions justify-start">
           {donateLink && (
-            <Link href={donateLink} className={`btn btn-primary w-full`}>
+            <Link href={donateLink} className={`btn bg-sky-800 hover:bg-sky-700 w-full`}>
               Details
             </Link>
           )}

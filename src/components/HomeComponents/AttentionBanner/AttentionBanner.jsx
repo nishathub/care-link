@@ -16,7 +16,7 @@ const AttentionBanner = () => {
             This is your chance to make a difference — to bring smiles to sad
             faces and hope to hearts that need it most.
           </p>
-          <Link href={"/donate-now"} className="btn btn-primary w-48">
+          <Link href={"/donate-now"} className="btn bg-sky-800 hover:bg-sky-700 w-48">
             Donate Now
           </Link>
         </div>

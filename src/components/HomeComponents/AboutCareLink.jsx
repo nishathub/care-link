@@ -32,7 +32,7 @@ const AboutCareLink = () => {
               vision to serve humanity.
             </p>
           </div>
-          <Link href={"/donate-now"} className="btn btn-primary w-full sm:w-fit mt-4 lg:mt-6">
+          <Link href={"/donate-now"} className="btn bg-sky-800 hover:bg-sky-700 w-full sm:w-fit mt-4 lg:mt-6">
             Donate Now
           </Link>
         </div>

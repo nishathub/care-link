@@ -29,11 +29,6 @@ const NavLinks = () => {
           </ul>
         </details>
       </li>
-      <li>
-        <Link className="btn btn-sm btn-primary mt-2 lg:mt-0" href={"/donate-now"}>
-          Donate Now
-        </Link>
-      </li>
     </>
   );
 };

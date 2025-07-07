@@ -16,11 +16,11 @@ const Card = ({
   itemName,
 }) => {
   return (
-    <div className="card bg-sky-100 w-80 lg:w-96 shadow-sm">
+    <div className="card bg-sky-100 w-full sm:w-80 lg:w-96 shadow-sm hover:shadow-xl transition-shadow">
       <figure>
         <img
           src={image}
-          className="w-80 lg:w-96 h-40 lg:h-48 object-cover"
+          className="w-full sm:w-80 lg:w-96 h-48 object-cover"
           alt="Shoes"
         />
       </figure>
@@ -31,8 +31,8 @@ const Card = ({
           </p>
         )}
         <div className="flex justify-between">
-          <p className="text-sky-700 text-sm font-bold capitalize">{tag}</p>
-          <p className="text-sky-800 font-bold text-right">
+          <p className="text-sky-700 text-sm font-medium capitalize">{tag}</p>
+          <p className="text-sky-800 font-medium text-right">
             {date ? formatDate(date) : ""}
           </p>
         </div>

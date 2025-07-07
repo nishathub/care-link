@@ -24,14 +24,14 @@ const ViewCountButton = ({
     return (
       <button
         onClick={handleViewCount}
-        className={`btn-link text-sky-500 cursor-pointer`}
+        className={`btn-link text-sky-700 cursor-pointer`}
       >
         Read More
       </button>
     );
   }
   return (
-    <Link href={readMoreLink} className={`btn-link text-sky-500`}>
+    <Link href={readMoreLink} className={`btn-link text-sky-700`}>
       Read More
     </Link>
   );

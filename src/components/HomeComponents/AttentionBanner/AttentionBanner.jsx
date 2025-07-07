@@ -4,11 +4,11 @@ import "./AttentionBanner.css";
 
 const AttentionBanner = () => {
   return (
-    <div className="hero min-h-screen relative overflow-hidden custom-hero rounded-md">
+    <div className="hero min-h-[85vh] relative overflow-hidden custom-hero rounded-md">
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content flex-wrap-reverse">
         <div className="max-w-md">
-          <h1 className="mb-5 text-3xl lg:text-5xl font-bold capitalize">
+          <h1 className="mb-5 text-2xl md:text-3xl lg:text-5xl font-bold capitalize">
             Bring smile to the sad faces
           </h1>
           <p className="mb-5">

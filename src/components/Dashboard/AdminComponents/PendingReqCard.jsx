@@ -37,7 +37,7 @@ const PendingReqCard = async () => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {pending.map((item) => (
         <Link
           key={item.label}

@@ -1,6 +1,5 @@
 import AdminStatsCard from "@/components/Dashboard/AdminComponents/AdminStatsCard";
 import PendingReqCard from "@/components/Dashboard/AdminComponents/PendingReqCard";
-import RecentDonationTable from "@/components/Dashboard/AdminComponents/RecentDonationTable";
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 
 const AdminDashboard = async () => {

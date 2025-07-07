@@ -55,7 +55,7 @@ const SideNavbar = () => {
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <Image
-              src={user?.imageLink || "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg"}
+              src={user?.imageLink || "https://res.cloudinary.com/dntewbvod/image/upload/v1751861766/user-avatar_vaibmz.png"}
               alt="User Avatar"
               width={40}
               height={40}

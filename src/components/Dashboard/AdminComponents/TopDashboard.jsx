@@ -23,7 +23,7 @@ const TopDashboard = () => {
         </span>
         <img
           onClick={() => setShowDropdown(!showDropdown)}
-          src={user?.imageLink}
+          src={user?.imageLink || "https://res.cloudinary.com/dntewbvod/image/upload/v1751861766/user-avatar_vaibmz.png"}
           alt="Admin Avatar"
           className="w-10 h-10 rounded-full object-cover cursor-pointer"
         />

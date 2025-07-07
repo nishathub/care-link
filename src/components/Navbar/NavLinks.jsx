@@ -8,7 +8,7 @@ const NavLinks = () => {
   return (
     <>
       <li>
-        <Link className={`${pathName === "/ongoing-cases" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/ongoing-cases"}>Ongoing Cases</Link>
+        <Link className={`${pathName === "/ongoing-cases" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/ongoing-cases"}>Ongoing Projects</Link>
       </li>
       <li>
         <Link className={`${pathName === "/impact-stories" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/impact-stories"}>Impact Stories</Link>

@@ -1,4 +1,3 @@
-
 const AboutCareLink = () => {
   return (
     <div className="hero">
@@ -9,29 +8,31 @@ const AboutCareLink = () => {
           className="max-w-xs lg:max-w-md"
         />
         <div>
-          <h2 className="text-2xl lg:text-4xl text-sky-700 font-bold ">About Us</h2>
+          <h2 className="text-2xl lg:text-4xl text-sky-700 font-bold ">
+            About Us
+          </h2>
           <hr className="border-t-2 mt-3" />
           <div className="space-y-4 mt-4">
             <p className="">
-              We are deeply touched seeing the helpless people of Bangladesh,
-              the least developed country.Still, has been working in the field
-              of humanitarian services since 2009. So that we can provide
-              helpless people with a peaceful life.
+              We are moved by the struggles of helpless people in Bangladesh,
+              one of the least developed countries. We have been dedicated to
+              providing them with a more peaceful life through our humanitarian
+              work.
             </p>
             <p className="">
-              We can only build a better world if all of us live happily.
-              Although we know it is very hard to accomplish this task. Our
-              teamwork becomes more effective when you join us in this
-              humanitarian project.
+              A better world is only possible when everyone can live happily —
+              though we know this goal is not easy to achieve. Our efforts
+              become stronger when you join us.
             </p>
             <p className="">
-              It becomes very hard for us alone to support those huge amounts of
-              vulnerable people. For this reason, we welcome you to be a part of
-              our human services. Advance each day with the vision of
-              serving humanity.
+              Supporting so many vulnerable people alone is challenging. That is
+              why we invite you to stand with us. Move forward each day with a
+              vision to serve humanity.
             </p>
           </div>
-          <button className="btn btn-primary mt-4 lg:mt-6">Call to Action</button>
+          <button className="btn btn-primary mt-4 lg:mt-6">
+            Call to Action
+          </button>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
       {isHomePage && (
         <div>
           <SectionHeading
-            heading={"Ongoing Cases"}
+            heading={"Ongoing Projects"}
             paragraph={"You can help to ease their lives"}
             textColor="black"
           ></SectionHeading>

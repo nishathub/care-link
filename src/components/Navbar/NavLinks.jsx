@@ -24,7 +24,7 @@ const NavLinks = () => {
               <Link className={`${pathName === "/register-volunteer" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/register-volunteer"}>Become a Volunteer</Link>
             </li>
             <li>
-              <Link className={`${pathName === "/register-donor" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/register-donor"}>Become a Donor</Link>
+              <Link className={`hidden ${pathName === "/register-donor" ? "text-pink-400 underline underline-offset-4" : ""}`} href={"/register-donor"}>Become a Donor</Link>
             </li>
           </ul>
         </details>

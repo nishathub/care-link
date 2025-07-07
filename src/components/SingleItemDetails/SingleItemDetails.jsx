@@ -16,7 +16,7 @@ const SingleItemDetails = ({
 
   return (
     <div>
-      <SectionHeading heading={data?.title}></SectionHeading>
+      <SectionHeading heading={data?.title} textColor="black"></SectionHeading>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="max-w-2xl mx-auto w-full space-y-8">
           <div className="h-80 rounded-lg shadow-2xl relative">

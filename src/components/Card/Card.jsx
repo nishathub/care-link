@@ -45,7 +45,7 @@ const Card = ({
         <div className="card-actions justify-start">
           {donateLink && (
             <Link href={donateLink} className={`btn btn-primary w-full`}>
-              Donate
+              Details
             </Link>
           )}
           {readMoreLink && (

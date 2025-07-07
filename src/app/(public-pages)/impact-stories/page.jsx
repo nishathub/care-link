@@ -4,7 +4,7 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 const ImpactStories = async () => {
   return (
     <div>
-      <SectionHeading heading={"Success Stories"}></SectionHeading>
+      <SectionHeading heading={"Success Stories"} textColor="black"></SectionHeading>
       <div>
         <ImpactStoriesComponent
           hideMoreButton={true}

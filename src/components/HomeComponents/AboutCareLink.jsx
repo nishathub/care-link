@@ -1,14 +1,16 @@
+import Link from "next/link";
+
 const AboutCareLink = () => {
   return (
-    <div className="hero">
+    <div className="hero bg-sky-100 rounded-lg">
       <div className="hero-content flex-col lg:flex-row">
         <img
           src="https://static.toiimg.com/img/79679098/Master.jpg"
           alt=""
-          className="max-w-xs lg:max-w-md"
+          className="max-w-md hidden lg:flex"
         />
         <div>
-          <h2 className="text-2xl lg:text-4xl text-sky-700 font-bold ">
+          <h2 className="text-2xl lg:text-4xl text-center md:text-left text-sky-700 font-bold ">
             About Us
           </h2>
           <hr className="border-t-2 mt-3" />
@@ -30,9 +32,9 @@ const AboutCareLink = () => {
               vision to serve humanity.
             </p>
           </div>
-          <button className="btn btn-primary mt-4 lg:mt-6">
-            Call to Action
-          </button>
+          <Link href={"/donate-now"} className="btn btn-primary w-full sm:w-fit mt-4 lg:mt-6">
+            Donate Now
+          </Link>
         </div>
       </div>
     </div>

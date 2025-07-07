@@ -8,7 +8,7 @@ const DonatePage = async ({ isHomePage = true }) => {
     <div>
       {isHomePage && (
         <div>
-          <SectionHeading heading={"Choose a Package"}></SectionHeading>
+          <SectionHeading heading={"Choose a Package"} textColor="black"></SectionHeading>
         </div>
       )}
       <div className="flex flex-wrap gap-8 justify-center">

@@ -46,7 +46,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
       </div>
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
-          <Link className="btn bg-sky-800 hover:bg-sky-700 w-40" href={"/impact-stories"}>
+          <Link className="btn bg-sky-800 hover:bg-sky-700 text-white w-40" href={"/impact-stories"}>
             More
           </Link>
         )}

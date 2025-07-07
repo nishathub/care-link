@@ -101,7 +101,7 @@ export default function DonationForm({title, tag}) {
           )}
         </div>
 
-        <button type="submit" className="btn bg-sky-800 hover:bg-sky-700 w-full">
+        <button type="submit" className="btn bg-sky-800 hover:bg-sky-700 text-white w-full">
           Donate
         </button>
       </form>

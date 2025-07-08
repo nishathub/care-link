@@ -8,10 +8,10 @@ export default function PublicPageLayout({ children }) {
       <header>
         <Navbar></Navbar>
       </header>
-      <main className={`mt-16 lg:mt-20 px-2 sm:px-0 flex-grow bg-sky-200 text-gray-800`}>
+      <main className={`mt-16 lg:mt-20 flex-grow bg-sky-200 text-gray-800`}>
         <div className="min-h-screen">
           <PublicPageCover />
-          <div className="max-w-7xl mx-auto px-2 sm:px-0 py-8">{children}</div>
+          <div className="max-w-7xl mx-auto px-2 lg:px-0 py-8">{children}</div>
         </div>
       </main>
       <footer>

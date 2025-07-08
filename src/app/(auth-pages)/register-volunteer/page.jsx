@@ -48,7 +48,6 @@ const VolunteerRegistration = () => {
         approved: "pending",
         createdAt: new Date(),
         role: "volunteer",
-
       };
 
       const postRes = await axios.post(
@@ -71,10 +70,9 @@ const VolunteerRegistration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-sky-800">
-      <div className="max-w-4xl mx-auto pt-12">
-        <SectionHeading heading={"Volunteer Registration"} />
-
+    <div className="min-h-screen bg-sky-800 pt-12">
+      <SectionHeading heading={"Volunteer Registration"} />
+      <div className="max-w-4xl mx-auto max-h-[calc(100vh-150px)] overflow-auto">
         <div className="bg-gray-300 p-6 rounded-md relative">
           {isSubmitting && <OverlayLoader message="Submitting..." />}
 

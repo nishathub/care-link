@@ -20,7 +20,7 @@ const SideNavbar = () => {
     <>
       {/* Sidebar toggle for mobile */}
       <div className="lg:hidden pt-5 shadow fixed z-10">
-        <button onClick={() => setOpen(!open)} className="btn btn-ghost btn-sm">
+        <button onClick={() => setOpen(!open)} className="btn btn-soft btn-sm">
           <Menu size={24} />
         </button>
       </div>

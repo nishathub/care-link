@@ -2,6 +2,7 @@
 import useUserStore from "@/lib/zustand/userStore";
 import Dropdown from "../SideNavbar/Dropdown";
 import { useState } from "react";
+import CustomLoading from "@/components/CustomLoading/CustomLoading";
 
 const TopDashboard = () => {
   const user = useUserStore((state) => state?.user);
@@ -10,7 +11,9 @@ const TopDashboard = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   if (isUserLoading) {
-    return <p className="mb-8">Loading...</p>;
+    return <p className="mb-8 mx-auto">
+      <CustomLoading size={32}/>
+    </p>;
   }
   return (
     <div className="flex justify-between items-center mb-8">

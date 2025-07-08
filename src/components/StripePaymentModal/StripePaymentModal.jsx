@@ -3,6 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import CustomLoading from "../CustomLoading/CustomLoading";
 
 const StripePaymentModal = ({
   isOpen,
@@ -141,8 +142,8 @@ const StripePaymentModal = ({
         </form>
 
         {loading && (
-          <div className="mt-4">
-            <p>Loading...</p>
+          <div className="mt-4 w-fit m-auto">
+            <p><CustomLoading color="border-sky-600"/></p>
           </div>
         )}
       </div>

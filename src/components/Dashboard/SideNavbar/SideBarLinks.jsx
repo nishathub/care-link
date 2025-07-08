@@ -1,5 +1,6 @@
 "use client";
 
+import CustomLoading from "@/components/CustomLoading/CustomLoading";
 import {
   LayoutDashboard,
   House,
@@ -41,7 +42,11 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
     );
   };
   if (isUserLoading) {
-    return <p>Loading...</p>;
+    return (
+      <p className="flex justify-center items-center">
+        <CustomLoading />
+      </p>
+    );
   }
   if (user?.role === "admin") {
     return (
@@ -63,7 +68,11 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
           Icon={PlusCircle}
         />
         <SidebarLink href="/admin/add-news" text="Add News" Icon={PlusCircle} />
-        <SidebarLink href="/admin/add-donation-package" text="Add Package" Icon={PlusCircle} />
+        <SidebarLink
+          href="/admin/add-donation-package"
+          text="Add Package"
+          Icon={PlusCircle}
+        />
         <SidebarLink
           href="/volunteer/manage-projects"
           text="Manage Projects"

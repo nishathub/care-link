@@ -47,8 +47,8 @@ const ImageSlider = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute z-20 top-0 left-0 h-full w-full bg-black/30"></div>
-              <div className="absolute z-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 py-2 rounded w-full text-center">
+              <div className="absolute z-20 top-0 left-0 h-full w-full bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              <div className="absolute z-30 bottom-0 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-xs px-4 py-4 lg:py-8 rounded w-full text-center">
                 <h2 className="text-white text-2xl md:text-3xl lg:text-6xl font-bold">{image.caption}</h2>
               </div>
             </div>

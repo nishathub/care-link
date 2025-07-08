@@ -3,6 +3,7 @@ import Link from "next/link";
 import DeleteItemButton from "./DeleteItemButton";
 import DisplayToggle from "./DisplayToggle";
 import { formatDate } from "@/utils/formateDate";
+import CustomLoading from "@/components/CustomLoading/CustomLoading";
 
 const ManageItemsTable = ({
   isReviewProjects = false,
@@ -28,7 +29,7 @@ const ManageItemsTable = ({
   if (isDataLoading || isDeleteLoading || isUserLoading) {
     return (
       <div className="flex justify-center items-center inset-0">
-        <p>Loading...</p>
+       <CustomLoading size={42}/>
       </div>
     );
   }

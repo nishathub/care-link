@@ -3,18 +3,13 @@ import PendingReqCard from "@/components/Dashboard/AdminComponents/PendingReqCar
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";
 
 const AdminDashboard = async () => {
-  
   return (
     <main className="mt-12 lg:mt-0 flex flex-col p-6 md:p-10 w-full bg-gray-300 text-gray-800 rounded-lg">
-      {/* Top Dashboard */}
       <TopDashboard />
-
-      {/* Stats Cards */}
-      <AdminStatsCard />
-
-      {/* Pending Requests Cards */}
-      <PendingReqCard />
-
+      <div className="max-h-[calc(100vh-220px)] overflow-auto">
+        <AdminStatsCard />
+        <PendingReqCard />
+      </div>
     </main>
   );
 };

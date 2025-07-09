@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Footer from "@/components/Footer/Footer";
 import AboutCareLink from "@/components/HomeComponents/AboutCareLink";
 import AttentionBanner from "@/components/HomeComponents/AttentionBanner/AttentionBanner";

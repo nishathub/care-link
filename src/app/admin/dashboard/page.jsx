@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import AdminStatsCard from "@/components/Dashboard/AdminComponents/AdminStatsCard";
 import PendingReqCard from "@/components/Dashboard/AdminComponents/PendingReqCard";
 import TopDashboard from "@/components/Dashboard/AdminComponents/TopDashboard";

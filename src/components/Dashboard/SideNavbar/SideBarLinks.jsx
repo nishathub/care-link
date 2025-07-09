@@ -43,9 +43,9 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
   };
   if (isUserLoading) {
     return (
-      <p className="flex justify-center items-center">
+      <div className="flex justify-center items-center">
         <CustomLoading />
-      </p>
+      </div>
     );
   }
   if (user?.role === "admin") {

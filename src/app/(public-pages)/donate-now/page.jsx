@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Card from "@/components/Card/Card";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import { getDonationPackages } from "@/lib/getDonationPackages";

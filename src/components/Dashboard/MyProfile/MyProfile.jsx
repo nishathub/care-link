@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import {
   Mail,
@@ -13,22 +12,7 @@ import {
 } from "lucide-react";
 import { formatDate } from "@/utils/formateDate";
 
-const MyProfile = ({}) => {
-  const user = {
-    name: "Jibon",
-    email: "jbn@gmail.com",
-    phone: "88055332",
-    occupation: "developer",
-    address: "Mohakhali Dhaka",
-    interestArea: "Health",
-    reference: "Md Abu Taher",
-    availableNow: true,
-    imageLink:
-      "https://res.cloudinary.com/dntewbv",
-    approved: true,
-    createdAt: "2025-07-03T03:41:44.043Z",
-    role: "volunteer",
-  };
+const MyProfile = ({user}) => {
 
   return (
     <div className="min-h-screen bg-gray-300 text-black flex items-center justify-center p-4">
@@ -36,9 +20,10 @@ const MyProfile = ({}) => {
         <div className="bg-sky-700 p-8 flex flex-col items-center text-white">
           <div className="w-32 h-32 relative mb-4">
             <Image
-              src={user.imageLink}
+              src={user.imageLink || "https://res.cloudinary.com/dntewbvod/image/upload/v1751861766/user-avatar_vaibmz.png"}
               alt={user.name}
               fill
+              sizes="128px"
               className="rounded-full object-cover border-4 border-white"
             />
           </div>

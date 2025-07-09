@@ -27,9 +27,9 @@ const Dropdown = ({ user, logout, position = "up" }) => {
     }
   };
   const myProfileLinkMap = {
-    admin: "/admin/my-profile",
-    volunteer: "/volunteer/my-profile",
-    donor: "/donor/my-profile",
+    admin: `/admin/my-profile/${user.id}`,
+    volunteer: `/volunteer/my-profile/${user.id}`,
+    donor: `/donor/my-profile/${user.id}`,
   };
   const positionStyle = () => {
     if (position === "up") {

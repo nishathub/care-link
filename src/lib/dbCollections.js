@@ -1,8 +1,7 @@
-import { connectDB, getDB } from "@/lib/mongo";
+import { getDB } from "@/lib/mongo";
 
 export const getCollections = async () => {
-  await connectDB();
-  const db = getDB();
+  const db = await getDB();
 
   return {
     ongoingProjectsCollection: db.collection("OngoingProjects"),

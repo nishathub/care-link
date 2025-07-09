@@ -56,5 +56,18 @@ export const getAdminStats = async () => {
     };
   } catch (error) {
     console.error("error getting admin stats", error);
+     return {
+      approvedProjects: 0,
+      totalStories: 0,
+      totalNews: 0,
+      totalPackages: 0,
+      approvedVolunteers: 0,
+      approvedDonors: 0,
+      pendingDonors: 0,
+      pendingProjects: 0,
+      pendingVolunteers: 0,
+      donationLogs: [],
+      pendingDonationLogs: 0,
+    };
   }
 };

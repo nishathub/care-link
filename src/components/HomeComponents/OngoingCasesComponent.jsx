@@ -4,8 +4,15 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 import { getOngoingProjects } from "@/lib/getOngoingProjects";
 
 const OngoingCasesComponent = async ({ isHomePage = false }) => {
-  const data = await getOngoingProjects();
-  const renderItem = isHomePage ? data?.slice(0, 3) : data;
+  let data = [];
+  let renderItem = [];
+  try {
+    data = await getOngoingProjects();
+    renderItem = isHomePage ? data?.slice(0, 3) : data;
+  } catch (error) {
+    console.error("DB failed");
+    renderItem = [];
+  }
 
   return (
     <div>
@@ -37,7 +44,10 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
       </div>
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
-          <Link className="btn bg-sky-800 hover:bg-sky-700 text-white w-40" href={"/ongoing-cases"}>
+          <Link
+            className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
+            href={"/ongoing-cases"}
+          >
             More
           </Link>
         )}

@@ -4,8 +4,15 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 import { getNews } from "@/lib/getNews";
 
 const NewsComponent = async ({ isHomePage = false }) => {
-  const newsCollection = await getNews();
-  const renderItem = isHomePage ? newsCollection?.slice(0, 3) : newsCollection;
+  let newsCollection = [];
+  let renderItem = [];
+  try {
+    newsCollection = await getNews();
+    renderItem = isHomePage ? newsCollection?.slice(0, 3) : newsCollection;
+  } catch (error) {
+    console.error("DB failed");
+    renderItem = [];
+  }
 
   return (
     <div>
@@ -42,7 +49,10 @@ const NewsComponent = async ({ isHomePage = false }) => {
       </div>
       {isHomePage && (
         <div className="w-fit mx-auto mt-6">
-          <Link className="btn bg-sky-800 hover:bg-sky-700 text-white w-40" href={"/news-updates"}>
+          <Link
+            className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
+            href={"/news-updates"}
+          >
             More
           </Link>
         </div>

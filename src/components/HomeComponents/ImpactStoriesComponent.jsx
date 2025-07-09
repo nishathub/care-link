@@ -4,8 +4,15 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 import { getImpactStories } from "@/lib/getImpactStories";
 
 const ImpactStoriesComponent = async ({ isHomePage = false }) => {
-  const data = await getImpactStories();
-  const renderItem = isHomePage ? data.slice(0, 3) : data;
+  let data = [];
+  let renderItem = [];
+  try {
+    data = await getImpactStories();
+    renderItem = isHomePage ? data.slice(0, 3) : data;
+  } catch (error) {
+    console.error("DB failed");
+    renderItem = [];
+  }
   return (
     <div>
       {isHomePage && (
@@ -46,7 +53,10 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
       </div>
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
-          <Link className="btn bg-sky-800 hover:bg-sky-700 text-white w-40" href={"/impact-stories"}>
+          <Link
+            className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
+            href={"/impact-stories"}
+          >
             More
           </Link>
         )}

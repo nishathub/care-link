@@ -1,6 +1,7 @@
 "use client";
 import useUserStore from "@/lib/zustand/userStore";
 import Link from "next/link";
+import CustomLoading from "../CustomLoading/CustomLoading";
 
 const NavEnd = () => {
   const user = useUserStore((state) => state?.user);
@@ -25,7 +26,7 @@ const NavEnd = () => {
   if (isUserLoading) {
     return (
       <div className="navbar-end">
-        <p>loading..</p>
+        <CustomLoading/>
       </div>
     );
   }

@@ -1,11 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
+import Link from "next/link";
 
-const Dropdown = ({ logout }) => {
+const Dropdown = ({ user, logout, position = "up" }) => {
   const router = useRouter();
   const [isLoggingOut, setLoggingOut] = useState(false);
   const handleLogout = async () => {
@@ -25,12 +26,34 @@ const Dropdown = ({ logout }) => {
       setLoggingOut(false);
     }
   };
+  const myProfileLinkMap = {
+    admin: "/admin/my-profile",
+    volunteer: "/volunteer/my-profile",
+    donor: "/donor/my-profile",
+  };
+  const positionStyle = () => {
+    if (position === "up") {
+      return "bottom-16";
+    }
+    if (position === "down") {
+      return "top-16";
+    }
+  };
   return (
-    <div className="absolute bottom-16 right-4 w-40 bg-white shadow-lg rounded-lg z-50">
+    <div
+      className={`absolute ${positionStyle()} right-0 w-40 bg-gray-50 shadow-lg rounded-lg z-50`}
+    >
+      <Link href={myProfileLinkMap[user?.role]}>
+        <p className="text-black px-4 py-2 flex items-center rounded-lg gap-2 hover:bg-gray-200"> <User size={16}/> My Profile</p>
+      </Link>
       <button
         onClick={handleLogout}
         disabled={isLoggingOut}
-        className={`w-full text-left ${isLoggingOut ? "bg-gray-200 text-pink-400" : "hover:bg-gray-100 text-red-700 cursor-pointer"}  px-4 py-2 flex items-center rounded-lg gap-2`}
+        className={`w-full text-left ${
+          isLoggingOut
+            ? "bg-gray-200 text-pink-400"
+            : "hover:bg-gray-200 text-red-700 cursor-pointer"
+        }  px-4 py-2 flex items-center rounded-lg gap-2`}
       >
         <LogOut size={16} />
         {isLoggingOut ? "Signing Out.." : "Logout"}

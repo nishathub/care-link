@@ -30,7 +30,7 @@ const TopDashboard = () => {
           alt="Admin Avatar"
           className="w-10 h-10 rounded-full object-cover cursor-pointer"
         />
-        {showDropdown && <Dropdown logout={logout}></Dropdown>}
+        {showDropdown && <Dropdown user={user} logout={logout} position="down"></Dropdown>}
       </div>
     </div>
   );

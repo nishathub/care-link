@@ -67,7 +67,7 @@ const SideNavbar = () => {
             </div>
           </div>
 
-          {showDropdown && <Dropdown logout={logout}></Dropdown>}
+          {showDropdown && <Dropdown user={user} logout={logout}></Dropdown>}
         </div>
       </aside>
     </>

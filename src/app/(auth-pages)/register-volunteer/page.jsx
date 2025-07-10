@@ -70,7 +70,7 @@ const VolunteerRegistration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-sky-800 pt-12">
+    <div className="min-h-screen bg-sky-800 pt-12 px-2 lg:px-0">
       <SectionHeading heading={"Volunteer Registration"} />
       <div className="max-w-4xl mx-auto max-h-[calc(100vh-150px)] overflow-auto">
         <div className="bg-gray-300 p-6 rounded-md relative">

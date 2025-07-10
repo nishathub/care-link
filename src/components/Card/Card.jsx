@@ -16,7 +16,7 @@ const Card = ({
   itemName,
 }) => {
   return (
-    <div className="card bg-sky-100 w-[calc(100vw-8px)] sm:w-80 lg:w-96 shadow-sm hover:shadow-xl transition-shadow">
+    <div className="card bg-sky-100 w-[calc(100vw-16px)] sm:w-80 lg:w-96 shadow-sm hover:shadow-xl transition-shadow">
       <figure>
         <img
           src={image}

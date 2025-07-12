@@ -2,13 +2,18 @@ import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import { getImpactStories } from "@/lib/getImpactStories";
+import ComponentsClient from "./ComponentsClient";
 
 const ImpactStoriesComponent = async ({ isHomePage = false }) => {
-  let data = [];
   let renderItem = [];
   try {
-    data = await getImpactStories();
-    renderItem = isHomePage ? data.slice(0, 3) : data;
+    const data = await getImpactStories();
+    // serialize into plain string (objectId)
+    const serializedData = data.map((item) => ({
+      ...item,
+      _id: item._id.toString(),
+    }));
+    renderItem = isHomePage ? serializedData.slice(0, 3) : serializedData;
   } catch (error) {
     console.error("DB failed");
     renderItem = [];
@@ -25,32 +30,12 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
         </div>
       )}
 
-      <div className="flex flex-wrap gap-8 justify-center">
-        {renderItem.map((story, index) => {
-          return (
-            <Card
-              key={index}
-              showViews={true}
-              itemName={"story"}
-              id={story?._id?.toString()}
-              readMoreLink={`impact-stories/${story?._id?.toString()}`}
-              image={
-                story?.imageLink ||
-                "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              }
-              title={story.title}
-              tag={story.tag}
-              views={story.views}
-              date={story.date}
-              description={`${
-                story?.description?.length > 220
-                  ? story.description.slice(0, 220) + "..."
-                  : story.description
-              }`}
-            ></Card>
-          );
-        })}
-      </div>
+      
+      <ComponentsClient
+        itemName={"story"}
+        isHomePage={isHomePage}
+        initialData={renderItem}
+      />
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
           <Link

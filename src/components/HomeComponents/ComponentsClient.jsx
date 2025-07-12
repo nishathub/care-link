@@ -1,10 +1,15 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Card from "../Card/Card";
+import axios from "axios";
+import CustomLoading from "../CustomLoading/CustomLoading";
 
-const  ComponentsClient= ({ itemName, initialData, isHomePage }) => {
+const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
   const [items, setItems] = useState(initialData);
+  const [isFetchLoading, setFetchLoading] = useState(false);
+  const [isSecondHit, setSecondHit] = useState(false);
+  
   const apiLink = {
     project: `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`,
     story: `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`,
@@ -17,38 +22,54 @@ const  ComponentsClient= ({ itemName, initialData, isHomePage }) => {
   };
 
   useEffect(() => {
-    if (items.length === 0) {
-      fetch(apiLink[itemName])
-        .then((res) => res.json())
-        .then((data) => {
-          const items = isHomePage ? data.slice(0, 3) : data;
-          setItems(items);
-        })
-        .catch((err) => console.error("Client refetch failed:", err));
+    const fetchItems = async () => {
+      setFetchLoading(true);
+      try {
+        const itemsFetchRes = await axios.get(apiLink[itemName]);
+        const { data } = itemsFetchRes.data;
+        const items = isHomePage ? data?.slice(0, 3) : data;
+        setItems(items);
+      } catch (error) {
+        console.error("Client refetch failed:", error);
+      } finally {
+        setFetchLoading(false);
+      }
+    };
+    // only use this useEffect fetch when no initial data passed
+    if (initialData?.length === 0) {
+      setSecondHit(true); // this one is to render no data message only when both fetch fail.
+      fetchItems();
     }
-  }, [items.length, isHomePage]);
+  }, []);
 
+  if (isFetchLoading) {
+    return (
+      <div className="m-auto w-fit">
+        <CustomLoading size={40} />
+      </div>
+    );
+  }
   return (
     <div className="flex flex-wrap gap-8 justify-center">
-      {items.length > 0 ? (
-        items.map((project, index) => (
-          <Card
-            key={index}
-            donateLink={`${donateLink[itemName]}/${project._id}`}
-            image={
-              project?.imageLink ||
-              "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            }
-            title={project.title}
-            tag={project.tag}
-            description={project.description}
-          />
-        ))
-      ) : (
-        <p>No ongoing cases found.</p>
-      )}
+      {items?.length > 0
+        ? items?.map((project, index) => (
+            <Card
+              key={index}
+              donateLink={`${donateLink[itemName]}/${project._id}`}
+              image={
+                project?.imageLink ||
+                "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              }
+              title={project.title}
+              tag={project.tag}
+              description={project.description}
+            />
+          ))
+        : isSecondHit && (
+            <p className="text-red-700 text-center py-4">No Items found.</p>
+          )}
     </div>
   );
-}
+};
 
 export default ComponentsClient;

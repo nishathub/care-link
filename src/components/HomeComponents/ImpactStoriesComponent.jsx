@@ -5,7 +5,7 @@ import { getImpactStories } from "@/lib/getImpactStories";
 import ComponentsClient from "./ComponentsClient";
 
 const ImpactStoriesComponent = async ({ isHomePage = false }) => {
-  let renderItem = [];
+  let renderItems = [];
   try {
     const data = await getImpactStories();
     // serialize into plain string (objectId)
@@ -13,11 +13,12 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
       ...item,
       _id: item._id.toString(),
     }));
-    renderItem = isHomePage ? serializedData.slice(0, 3) : serializedData;
+    renderItems = isHomePage ? serializedData.slice(0, 3) : serializedData;
   } catch (error) {
     console.error("DB failed");
-    renderItem = [];
+    renderItems = [];
   }
+
   return (
     <div>
       {isHomePage && (
@@ -30,12 +31,12 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
         </div>
       )}
 
-      
       <ComponentsClient
         itemName={"story"}
         isHomePage={isHomePage}
-        initialData={renderItem}
+        initialData={renderItems}
       />
+
       <div className="w-fit mx-auto mt-6">
         {isHomePage && (
           <Link

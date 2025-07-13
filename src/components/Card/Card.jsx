@@ -21,7 +21,7 @@ const Card = ({
         <img
           src={image}
           className="w-full sm:w-80 lg:w-96 h-48 object-cover"
-          alt="Shoes"
+          alt={`${itemName}-image`}
         />
       </figure>
       <div className="card-body relative">

@@ -9,13 +9,13 @@ const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
   const [items, setItems] = useState(initialData);
   const [isFetchLoading, setFetchLoading] = useState(false);
   const [isSecondHit, setSecondHit] = useState(false);
-  
+
   const apiLink = {
     project: `${process.env.NEXT_PUBLIC_CareLinkAPI}/ongoingProjects`,
     story: `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories`,
     news: `${process.env.NEXT_PUBLIC_CareLinkAPI}/news`,
   };
-  const donateLink = {
+  const redirectLink = {
     project: `ongoing-cases`,
     story: `impact-stories`,
     news: `news-updates`,
@@ -49,13 +49,41 @@ const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
       </div>
     );
   }
+  if (itemName === "project") {
+    return (
+      <div className="flex flex-wrap gap-8 justify-center">
+        {items?.length > 0
+          ? items?.map((project, index) => (
+              <Card
+                key={index}
+                donateLink={`${redirectLink[itemName]}/${project._id}`}
+                image={
+                  project?.imageLink ||
+                  "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg"
+                }
+                title={project.title}
+                tag={project.tag}
+                description={project.description}
+              />
+            ))
+          : isSecondHit && (
+              <p className="text-red-700 text-center py-4">No Items found.</p>
+            )}
+      </div>
+    );
+  }
   return (
     <div className="flex flex-wrap gap-8 justify-center">
       {items?.length > 0
         ? items?.map((project, index) => (
             <Card
               key={index}
-              donateLink={`${donateLink[itemName]}/${project._id}`}
+              readMoreLink={`${redirectLink[itemName]}/${project._id}`}
+              itemName={itemName}
+              showViews={true}
+              id={project._id}
+              date={project.date}
+              views={project.views}
               image={
                 project?.imageLink ||
                 "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg"

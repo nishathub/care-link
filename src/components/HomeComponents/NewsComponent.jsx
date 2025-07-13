@@ -2,16 +2,21 @@ import Link from "next/link";
 import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import { getNews } from "@/lib/getNews";
+import ComponentsClient from "./ComponentsClient";
 
 const NewsComponent = async ({ isHomePage = false }) => {
-  let newsCollection = [];
-  let renderItem = [];
+  let renderItems = [];
   try {
-    newsCollection = await getNews();
-    renderItem = isHomePage ? newsCollection?.slice(0, 3) : newsCollection;
+    const data = await getNews();
+    // serialize into plain string (objectId)
+    const serializedData = data.map((item) => ({
+      ...item,
+      _id: item._id.toString(),
+    }));
+    renderItems = isHomePage ? serializedData.slice(0, 3) : serializedData;
   } catch (error) {
     console.error("DB failed");
-    renderItem = [];
+    renderItems = [];
   }
 
   return (
@@ -25,28 +30,13 @@ const NewsComponent = async ({ isHomePage = false }) => {
           ></SectionHeading>
         </div>
       )}
-      <div className="flex flex-wrap gap-8 justify-center">
-        {renderItem?.map((item, index) => {
-          return (
-            <Card
-              key={index}
-              showViews={true}
-              itemName={"news"}
-              id={item?._id.toString()}
-              tag={item?.tag}
-              views={item?.views}
-              date={item?.date}
-              readMoreLink={`/news-updates/${item?._id.toString()}`}
-              image={
-                item?.imageLink ||
-                "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg"
-              }
-              title={item?.title}
-              description={item?.description}
-            ></Card>
-          );
-        })}
-      </div>
+
+      <ComponentsClient
+        itemName={"news"}
+        isHomePage={isHomePage}
+        initialData={renderItems}
+      />
+
       {isHomePage && (
         <div className="w-fit mx-auto mt-6">
           <Link

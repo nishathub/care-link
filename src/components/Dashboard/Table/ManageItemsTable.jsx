@@ -24,7 +24,7 @@ const ManageItemsTable = ({
   itemsRefetch,
 }) => {
   const imageFallbackLink =
-    "https://t4.ftcdn.net/jpg/06/72/16/39/360_F_672163907_F9iv8hElbhWk9KmDR1HkVAadniCElTyB.jpg";
+    "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg";
 
   if (isDataLoading || isDeleteLoading || isUserLoading) {
     return (

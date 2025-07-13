@@ -39,7 +39,7 @@ const NewsComponent = async ({ isHomePage = false }) => {
               readMoreLink={`/news-updates/${item?._id.toString()}`}
               image={
                 item?.imageLink ||
-                "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg"
               }
               title={item?.title}
               description={item?.description}

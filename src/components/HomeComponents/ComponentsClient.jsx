@@ -58,7 +58,7 @@ const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
               donateLink={`${donateLink[itemName]}/${project._id}`}
               image={
                 project?.imageLink ||
-                "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg"
               }
               title={project.title}
               tag={project.tag}

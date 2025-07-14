@@ -11,9 +11,9 @@ const TopDashboard = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   if (isUserLoading) {
-    return <p className="mb-8 mx-auto">
+    return <div className="mb-8 mx-auto">
       <CustomLoading size={32}/>
-    </p>;
+    </div>;
   }
   return (
     <div className="flex justify-between items-center mb-8">

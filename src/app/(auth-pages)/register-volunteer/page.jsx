@@ -11,7 +11,7 @@ import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Eye } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 const VolunteerRegistration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -107,7 +107,7 @@ const VolunteerRegistration = () => {
                 type="button"
                 className="absolute z-10 right-5 top-1/2 text-sky-700 cursor-pointer"
               >
-                <Eye />
+                {isVisible ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
               <FormTextInput
                 label="Password*"

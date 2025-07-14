@@ -30,12 +30,20 @@ const Card = ({
             👁 <span>{views && views}</span>
           </p>
         )}
-        <div className="flex justify-between">
-          <p className="text-sky-700 text-sm font-medium capitalize">{tag}</p>
-          <p className="text-sky-800 font-medium text-right">
-            {date ? formatDate(date) : ""}
+        {date ? (
+          <div className="flex justify-between">
+            <p className="text-sky-800 font-medium">
+              {date ? formatDate(date) : ""}
+            </p>
+            <p className="text-sky-700 text-sm text-right font-medium capitalize">
+              {tag}
+            </p>
+          </div>
+        ) : (
+          <p className="text-sky-700 text-sm font-medium capitalize">
+            {tag}
           </p>
-        </div>
+        )}
         <h2 className="card-title">{title}</h2>
         <p className="text-justify">
           {description?.length > 220
@@ -44,7 +52,10 @@ const Card = ({
         </p>
         <div className="card-actions justify-start">
           {donateLink && (
-            <Link href={donateLink} className={`btn bg-sky-800 hover:bg-sky-700 text-white w-full`}>
+            <Link
+              href={donateLink}
+              className={`btn bg-sky-800 hover:bg-sky-700 text-white w-full`}
+            >
               Details
             </Link>
           )}
@@ -52,7 +63,7 @@ const Card = ({
             <ViewCountButton
               readMoreLink={readMoreLink}
               showViews={showViews}
-              itemName = {itemName}
+              itemName={itemName}
               id={id}
               views={views}
             />

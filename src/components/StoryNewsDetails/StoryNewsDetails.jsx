@@ -1,7 +1,7 @@
 import { formatDate } from "@/utils/formateDate";
 import { CalendarDays, Eye, User } from "lucide-react";
-import NewsSuggestionComponent from "../NewsSuggestion/NewsSuggestionComponent";
 import Image from "next/image";
+import RecentItemsSuggestionComponent from "../RecentItemsSuggestionComp/RecentItemsSuggestionComponent";
 
 const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
   const fallbackImage =
@@ -15,7 +15,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             <span>
               <CalendarDays />
             </span>{" "}
-            {formatDate(singleItem?.date)}
+            {singleItem?.date ? formatDate(singleItem?.date) : ""}
           </p>
           <h2 className="text-2xl font-bold">{singleItem?.title}</h2>
         </div>
@@ -47,8 +47,8 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
       </div>
       <div className="col-span-1 pt-12">
         <p className="font-bold text-xl mb-6">Recent {itemName}</p>
-        <div className="sticky top-20 max-h-screen overflow-auto">
-          <NewsSuggestionComponent
+        <div className="sticky top-20 max-h-[calc(100vh-220px)] overflow-auto">
+          <RecentItemsSuggestionComponent
             itemCollection={recentItems}
             itemName={itemName}
           />

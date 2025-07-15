@@ -3,7 +3,7 @@ import { formatDate } from "@/utils/formateDate";
 import { updateViewCount } from "@/utils/updateViewCount";
 import { useRouter } from "next/navigation";
 
-const NewsSuggestionComponent = ({ itemCollection = [], itemName }) => {
+const RecentItemsSuggestionComponent = ({ itemCollection = [], itemName }) => {
   const router = useRouter();
   const fallbackImage =
     "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg";
@@ -19,8 +19,8 @@ const NewsSuggestionComponent = ({ itemCollection = [], itemName }) => {
       updateViewCount(views, apiLink);
       router.push(`/impact-stories/${id}`);
       return;
-    } else{
-      console.error(`Unknown ItemName: ${itemName}`)
+    } else {
+      console.error(`Unknown ItemName: ${itemName}`);
     }
   };
   return (
@@ -42,7 +42,12 @@ const NewsSuggestionComponent = ({ itemCollection = [], itemName }) => {
               >
                 {item?.title}
               </button>
-              <p className="text-sm">{formatDate(item?.date)}</p>
+              <div className="text-sm flex gap-2">
+                {item?.views && (
+                  <p className="w-[72px] shrink-0">{item?.views} views</p>
+                )}
+                <p>{item?.date ? formatDate(item?.date) : ""}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -51,4 +56,4 @@ const NewsSuggestionComponent = ({ itemCollection = [], itemName }) => {
   );
 };
 
-export default NewsSuggestionComponent;
+export default RecentItemsSuggestionComponent;

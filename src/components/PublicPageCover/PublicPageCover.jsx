@@ -8,37 +8,27 @@ const getPageInfo = (pathname) => {
   if (pathname.startsWith("/donate")) {
     return {
       pageName: "Your Generosity, Their Hope",
-      imageUrl:
-        "https://assets.kpmg.com/is/image/kpmg/hand-holding-wood-house-miniature-and-money-bag-banner:cq5dam.web.1400.350",
     };
   } else if (pathname.startsWith("/ongoing")) {
     return {
       pageName: "Our Current Initiatives",
-      imageUrl:
-        "https://dailymedia.case.edu/wp-content/uploads/2019/10/08164716/hands-feat.jpg",
     };
   } else if (pathname.startsWith("/impact")) {
     return {
       pageName: "Lives Changed, Stories Told",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwRy8M7z12Dv2qSJl1oB_NIXKajWV_5m98Qg&s",
     };
   } else if (pathname.startsWith("/news")) {
     return {
       pageName: "Latest News & Updates",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNetZ3jT5-hGZE_jqwufdDWsbQGUFzUiQt6g&s",
     };
   } else if (pathname.startsWith("/success")) {
-    return { pageName: "Success Stories", imageUrl: "/images/success.jpg" };
+    return { pageName: "Success Stories" };
   } else if (pathname.startsWith("/contact")) {
-    return { pageName: "Contact", imageUrl: "/images/contact.jpg" };
+    return { pageName: "Contact" };
   }
 
   return {
     pageName: "Page Name",
-    imageUrl:
-      "https://i.pinimg.com/736x/9b/b1/2c/9bb12c765423608e519fea6cae537dcc.jpg",
   };
 };
 
@@ -52,7 +42,7 @@ const PublicPageCover = () => {
 
   if (!pageInfo) return null;
 
-  return <PageCover pageName={pageInfo.pageName} image={pageInfo.imageUrl} />;
+  return <PageCover pageName={pageInfo.pageName} />;
 };
 
 export default PublicPageCover;

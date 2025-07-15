@@ -15,7 +15,7 @@ const ViewCountButton = ({
   const apiLink =
     itemName === "story"
       ? `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`
-      : `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}`;
+      : `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}/views`;
   const handleViewCount = async () => {
     router.push(readMoreLink);
     updateViewCount(views, apiLink);

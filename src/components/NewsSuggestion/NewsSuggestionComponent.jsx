@@ -9,7 +9,7 @@ const NewsSuggestionComponent = ({ newsCollection }) => {
     "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg";
 
   const handleNewsLink = (id, views) => {
-    const apiLink = `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}`;
+    const apiLink = `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}/views`;
     updateViewCount(views, apiLink);
     router.push(`/news-updates/${id}`);
   };

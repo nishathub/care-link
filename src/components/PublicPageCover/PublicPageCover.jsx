@@ -7,13 +7,13 @@ import PageCover from "@/components/PageCover/PageCover";
 const getPageInfo = (pathname) => {
   if (pathname.startsWith("/donate")) {
     return {
-      pageName: "Every Contribution Counts",
+      pageName: "Your Generosity, Their Hope",
       imageUrl:
         "https://assets.kpmg.com/is/image/kpmg/hand-holding-wood-house-miniature-and-money-bag-banner:cq5dam.web.1400.350",
     };
   } else if (pathname.startsWith("/ongoing")) {
     return {
-      pageName: "Projects in Action",
+      pageName: "Our Current Initiatives",
       imageUrl:
         "https://dailymedia.case.edu/wp-content/uploads/2019/10/08164716/hands-feat.jpg",
     };
@@ -25,7 +25,7 @@ const getPageInfo = (pathname) => {
     };
   } else if (pathname.startsWith("/news")) {
     return {
-      pageName: "Stay Informed, Stay Inspired",
+      pageName: "Latest News & Updates",
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNetZ3jT5-hGZE_jqwufdDWsbQGUFzUiQt6g&s",
     };

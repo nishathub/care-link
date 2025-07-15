@@ -5,7 +5,7 @@ const PageCover = ({
 }) => {
   return (
     <div
-      className="h-[10vh] lg:h-[15vh]"
+      className="h-16 lg:h-24"
       // style={{
       //   backgroundImage: `url(${image})`,
       //   backgroundSize: "cover",
@@ -16,7 +16,7 @@ const PageCover = ({
     >
       <div className="w-full h-full px-4 flex justify-center items-center bg-sky-900">
         <div className="h-fit w-fit text-gray-200">
-          <h4 className={`text-3xl lg:text-5xl font-semibold uppercase`}>
+          <h4 className={`text-3xl lg:text-5xl font-bold lg:font-semibold capitalize`}>
             {pageName}
           </h4>
         </div>

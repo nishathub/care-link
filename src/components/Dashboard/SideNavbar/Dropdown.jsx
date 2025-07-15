@@ -27,9 +27,9 @@ const Dropdown = ({ user, logout, position = "up" }) => {
     }
   };
   const myProfileLinkMap = {
-    admin: `/admin/my-profile/${user.id}`,
-    volunteer: `/volunteer/my-profile/${user.id}`,
-    donor: `/donor/my-profile/${user.id}`,
+    admin: `/admin/my-profile/${user?.id}`,
+    volunteer: `/volunteer/my-profile/${user?.id}`,
+    donor: `/donor/my-profile/${user?.id}`,
   };
   const positionStyle = () => {
     if (position === "up") {
@@ -43,7 +43,7 @@ const Dropdown = ({ user, logout, position = "up" }) => {
     <div
       className={`absolute ${positionStyle()} right-0 w-40 bg-gray-50 shadow-lg rounded-lg z-50`}
     >
-      <Link href={myProfileLinkMap[user?.role]}>
+      <Link href={myProfileLinkMap[user?.role] || ""}>
         <p className="text-black px-4 py-2 flex items-center rounded-lg gap-2 hover:bg-gray-200"> <User size={16}/> My Profile</p>
       </Link>
       <button

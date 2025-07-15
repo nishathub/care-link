@@ -1,24 +1,32 @@
-import SingleItemDetails from "@/components/SingleItemDetails/SingleItemDetails";
+import StoryNewsDetails from "@/components/StoryNewsDetails/StoryNewsDetails";
+import { getImpactStories } from "@/lib/getImpactStories";
 import { getSingleItemById } from "@/lib/getSingleItemById";
 import { notFound } from "next/navigation";
 
 const SingleImpact = async ({ params: paramsPromise }) => {
   const params = await paramsPromise;
   const { id } = params;
-  const data = await getSingleItemById("story", id);
+  const storyItem = await getSingleItemById("story", id);
+  const storyCollection = await getImpactStories();
+  const filteredStories = storyCollection.filter(
+    (item) => item._id.toString() !== id
+  );
+  // serialize id
+  const plainFilteredStories = filteredStories.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
 
-  if (!data) {
+  if (!storyItem) {
     notFound();
   }
   return (
     <div>
-      <SingleItemDetails
-        data={data}
-        showQuote={false}
-        showBankCard={false}
-        showExpense={false}
-        showDonationForm={false}
-      ></SingleItemDetails>
+      <StoryNewsDetails
+        itemName="Stories"
+        singleItem={storyItem}
+        recentItems={plainFilteredStories}
+      />
     </div>
   );
 };

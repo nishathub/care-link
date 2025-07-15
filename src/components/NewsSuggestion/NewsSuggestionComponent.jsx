@@ -3,21 +3,30 @@ import { formatDate } from "@/utils/formateDate";
 import { updateViewCount } from "@/utils/updateViewCount";
 import { useRouter } from "next/navigation";
 
-const NewsSuggestionComponent = ({ newsCollection }) => {
+const NewsSuggestionComponent = ({ itemCollection = [], itemName }) => {
   const router = useRouter();
   const fallbackImage =
     "https://res.cloudinary.com/dntewbvod/image/upload/v1752316345/y9DpT_hflfb4.jpg";
 
   const handleNewsLink = (id, views) => {
-    const apiLink = `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}/views`;
-    updateViewCount(views, apiLink);
-    router.push(`/news-updates/${id}`);
+    if (itemName === "News") {
+      const apiLink = `${process.env.NEXT_PUBLIC_CareLinkAPI}/news/${id}/views`;
+      updateViewCount(views, apiLink);
+      router.push(`/news-updates/${id}`);
+      return;
+    } else if (itemName === "Stories") {
+      const apiLink = `${process.env.NEXT_PUBLIC_CareLinkAPI}/impactStories/${id}/views`;
+      updateViewCount(views, apiLink);
+      router.push(`/impact-stories/${id}`);
+      return;
+    } else{
+      console.error(`Unknown ItemName: ${itemName}`)
+    }
   };
   return (
     <div>
-      <p className="font-bold text-xl mb-6">Recent News</p>
       <div className="flex flex-col gap-6">
-        {newsCollection?.map((item, index) => (
+        {itemCollection?.map((item, index) => (
           <div className="flex gap-3" key={index}>
             <div>
               <img

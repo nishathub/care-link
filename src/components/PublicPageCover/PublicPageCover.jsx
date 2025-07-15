@@ -7,7 +7,7 @@ import PageCover from "@/components/PageCover/PageCover";
 const getPageInfo = (pathname) => {
   if (pathname.startsWith("/donate")) {
     return {
-      pageName: "Your Generosity, Their Hope",
+      pageName: "Make a Difference Today",
     };
   } else if (pathname.startsWith("/ongoing")) {
     return {
@@ -15,7 +15,7 @@ const getPageInfo = (pathname) => {
     };
   } else if (pathname.startsWith("/impact")) {
     return {
-      pageName: "Lives Changed, Stories Told",
+      pageName: "Stories of Hope and Change",
     };
   } else if (pathname.startsWith("/news")) {
     return {

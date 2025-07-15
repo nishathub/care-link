@@ -4,7 +4,7 @@ const PageCover = ({ pageName = "name" }) => {
       <div className="w-full h-full px-4 flex justify-center items-center bg-sky-900">
         <div className="h-fit w-fit text-gray-200">
           <h4
-            className={`text-3xl lg:text-5xl font-bold lg:font-semibold capitalize`}
+            className={`text-2xl md:text-3xl lg:text-5xl font-bold lg:font-semibold capitalize`}
           >
             {pageName}
           </h4>

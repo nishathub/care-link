@@ -82,7 +82,7 @@ const AddImpactStory = () => {
           <FormTextInput
             label="Story Title*"
             name="title"
-            placeholder="Water for all.."
+            placeholder="Write a concise title.."
             register={register}
             required={true}
             errors={errors}
@@ -108,11 +108,47 @@ const AddImpactStory = () => {
             errors={errors}
           />
 
+          {/* Introduction */}
+          <FormTextAreaInput
+            label="Introduction*"
+            name="introduction"
+            placeholder="Story introduction..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Challenge Part */}
+          <FormTextAreaInput
+            label="Challenge Part*"
+            name="challenge"
+            placeholder="Write about the problem/challenge shortly..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Contribution */}
+          <FormTextAreaInput
+            label="Contribution*"
+            name="contribution"
+            placeholder="How we solved the situation..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
           {/* Description */}
           <FormTextAreaInput
             label="Description*"
             name="description"
             placeholder="Story description..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Conclusion */}
+          <FormTextAreaInput
+            label="Conclusion*"
+            name="conclusion"
+            placeholder="Story conclusion..."
             register={register}
             required={true}
             errors={errors}

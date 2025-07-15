@@ -9,7 +9,7 @@ const VolunteerProfile = async ({ params: paramsPromise }) => {
   const user = await getSingleItemById("user", id);
 
   // serialize _id to a plain string
-  const plainUser = { ...user, _id: user._id.toString() };
+  const plainUser = { ...user, _id: user?._id.toString() };
 
   return (
     <div>

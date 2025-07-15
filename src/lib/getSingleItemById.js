@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
-import { getCollections } from "./dbCollections";
+import { getCollections, getUserByEmail } from "./dbCollections";
 import { verifyAdmin } from "./verifyAdmin";
+import { verifyTokenJWT } from "./verifyToken";
 
 export const getSingleItemById = async (itemName, id) => {
   const {
@@ -38,11 +39,19 @@ export const getSingleItemById = async (itemName, id) => {
     });
   }
   if (itemName === "user") {
+    // if volunteer, get only his info
+    const decoded = await verifyTokenJWT();
+    const user = await getUserByEmail(decoded?.email);
+    if (user.role === "volunteer" && user._id.toString() === id) {
+      return await UsersCollection.findOne({
+        _id: new ObjectId(id),
+      });
+    }
     await verifyAdmin();
     return await UsersCollection.findOne({
       _id: new ObjectId(id),
     });
   }
 
-  throw new Error(`Invalid item name:  ${itemName}`)
+  throw new Error(`Invalid item name:  ${itemName}`);
 };

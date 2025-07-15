@@ -7,25 +7,25 @@ import PageCover from "@/components/PageCover/PageCover";
 const getPageInfo = (pathname) => {
   if (pathname.startsWith("/donate")) {
     return {
-      pageName: "Donate",
+      pageName: "Every Contribution Counts",
       imageUrl:
         "https://assets.kpmg.com/is/image/kpmg/hand-holding-wood-house-miniature-and-money-bag-banner:cq5dam.web.1400.350",
     };
   } else if (pathname.startsWith("/ongoing")) {
     return {
-      pageName: "Ongoing Cases",
+      pageName: "Projects in Action",
       imageUrl:
         "https://dailymedia.case.edu/wp-content/uploads/2019/10/08164716/hands-feat.jpg",
     };
   } else if (pathname.startsWith("/impact")) {
     return {
-      pageName: "Impact Stories",
+      pageName: "Lives Changed, Stories Told",
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwRy8M7z12Dv2qSJl1oB_NIXKajWV_5m98Qg&s",
     };
   } else if (pathname.startsWith("/news")) {
     return {
-      pageName: "News & Updates",
+      pageName: "Stay Informed, Stay Inspired",
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNetZ3jT5-hGZE_jqwufdDWsbQGUFzUiQt6g&s",
     };

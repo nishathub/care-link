@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 import ImpactStoriesComponent from "@/components/HomeComponents/ImpactStoriesComponent";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
@@ -6,13 +6,10 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 const ImpactStories = async () => {
   return (
     <div>
-      <SectionHeading heading={"Success Stories"} textColor="black"></SectionHeading>
-      <div>
-        <ImpactStoriesComponent
-          hideMoreButton={true}
-          hideSectionTitle={true}
-        ></ImpactStoriesComponent>
-      </div>
+      <ImpactStoriesComponent
+        hideMoreButton={true}
+        hideSectionTitle={true}
+      ></ImpactStoriesComponent>
     </div>
   );
 };

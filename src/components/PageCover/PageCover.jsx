@@ -5,18 +5,18 @@ const PageCover = ({
 }) => {
   return (
     <div
-      className="h-[20vh] lg:h-[40vh]"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-      }}
+      className="h-[10vh] lg:h-[15vh]"
+      // style={{
+      //   backgroundImage: `url(${image})`,
+      //   backgroundSize: "cover",
+      //   backgroundRepeat: "no-repeat",
+      //   backgroundAttachment: "fixed",
+      //   backgroundPosition: "center",
+      // }}
     >
-      <div className="w-full h-full px-4 flex justify-center items-center bg-black/50">
+      <div className="w-full h-full px-4 flex justify-center items-center bg-sky-900">
         <div className="h-fit w-fit text-gray-200">
-          <h4 className={`text-3xl lg:text-6xl uppercase`}>
+          <h4 className={`text-3xl lg:text-5xl font-semibold uppercase`}>
             {pageName}
           </h4>
         </div>

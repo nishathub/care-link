@@ -4,7 +4,7 @@ import Card from "@/components/Card/Card";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import { getDonationPackages } from "@/lib/getDonationPackages";
 
-const DonatePage = async ({ isHomePage = true }) => {
+const DonatePage = async ({ isHomePage = false }) => {
   const data = await getDonationPackages();
   return (
     <div>

@@ -29,7 +29,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             className="object-cover rounded-lg"
           ></Image>
         </div>
-        <div className="flex gap-4 text-gray-700 text-sm">
+        <div className="flex gap-4 text-gray-800 text-sm">
           <p className="flex items-center gap-1">
             <span>
               <User className="w-4 h-4" />

@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import Image from "next/image";
 import DonationForm from "../DonationForm/DonationForm";
 import { Quote } from "lucide-react";
+import PageCover from "../PageCover/PageCover";
 
 const SingleItemDetails = ({
   data,
@@ -16,7 +17,9 @@ const SingleItemDetails = ({
 
   return (
     <div>
-      <SectionHeading heading={data?.title} textColor="black"></SectionHeading>
+      <div className="absolute z-10 left-0 w-full top-16 lg:top-20">
+        <PageCover pageName={data?.title} />
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="max-w-2xl mx-auto w-full space-y-8">
           <div className="h-80 rounded-lg shadow-2xl relative">
@@ -52,7 +55,7 @@ const SingleItemDetails = ({
               </p>
             </div>
           )}
-         
+
           {showExpense && (
             <div className="bg-sky-100 rounded-lg shadow-2xl p-4">
               <h6 className="font-bold text-sky-700">Expense</h6>

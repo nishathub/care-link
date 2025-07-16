@@ -80,6 +80,7 @@ const UpdateImpactStory = () => {
         ...data,
         imageLink: imageURL,
         cloudinaryPublicId,
+        lastEditedBy: user?.name,
       };
 
       const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;

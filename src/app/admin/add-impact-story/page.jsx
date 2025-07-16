@@ -48,6 +48,7 @@ const AddImpactStory = () => {
         cloudinaryPublicId: public_id || "",
         views: 0,
         date: new Date(),
+        journalist: "CareLink-Team",
       };
 
       const postStoryRes = await secureAxios(

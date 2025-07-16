@@ -136,11 +136,74 @@ const UpdateNews = () => {
             />
           </label>
 
+          {/* Introduction */}
+          <FormTextAreaInput
+            label="Introduction*"
+            name="introduction"
+            placeholder="News introduction..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Background / Context */}
+          <FormTextAreaInput
+            label="Background / Context*"
+            name="context"
+            placeholder="Write about the context shortly..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Opportunity */}
+          <FormTextAreaInput
+            label="Opportunity*"
+            name="opportunity"
+            placeholder="What changes we can make..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Strategy */}
+          <FormTextAreaInput
+            label="Strategy*"
+            name="strategy"
+            placeholder="How we can solve the situation..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Call for Support */}
+          <FormTextAreaInput
+            label="Call for Support*"
+            name="appeal"
+            placeholder="How people can participate..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Expected Outcome */}
+          <FormTextAreaInput
+            label="Expected Outcome*"
+            name="outcome"
+            placeholder="Possible outcome..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
           {/* Description */}
           <FormTextAreaInput
             label="Description*"
             name="description"
             placeholder="News description..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Conclusion */}
+          <FormTextAreaInput
+            label="Conclusion*"
+            name="conclusion"
+            placeholder="News conclusion..."
             register={register}
             required={true}
             errors={errors}

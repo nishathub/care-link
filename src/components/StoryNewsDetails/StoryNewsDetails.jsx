@@ -2,6 +2,7 @@ import { formatDate } from "@/utils/formateDate";
 import { CalendarDays, Eye, User } from "lucide-react";
 import Image from "next/image";
 import RecentItemsSuggestionComponent from "../RecentItemsSuggestionComp/RecentItemsSuggestionComponent";
+import SocialShareButton from "../SocialShareCard/SocialShareButton";
 
 const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
   const fallbackImage =
@@ -29,19 +30,22 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             className="object-cover rounded-lg"
           ></Image>
         </div>
-        <div className="flex gap-4 text-gray-800 text-sm">
-          <p className="flex items-center gap-1">
-            <span>
-              <User className="w-4 h-4" />
-            </span>
-            {singleItem?.journalist}
-          </p>
-          <p className="flex items-center gap-1">
-            <span>
-              <Eye className="w-4 h-4" />
-            </span>
-            {singleItem?.views}
-          </p>
+        <div className="flex gap-4 items-center justify-between flex-wrap">
+          <div className="flex gap-4 text-gray-800 text-sm">
+            <p className="flex items-center gap-1">
+              <span>
+                <User className="w-4 h-4" />
+              </span>
+              {singleItem?.journalist}
+            </p>
+            <p className="flex items-center gap-1">
+              <span>
+                <Eye className="w-4 h-4" />
+              </span>
+              {singleItem?.views}
+            </p>
+          </div>
+          <div><SocialShareButton/></div>
         </div>
         {/* Content Sections */}
         <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed">
@@ -73,7 +77,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
           {singleItem?.contribution && (
             <p className="text-justify">{singleItem.contribution}</p>
           )}
-          
+
           {/* Common  */}
           {singleItem?.description && (
             <p className="text-justify">{singleItem.description}</p>

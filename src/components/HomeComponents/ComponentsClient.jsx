@@ -64,6 +64,7 @@ const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
                 title={project.title}
                 tag={project.tag}
                 description={project.description}
+                context={project.context}
               />
             ))
           : isSecondHit && (
@@ -91,6 +92,7 @@ const ComponentsClient = ({ itemName, initialData, isHomePage }) => {
               title={project.title}
               tag={project.tag}
               description={project.description}
+              introduction={project?.introduction}
             />
           ))
         : isSecondHit && (

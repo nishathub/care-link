@@ -203,15 +203,6 @@ const UpdateOngoingProject = () => {
             required={true}
             errors={errors}
           />
-          {/* Conclusion */}
-          <FormTextAreaInput
-            label="Conclusion*"
-            name="conclusion"
-            placeholder="conclusion..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
 
           <FormSelectInput
             label="Tag*"

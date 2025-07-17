@@ -70,11 +70,43 @@ const SingleItemDetails = ({
               </ul>
             </div>
           )}
+          {data?.numericDetails && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.numericDetails}</p>
+            </div>
+          )}
         </div>
         <div className="max-w-2xl mx-auto w-full space-y-8">
-          <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
-            <p className="">{data?.description}</p>
-          </div>
+          {data?.context && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.context}</p>
+            </div>
+          )}
+          {data?.goal && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.goal}</p>
+            </div>
+          )}
+          {data?.strategy && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.strategy}</p>
+            </div>
+          )}
+          {data?.appeal && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.appeal}</p>
+            </div>
+          )}
+          {data?.description && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.description}</p>
+            </div>
+          )}
+          {data?.conclusion && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.conclusion}</p>
+            </div>
+          )}
           {showBankCard && <BankAccountCard></BankAccountCard>}
           {showDonationForm && (
             <div className="">

@@ -158,10 +158,56 @@ const UpdateOngoingProject = () => {
             label="Expense Categories"
           />
 
+          {/* Background / Context */}
           <FormTextAreaInput
-            label="Description*"
-            name="description"
-            placeholder="Project description..."
+            label="Background / Context*"
+            name="context"
+            placeholder="Write about the context/situation shortly..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Goal */}
+          <FormTextAreaInput
+            label="Goal*"
+            name="goal"
+            placeholder="What we are focusing to solve..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Strategy */}
+          <FormTextAreaInput
+            label="Strategy*"
+            name="strategy"
+            placeholder="How we are working..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Call for Support */}
+          <FormTextAreaInput
+            label="Call for Support*"
+            name="appeal"
+            placeholder="How people can participate..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Expected Outcome */}
+          <FormTextAreaInput
+            label="Numeric Details*"
+            name="numericDetails"
+            placeholder="50 bags for distribution../ 2 living rooms to build.. according to expense categories"
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          {/* Conclusion */}
+          <FormTextAreaInput
+            label="Conclusion*"
+            name="conclusion"
+            placeholder="conclusion..."
             register={register}
             required={true}
             errors={errors}

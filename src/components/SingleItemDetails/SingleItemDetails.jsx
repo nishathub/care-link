@@ -77,23 +77,15 @@ const SingleItemDetails = ({
           )}
         </div>
         <div className="max-w-2xl mx-auto w-full space-y-8">
-          {data?.context && (
+          {(data?.context || data?.goal) && (
             <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
               <p className="">{data?.context}</p>
-            </div>
-          )}
-          {data?.goal && (
-            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
               <p className="">{data?.goal}</p>
             </div>
           )}
-          {data?.strategy && (
+          {(data?.goal || data?.strategy) && (
             <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
               <p className="">{data?.strategy}</p>
-            </div>
-          )}
-          {data?.appeal && (
-            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
               <p className="">{data?.appeal}</p>
             </div>
           )}
@@ -102,11 +94,7 @@ const SingleItemDetails = ({
               <p className="">{data?.description}</p>
             </div>
           )}
-          {data?.conclusion && (
-            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
-              <p className="">{data?.conclusion}</p>
-            </div>
-          )}
+
           {showBankCard && <BankAccountCard></BankAccountCard>}
           {showDonationForm && (
             <div className="">

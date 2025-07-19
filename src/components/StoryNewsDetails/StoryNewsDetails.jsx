@@ -18,7 +18,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             </span>{" "}
             {singleItem?.date ? formatDate(singleItem?.date) : ""}
           </p>
-          <h2 className="text-2xl lg:text-4xl font-bold">{singleItem?.title}</h2>
+          <h2 className="text-2xl lg:text-4xl font-bold lg:leading-relaxed">{singleItem?.title}</h2>
         </div>
         <div className="h-80 lg:h-[450px] rounded-lg overflow-hidden shadow-2xl relative">
           <Image

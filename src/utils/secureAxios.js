@@ -7,11 +7,13 @@ export const secureAxios = async (method, url, data = null, user) => {
   if (methodLower === "delete") {
     if (!user?.rank || user.rank !== "chief") {
       alert("Unauthorized Access.");
+      console.error("Unauthorized Access");
       return null;
     }
   } else {
     if (!user || (user.role !== "admin" && user.role !== "volunteer")) {
       alert("Unauthorized Access");
+      console.error("Unauthorized Access");
       return null;
     }
   }

@@ -56,8 +56,9 @@ const UpdateOngoingProject = () => {
 
   // Submit updated data
   const onSubmit = async (data) => {
-    if (user?.name !== initialData?.author) {
+    if (user?.role === "volunteer" && user?.name !== initialData?.author) {
       alert("Unauthorized!");
+      console.error("Unauthorized");
       router.push("/volunteer/manage-projects");
       return;
     }

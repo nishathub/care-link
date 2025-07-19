@@ -18,7 +18,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             </span>{" "}
             {singleItem?.date ? formatDate(singleItem?.date) : ""}
           </p>
-          <h2 className="text-lg lg:text-2xl font-bold">{singleItem?.title}</h2>
+          <h2 className="text-2xl lg:text-4xl font-bold">{singleItem?.title}</h2>
         </div>
         <div className="h-80 lg:h-[450px] rounded-lg overflow-hidden shadow-2xl relative">
           <Image
@@ -45,7 +45,9 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
               {singleItem?.views}
             </p>
           </div>
-          <div><SocialShareButton/></div>
+          <div>
+            <SocialShareButton />
+          </div>
         </div>
         {/* Content Sections */}
         <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed">
@@ -57,17 +59,17 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
           {singleItem?.context && (
             <p className="text-justify">{singleItem.context}</p>
           )}
-          {singleItem?.opportunity && (
-            <p className="text-justify">{singleItem.opportunity}</p>
+          {singleItem?.mainPart && (
+            <p className="text-justify">{singleItem.mainPart}</p>
           )}
-          {singleItem?.strategy && (
-            <p className="text-justify">{singleItem.strategy}</p>
-          )}
-          {singleItem?.appeal && (
-            <p className="text-justify">{singleItem.appeal}</p>
+          {singleItem?.nextStep && (
+            <p className="text-justify">{singleItem.nextStep}</p>
           )}
           {singleItem?.outcome && (
             <p className="text-justify">{singleItem.outcome}</p>
+          )}
+          {singleItem?.appeal && (
+            <p className="text-justify">{singleItem.appeal}</p>
           )}
 
           {/* For Impact Story */}
@@ -77,8 +79,6 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
           {singleItem?.contribution && (
             <p className="text-justify">{singleItem.contribution}</p>
           )}
-
-          {/* Common  */}
           {singleItem?.description && (
             <p className="text-justify">{singleItem.description}</p>
           )}

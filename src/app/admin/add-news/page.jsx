@@ -117,24 +117,34 @@ const AddNews = () => {
             required={true}
             errors={errors}
           />
-          {/* Opportunity */}
+          {/* Main Part */}
           <FormTextAreaInput
-            label="Opportunity*"
-            name="opportunity"
-            placeholder="What changes we can make..."
+            label="Main Part*"
+            name="mainPart"
+            placeholder="News main part..."
             register={register}
             required={true}
             errors={errors}
           />
-          {/* Strategy */}
+
+          {/* Next Steps */}
           <FormTextAreaInput
-            label="Strategy*"
-            name="strategy"
-            placeholder="How we can solve the situation..."
+            label="Next Steps*"
+            name="nextStep"
+            placeholder="Steps to take forward..."
             register={register}
             required={true}
             errors={errors}
           />
+          {/* Expected Outcome */}
+         <FormTextAreaInput
+           label="Expected Outcome*"
+           name="outcome"
+           placeholder="Possible outcome..."
+           register={register}
+           required={true}
+           errors={errors}
+         />
           {/* Call for Support */}
           <FormTextAreaInput
             label="Call for Support*"
@@ -144,34 +154,6 @@ const AddNews = () => {
             required={true}
             errors={errors}
           />
-          {/* Expected Outcome */}
-          <FormTextAreaInput
-            label="Expected Outcome*"
-            name="outcome"
-            placeholder="Possible outcome..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Description */}
-          <FormTextAreaInput
-            label="Description*"
-            name="description"
-            placeholder="News description..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Conclusion */}
-          <FormTextAreaInput
-            label="Conclusion*"
-            name="conclusion"
-            placeholder="News conclusion..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-
           {/* Hidden Checkbox*/}
           <FormCheckboxInput
             label="Hide this news"

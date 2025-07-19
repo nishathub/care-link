@@ -38,9 +38,7 @@ const UpdateNews = () => {
       setInitialDataLoading(true);
       try {
         const careLinkAPI = process.env.NEXT_PUBLIC_CareLinkAPI;
-        const { data } = await axios.get(
-          `${careLinkAPI}/news/${newsId}`
-        );
+        const { data } = await axios.get(`${careLinkAPI}/news/${newsId}`);
         setInitialData(data.data);
         reset(data.data);
       } catch (err) {
@@ -105,7 +103,8 @@ const UpdateNews = () => {
   };
 
   if (initialDataLoading) return <OverlayLoader message="Loading news..." />;
-  if (!initialDataLoading && !initialData) return <OverlayLoader message="News Data Loading Failed" />;
+  if (!initialDataLoading && !initialData)
+    return <OverlayLoader message="News Data Loading Failed" />;
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -154,29 +153,21 @@ const UpdateNews = () => {
             required={true}
             errors={errors}
           />
-          {/* Opportunity */}
+          {/* Main Part */}
           <FormTextAreaInput
-            label="Opportunity*"
-            name="opportunity"
-            placeholder="What changes we can make..."
+            label="Main Part*"
+            name="mainPart"
+            placeholder="News main part..."
             register={register}
             required={true}
             errors={errors}
           />
-          {/* Strategy */}
+
+          {/* Next Steps */}
           <FormTextAreaInput
-            label="Strategy*"
-            name="strategy"
-            placeholder="How we can solve the situation..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Call for Support */}
-          <FormTextAreaInput
-            label="Call for Support*"
-            name="appeal"
-            placeholder="How people can participate..."
+            label="Next Steps*"
+            name="nextStep"
+            placeholder="Steps to take forward..."
             register={register}
             required={true}
             errors={errors}
@@ -190,20 +181,11 @@ const UpdateNews = () => {
             required={true}
             errors={errors}
           />
-          {/* Description */}
+          {/* Call for Support */}
           <FormTextAreaInput
-            label="Description*"
-            name="description"
-            placeholder="News description..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Conclusion */}
-          <FormTextAreaInput
-            label="Conclusion*"
-            name="conclusion"
-            placeholder="News conclusion..."
+            label="Call for Support*"
+            name="appeal"
+            placeholder="How people can participate..."
             register={register}
             required={true}
             errors={errors}

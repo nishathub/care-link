@@ -27,12 +27,17 @@ const AboutCareLink = () => {
               become stronger when you join us.
             </p>
             <p className="">
-              Supporting so many vulnerable people alone is challenging. That is
-              why we invite you to stand with us. Move forward each day with a
-              vision to serve humanity.
+              Through this interactive platform, caring volunteers can bring
+              urgent situations to light, and together we turn them into real
+              impact stories. Supporting so many vulnerable people alone is
+              challenging — that is why we invite you to stand with us and move
+              forward each day with a vision to serve humanity.
             </p>
           </div>
-          <Link href={"/donate-now"} className="btn bg-sky-800 hover:bg-sky-700 text-white w-full sm:w-fit mt-4 lg:mt-6">
+          <Link
+            href={"/donate-now"}
+            className="btn bg-sky-800 hover:bg-sky-700 text-white w-full sm:w-fit mt-4 lg:mt-6"
+          >
             Donate Now
           </Link>
         </div>

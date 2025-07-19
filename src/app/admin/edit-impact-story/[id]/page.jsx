@@ -9,7 +9,7 @@ import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
 import OverlayLoader from "@/components/FormInput/OverLayLoader";
 import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import FormSelectInput from "@/components/FormInput/FormSelectInput";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
 import useUserStore from "@/lib/zustand/userStore";
 import axios from "axios";
@@ -21,6 +21,7 @@ const UpdateImpactStory = () => {
   const [initialData, setInitialData] = useState(null);
   const [initialDataLoading, setInitialDataLoading] = useState(false);
   const user = useUserStore((state) => state?.user);
+  const router = useRouter();
 
   const {
     register,
@@ -92,6 +93,7 @@ const UpdateImpactStory = () => {
       );
       if (patchRes.data.success) {
         alert("Story updated successfully!");
+        router.push("/admin/manage-stories");
       } else {
         alert("No changes detected.");
       }
@@ -108,7 +110,7 @@ const UpdateImpactStory = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Edit Project"} />
+      <SectionHeading heading={"Edit Story"} />
 
       <div className="bg-gray-300 p-6 rounded-md relative">
         {isSubmitting && <OverlayLoader message="Updating..." />}
@@ -206,7 +208,7 @@ const UpdateImpactStory = () => {
           />
 
           <FormCheckboxInput
-            label="Hide this project"
+            label="Hide this story"
             name="hidden"
             register={register}
           />
@@ -217,7 +219,7 @@ const UpdateImpactStory = () => {
               className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
               disabled={isSubmitting}
             >
-              Update Project
+              Update Story
             </button>
           </div>
         </form>

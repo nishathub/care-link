@@ -83,15 +83,15 @@ const SingleItemDetails = ({
               <p className="">{data?.goal}</p>
             </div>
           )}
+          {data?.description && (
+            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
+              <p className="">{data?.description}</p>
+            </div>
+          )}
           {(data?.goal || data?.strategy) && (
             <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
               <p className="">{data?.strategy}</p>
               <p className="">{data?.appeal}</p>
-            </div>
-          )}
-          {data?.description && (
-            <div className="bg-sky-100 text-justify rounded-lg shadow-2xl p-4">
-              <p className="">{data?.description}</p>
             </div>
           )}
 

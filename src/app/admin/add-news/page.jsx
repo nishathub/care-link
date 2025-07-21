@@ -11,6 +11,7 @@ import FormCheckboxInput from "@/components/FormInput/FormCheckBoxInput";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
 import { useRouter } from "next/navigation";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const AddNews = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,12 +61,20 @@ const AddNews = () => {
       if (postStoryRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("News added successfully!");
+        CustomAlert({
+          alertText: "News added !",
+          alertType: "succeed",
+          duration: 3000,
+        });
         router.push("/admin/manage-news");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add news.");
+      CustomAlert({
+        alertText: "Failed to add news.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -137,14 +146,14 @@ const AddNews = () => {
             errors={errors}
           />
           {/* Expected Outcome */}
-         <FormTextAreaInput
-           label="Expected Outcome*"
-           name="outcome"
-           placeholder="Possible outcome..."
-           register={register}
-           required={true}
-           errors={errors}
-         />
+          <FormTextAreaInput
+            label="Expected Outcome*"
+            name="outcome"
+            placeholder="Possible outcome..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
           {/* Call for Support */}
           <FormTextAreaInput
             label="Call for Support*"

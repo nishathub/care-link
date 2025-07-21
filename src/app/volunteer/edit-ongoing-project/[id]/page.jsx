@@ -14,6 +14,7 @@ import { useParams, useRouter } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
 import useUserStore from "@/lib/zustand/userStore";
 import axios from "axios";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const UpdateOngoingProject = () => {
   const { id: projectId } = useParams();
@@ -57,7 +58,11 @@ const UpdateOngoingProject = () => {
   // Submit updated data
   const onSubmit = async (data) => {
     if (user?.role === "volunteer" && user?.name !== initialData?.author) {
-      alert("Unauthorized!");
+      CustomAlert({
+        alertText: "Unauthorized !",
+        alertType: "error",
+        duration: 2000,
+      });
       console.error("Unauthorized");
       router.push("/volunteer/manage-projects");
       return;
@@ -75,7 +80,11 @@ const UpdateOngoingProject = () => {
           "CareLink/ongoingProjects"
         );
         if (!uploaded?.secure_url) {
-          alert("Image upload failed");
+          CustomAlert({
+            alertText: "Image upload failed",
+            alertType: "error",
+            duration: 2000,
+          });
           setIsSubmitting(false);
           return;
         }
@@ -98,14 +107,26 @@ const UpdateOngoingProject = () => {
         user
       );
       if (patchRes.data.success) {
-        alert("Project updated successfully!");
+        CustomAlert({
+          alertText: "Project updated !",
+          alertType: "succeed",
+          duration: 3000,
+        });
         router.push("/volunteer/manage-projects");
       } else {
-        alert("No changes detected.");
+        CustomAlert({
+          alertText: "No changes detected !",
+          alertType: "error",
+          duration: 2000,
+        });
       }
     } catch (err) {
       console.error("Update failed:", err);
-      alert("Update failed.");
+      CustomAlert({
+        alertText: "Update failed.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

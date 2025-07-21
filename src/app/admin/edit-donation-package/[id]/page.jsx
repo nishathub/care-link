@@ -13,6 +13,7 @@ import { useParams, useRouter } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
 import useUserStore from "@/lib/zustand/userStore";
 import axios from "axios";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const UpdateDonationPackage = () => {
   const { id: packageId } = useParams();
@@ -68,7 +69,11 @@ const UpdateDonationPackage = () => {
           "CareLink/donationPackages"
         );
         if (!uploaded?.secure_url) {
-          alert("Image upload failed");
+          CustomAlert({
+            alertText: "Image upload failed",
+            alertType: "error",
+            duration: 2000,
+          });
           setIsSubmitting(false);
           return;
         }
@@ -91,21 +96,34 @@ const UpdateDonationPackage = () => {
         user
       );
       if (patchRes.data.success) {
-        alert("Package updated successfully!");
-        router.push("/admin/manage-donation-packages")
+        CustomAlert({
+          alertText: "Package updated !",
+          alertType: "succeed",
+          duration: 3000,
+        });
+        router.push("/admin/manage-donation-packages");
       } else {
-        alert("No changes detected.");
+        CustomAlert({
+          alertText: "No changes detected !",
+          alertType: "error",
+          duration: 2000,
+        });
       }
     } catch (err) {
       console.error("Update failed:", err);
-      alert("Update failed.");
+      CustomAlert({
+        alertText: "Update failed.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   if (initialDataLoading) return <OverlayLoader message="Loading package..." />;
-  if (!initialDataLoading && !initialData) return <OverlayLoader message="Package Data Loading Failed" />;
+  if (!initialDataLoading && !initialData)
+    return <OverlayLoader message="Package Data Loading Failed" />;
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -115,7 +133,7 @@ const UpdateDonationPackage = () => {
         {isSubmitting && <OverlayLoader message="Updating..." />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-         {/* Story Title */}
+          {/* Story Title */}
           <FormTextInput
             label="Package Title*"
             name="title"
@@ -124,7 +142,7 @@ const UpdateDonationPackage = () => {
             required={true}
             errors={errors}
           />
-         <label className="form-control w-full">
+          <label className="form-control w-full">
             <span className="label-text text-gray-800">
               Upload New Image (optional)
             </span>

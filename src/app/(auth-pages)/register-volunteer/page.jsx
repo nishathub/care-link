@@ -12,6 +12,7 @@ import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const VolunteerRegistration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,12 +59,20 @@ const VolunteerRegistration = () => {
       if (postRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Registration submitted! Please check your email");
+        CustomAlert({
+          alertText: "Registration submitted!",
+          alertType: "succeed",
+          duration: 3000,
+        });
         router.push("/registration-success");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to register.");
+      CustomAlert({
+        alertText: "Registration Failed!",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

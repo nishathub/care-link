@@ -12,6 +12,7 @@ import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
 import { useRouter } from "next/navigation";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const AddImpactStory = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,12 +61,20 @@ const AddImpactStory = () => {
       if (postStoryRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Story added successfully!");
-        router.push('/admin/manage-stories');
+        CustomAlert({
+          alertText: "Story added !",
+          alertType: "succeed",
+          duration: 3000,
+        });
+        router.push("/admin/manage-stories");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add story.");
+      CustomAlert({
+        alertText: "Failed to add story.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

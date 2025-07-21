@@ -13,6 +13,7 @@ import { useParams, useRouter } from "next/navigation";
 import { secureAxios } from "@/utils/secureAxios";
 import useUserStore from "@/lib/zustand/userStore";
 import axios from "axios";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const UpdateNews = () => {
   const { id: newsId } = useParams();
@@ -66,7 +67,11 @@ const UpdateNews = () => {
           "CareLink/news"
         );
         if (!uploaded?.secure_url) {
-          alert("Image upload failed");
+          CustomAlert({
+            alertText: "Image upload failed",
+            alertType: "error",
+            duration: 2000,
+          });
           setIsSubmitting(false);
           return;
         }
@@ -89,14 +94,26 @@ const UpdateNews = () => {
         user
       );
       if (patchRes.data.success) {
-        alert("News updated successfully!");
+        CustomAlert({
+          alertText: "News updated !",
+          alertType: "succeed",
+          duration: 3000,
+        });
         router.push("/admin/manage-news");
       } else {
-        alert("No changes detected.");
+        CustomAlert({
+          alertText: "No changes detected !",
+          alertType: "error",
+          duration: 2000,
+        });
       }
     } catch (err) {
       console.error("Update failed:", err);
-      alert("Update failed.");
+      CustomAlert({
+        alertText: "Update failed.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

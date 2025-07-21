@@ -13,6 +13,7 @@ import FormDynamicFieldList from "@/components/FormInput/FormDynamicFieldList";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
 import { useRouter } from "next/navigation";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const AddOngoingProjects = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,12 +65,20 @@ const AddOngoingProjects = () => {
       if (postProjectRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Project added successfully!");
+        CustomAlert({
+          alertText: "Project added !",
+          alertType: "succeed",
+          duration: 3000,
+        });
         router.push("/volunteer/manage-projects");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add project.");
+      CustomAlert({
+        alertText: "Failed to add project. !",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

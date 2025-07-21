@@ -12,6 +12,7 @@ import FormSelectInput from "@/components/FormInput/FormSelectInput";
 import useUserStore from "@/lib/zustand/userStore";
 import { secureAxios } from "@/utils/secureAxios";
 import { useRouter } from "next/navigation";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const AddDonationPackage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,12 +59,20 @@ const AddDonationPackage = () => {
       if (postStoryRes.data.insertedId) {
         reset();
         setImageFile(null);
-        alert("Package added successfully!");
-        router.push('/admin/manage-donation-packages');
+        CustomAlert({
+          alertText: "Package added !",
+          alertType: "succeed",
+          duration: 3000,
+        });
+        router.push("/admin/manage-donation-packages");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add package.");
+      CustomAlert({
+        alertText: "Failed to add package.",
+        alertType: "error",
+        duration: 2000,
+      });
     } finally {
       setIsSubmitting(false);
     }

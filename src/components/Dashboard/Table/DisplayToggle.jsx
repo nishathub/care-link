@@ -1,8 +1,9 @@
 "use client";
 
+import { CustomAlert } from "@/utils/handleCustomAlert";
 import axios from "axios";
 
-const DisplayToggle = ({ id, hidden, refetch, middleAPI, afterIdAPI=""}) => {
+const DisplayToggle = ({ id, hidden, refetch, middleAPI, afterIdAPI = "" }) => {
   const handleDisplayToggle = async () => {
     const updatedData = {
       hidden: !hidden,
@@ -13,6 +14,15 @@ const DisplayToggle = ({ id, hidden, refetch, middleAPI, afterIdAPI=""}) => {
         updatedData
       );
       if (updateRes.data.success) {
+        try {
+          if (hidden) {
+            CustomAlert({ alertText: "Displayed", alertType: "succeed" });
+          } else {
+            CustomAlert({ alertText: "Hidden", alertType: "error" });
+          }
+        } catch (error) {
+          console.log(error);
+        }
         refetch();
       }
     } catch (error) {

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout/ClientLayout";
+import CustomToast from "@/components/CustomAlert/CustomToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${robotoMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CustomToast/>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

@@ -152,9 +152,9 @@ const StripePaymentModal = ({
 
         {loading && (
           <div className="mt-4 w-fit m-auto">
-            <p>
+            <div>
               <CustomLoading color="border-sky-600" />
-            </p>
+            </div>
           </div>
         )}
       </div>

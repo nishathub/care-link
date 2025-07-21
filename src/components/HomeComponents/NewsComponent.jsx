@@ -25,7 +25,6 @@ const NewsComponent = async ({ isHomePage = false }) => {
         <div>
           <SectionHeading
             heading={"Recent News & Updates"}
-            paragraph={""}
             textColor="black"
           ></SectionHeading>
         </div>

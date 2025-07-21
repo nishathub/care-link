@@ -5,8 +5,8 @@ const AboutCareLink = () => {
     <div className="hero bg-sky-100 rounded-lg">
       <div className="hero-content flex-col lg:flex-row">
         <img
-          src="https://static.toiimg.com/img/79679098/Master.jpg"
-          alt=""
+          src="https://res.cloudinary.com/dntewbvod/image/upload/v1753069068/Master_hzz02z.jpg"
+          alt="care-a-plant"
           className="max-w-md hidden lg:flex"
         />
         <div>

@@ -25,7 +25,6 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
         <div>
           <SectionHeading
             heading={"Impact Stories"}
-            paragraph={"Your Donation Matters"}
             textColor="black"
           ></SectionHeading>
         </div>

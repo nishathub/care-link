@@ -5,6 +5,7 @@ import { LogOut, User } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 import Link from "next/link";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const Dropdown = ({ user, logout, position = "up" }) => {
   const router = useRouter();
@@ -18,7 +19,11 @@ const Dropdown = ({ user, logout, position = "up" }) => {
       if (logoutRes.data.success) {
         logout(); // remove user from zustand state
         router.push("/login");
-        alert("logout successful");
+        CustomAlert({
+          alertText: "logout successful",
+          alertType: "succeed",
+        });
+
       }
     } catch (error) {
       console.error(error);

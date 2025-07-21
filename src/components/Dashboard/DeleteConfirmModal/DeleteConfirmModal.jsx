@@ -1,5 +1,6 @@
 "use client";
 import useUserStore from "@/lib/zustand/userStore";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 import { secureAxios } from "@/utils/secureAxios";
 
 const DeleteConfirmModal = ({
@@ -12,7 +13,7 @@ const DeleteConfirmModal = ({
   setDeleteLoading,
   refetch,
 }) => {
-  const user = useUserStore((state)=> state?.user);
+  const user = useUserStore((state) => state?.user);
   const handleConfirmDelete = async () => {
     setDeleteLoading(true);
     setDeleteModalOpen(false);
@@ -24,11 +25,17 @@ const DeleteConfirmModal = ({
         user
       );
       if (deleteItemRes?.data.success) {
-        alert(`${itemName} Deleted`);
+        CustomAlert({
+          alertText: `${itemName} Deleted`,
+          alertType: "succeed",
+        });
       }
     } catch (err) {
       console.error("Delete failed:", err);
-      alert("Failed to Delete!");
+      CustomAlert({
+        alertText: "Delete failed.",
+        alertType: "error",
+      });
     } finally {
       setDeleteLoading(false);
       setDeleteModalOpen(false);

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CustomAlert } from "./handleCustomAlert";
 
 export const secureAxios = async (method, url, data = null, user) => {
   // Role-based access control
@@ -6,13 +7,21 @@ export const secureAxios = async (method, url, data = null, user) => {
 
   if (methodLower === "delete") {
     if (!user?.rank || user.rank !== "chief") {
-      alert("Unauthorized Access.");
+      CustomAlert({
+        alertText: "Unauthorized Access",
+        alertType: "error",
+        duration: 2000,
+      });
       console.error("Unauthorized Access");
       return null;
     }
   } else {
     if (!user || (user.role !== "admin" && user.role !== "volunteer")) {
-      alert("Unauthorized Access");
+      CustomAlert({
+        alertText: "Unauthorized Access",
+        alertType: "error",
+        duration: 2000,
+      });
       console.error("Unauthorized Access");
       return null;
     }

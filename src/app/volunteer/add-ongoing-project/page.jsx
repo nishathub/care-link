@@ -68,7 +68,6 @@ const AddOngoingProjects = () => {
         CustomAlert({
           alertText: "Project added !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/volunteer/manage-projects");
       }

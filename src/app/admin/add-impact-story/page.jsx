@@ -64,7 +64,6 @@ const AddImpactStory = () => {
         CustomAlert({
           alertText: "Story added !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/admin/manage-stories");
       }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CustomLoading from "../CustomLoading/CustomLoading";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const StripePaymentModal = ({
   isOpen,
@@ -90,11 +91,19 @@ const StripePaymentModal = ({
         );
         if (LogRes.data.insertedId) {
           setLoading(false);
-          alert("payment successful");
+          CustomAlert({
+            alertText: "Payment successful",
+            alertType: "succeed",
+          });
           router.push("/");
         }
       } catch (error) {
-        console.error("donation log post err")
+        console.error("donation log post err");
+        CustomAlert({
+          alertText: "Payment failed.",
+          alertType: "error",
+          duration: 2000,
+        });
       }
     }
 
@@ -143,7 +152,9 @@ const StripePaymentModal = ({
 
         {loading && (
           <div className="mt-4 w-fit m-auto">
-            <p><CustomLoading color="border-sky-600"/></p>
+            <p>
+              <CustomLoading color="border-sky-600" />
+            </p>
           </div>
         )}
       </div>

@@ -110,7 +110,6 @@ const UpdateOngoingProject = () => {
         CustomAlert({
           alertText: "Project updated !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/volunteer/manage-projects");
       } else {

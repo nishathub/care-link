@@ -99,7 +99,6 @@ const UpdateDonationPackage = () => {
         CustomAlert({
           alertText: "Package updated !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/admin/manage-donation-packages");
       } else {

@@ -64,7 +64,6 @@ const AddNews = () => {
         CustomAlert({
           alertText: "News added !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/admin/manage-news");
       }

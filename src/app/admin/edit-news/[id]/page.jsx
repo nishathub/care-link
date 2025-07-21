@@ -97,7 +97,6 @@ const UpdateNews = () => {
         CustomAlert({
           alertText: "News updated !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/admin/manage-news");
       } else {

@@ -62,7 +62,6 @@ const AddDonationPackage = () => {
         CustomAlert({
           alertText: "Package added !",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/admin/manage-donation-packages");
       }

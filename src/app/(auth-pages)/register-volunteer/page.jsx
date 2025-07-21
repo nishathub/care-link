@@ -62,7 +62,6 @@ const VolunteerRegistration = () => {
         CustomAlert({
           alertText: "Registration submitted!",
           alertType: "succeed",
-          duration: 3000,
         });
         router.push("/registration-success");
       }

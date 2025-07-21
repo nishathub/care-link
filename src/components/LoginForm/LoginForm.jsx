@@ -6,6 +6,7 @@ import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/lib/zustand/userStore";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,12 +55,20 @@ const LoginForm = () => {
             : "/"
         );
         // alert
-        alert(`Hello ${user?.name}`);
+        CustomAlert({
+          alertText: `Hello ${user?.name} !`,
+          alertType: "info",
+          duration: 3000,
+        });
       } else {
         throw new Error(res.data.message || "Login failed");
       }
     } catch (err) {
       setErrorText(err?.response?.data?.message || "Login error");
+      CustomAlert({
+        alertText: "Login error",
+        alertType: "error",
+      });
     } finally {
       setIsLoginLoading(false);
       reset();

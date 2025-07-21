@@ -20,7 +20,7 @@ const Dropdown = ({ user, logout, position = "up" }) => {
         logout(); // remove user from zustand state
         router.push("/login");
         CustomAlert({
-          alertText: "logout successful",
+          alertText: "Logout successful",
           alertType: "succeed",
         });
 

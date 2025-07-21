@@ -7,6 +7,7 @@ import useUserStore from "@/lib/zustand/userStore";
 import UserReviewBox from "./UserReviewBox";
 import ProjectReviewBox from "./ProjectReviewBox";
 import DonationReviewBox from "./DonationReviewBox";
+import { CustomAlert } from "@/utils/handleCustomAlert";
 
 const ReviewDetails = ({ type, data }) => {
   const router = useRouter();
@@ -35,6 +36,7 @@ const ReviewDetails = ({ type, data }) => {
         user
       );
       if (updateRes.data.success) {
+        CustomAlert({ alertText: "Rejected", alertType: "error" });
         router.push(redirectMap[type]);
       }
     } catch (error) {
@@ -52,6 +54,7 @@ const ReviewDetails = ({ type, data }) => {
         user
       );
       if (updateRes.data.success) {
+        CustomAlert({ alertText: "Approved", alertType: "succeed" });
         router.push(redirectMap[type]);
       }
     } catch (error) {
@@ -68,17 +71,11 @@ const ReviewDetails = ({ type, data }) => {
 
       <div className="bg-gray-200 text-gray-800 p-6 rounded-xl shadow border space-y-6">
         {/* Type-specific details */}
-        {type === "user" && (
-          <UserReviewBox data={data}/>
-        )}
+        {type === "user" && <UserReviewBox data={data} />}
 
-        {type === "donation" && (
-         <DonationReviewBox data={data}/>
-        )}
+        {type === "donation" && <DonationReviewBox data={data} />}
 
-        {type === "project" && (
-          <ProjectReviewBox data={data}/>
-        )}
+        {type === "project" && <ProjectReviewBox data={data} />}
 
         {/* Action Buttons */}
         <div className="flex justify-end gap-4 pt-4">

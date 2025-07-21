@@ -55,7 +55,7 @@ const DeleteConfirmModal = ({
         >
           X
         </button>
-        <h4 className="text-lg mb-4 font-semibold">Are you sure?</h4>
+        <h4 className="text-lg sm:text-2xl mb-4 font-semibold">Are you sure?</h4>
         <div className="flex gap-6">
           <button
             className="btn btn-error text-white"

@@ -6,7 +6,7 @@ const NavStart = () => {
   return (
     <div className="navbar-start">
       <div className="dropdown">
-        <div tabIndex={0} role="button" className="mx-2 p-1 text-white hover:bg-sky-900 rounded-lg lg:hidden">
+        <div tabIndex={0} role="button" className="mx-2 btn btn-sm btn-ghost btn-neutral text-white rounded-lg lg:hidden">
           <Menu/>
         </div>
         <ul

@@ -62,7 +62,7 @@ const SingleItemDetails = ({
               <ul className="steps steps-vertical">
                 {data?.expenseCategories?.map((cat, index) => {
                   return (
-                    <li key={index} className="step">
+                    <li key={index} className="step step-neutral">
                       {cat}
                     </li>
                   );

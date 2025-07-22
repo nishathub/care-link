@@ -29,7 +29,7 @@ const AboutCareLink = () => {
             <p className="">
               Through this interactive platform, caring volunteers can bring
               urgent situations to light, and together we turn them into real
-              impact stories. Supporting so many vulnerable people alone is
+              success stories. Supporting so many vulnerable people alone is
               challenging — that is why we invite you to stand with us and move
               forward each day with a vision to serve humanity.
             </p>

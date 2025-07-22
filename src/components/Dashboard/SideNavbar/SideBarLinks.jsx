@@ -64,7 +64,7 @@ const SideBarLinkCollection = ({ user, isUserLoading }) => {
         />
         <SidebarLink
           href="/admin/add-impact-story"
-          text="Add Impact Story"
+          text="Add Success Story"
           Icon={PlusCircle}
         />
         <SidebarLink href="/admin/add-news" text="Add News" Icon={PlusCircle} />

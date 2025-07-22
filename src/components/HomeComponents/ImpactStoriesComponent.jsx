@@ -24,7 +24,7 @@ const ImpactStoriesComponent = async ({ isHomePage = false }) => {
       {isHomePage && (
         <div>
           <SectionHeading
-            heading={"Impact Stories"}
+            heading={"Success Stories"}
             textColor="black"
           ></SectionHeading>
         </div>

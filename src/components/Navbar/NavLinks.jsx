@@ -11,7 +11,7 @@ const NavLinks = () => {
         <Link className={`${pathName === "/ongoing-cases" ? "bg-sky-900" : ""}`} href={"/ongoing-cases"}>Ongoing Projects</Link>
       </li>
       <li>
-        <Link className={`${pathName === "/impact-stories" ? "bg-sky-900" : ""}`} href={"/impact-stories"}>Impact Stories</Link>
+        <Link className={`${pathName === "/impact-stories" ? "bg-sky-900" : ""}`} href={"/impact-stories"}>Success Stories</Link>
       </li>
       <li>
         <Link className={`${pathName === "/news-updates" ? "bg-sky-900" : ""}`} href={"/news-updates"}>News</Link>

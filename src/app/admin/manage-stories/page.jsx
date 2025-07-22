@@ -44,7 +44,7 @@ const ManageStories = () => {
       <div className="">
         <SectionHeading
           heading="Manage Stories"
-          paragraph="List of all Impact Stories"
+          paragraph="List of all Success Stories"
         />
       </div>
       <div>

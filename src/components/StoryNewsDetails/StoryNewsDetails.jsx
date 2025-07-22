@@ -72,7 +72,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             <p className="text-justify">{singleItem.appeal}</p>
           )}
 
-          {/* For Impact Story */}
+          {/* For Success Story */}
           {singleItem?.challenge && (
             <p className="text-justify">{singleItem.challenge}</p>
           )}

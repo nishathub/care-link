@@ -27,7 +27,7 @@ const AdminStatsCard = async () => {
       link: "/volunteer/manage-projects",
     },
     {
-      label: "Impact Stories",
+      label: "Success Stories",
       icon: <BookOpen className="w-6 sm:w-8 text-sky-800" />,
       value: totalStories,
       link: "/admin/manage-stories",

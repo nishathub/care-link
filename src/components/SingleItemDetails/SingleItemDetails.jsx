@@ -20,7 +20,7 @@ const SingleItemDetails = ({
       <div className="absolute z-10 left-0 w-full top-16 lg:top-20">
         <PageCover pageName={data?.title} />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-4 sm:mt-0">
         <div className="max-w-2xl mx-auto w-full space-y-8">
           <div className="h-80 rounded-lg shadow-2xl relative">
             <Image

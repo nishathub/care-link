@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CareLink — Full-Stack Charity Management Platform
 
-## Getting Started
+A modern, full-stack Next.js charity management platform built to help people in need on a small, local scale. CareLink makes it easy for anyone to support genuine cases transparently and securely.
 
-First, run the development server:
+Anyone can apply to become a volunteer through the website. After verification, an admin approves the application. Approved volunteers can submit details of needy cases through a secure dashboard form. These stories are stored in MongoDB and wait for admin review. Once verified, the admin publishes the case on the public site.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visitors can browse approved cases and donate securely using Stripe Checkout. When a case is solved, it’s published as a success story to build trust and show impact. A simple news section keeps the community updated about progress and future plans.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Behind the scenes, CareLink uses custom authentication and authorization, protected API routes, bcrypt for password security, Zustand for state management, Nodemailer for automated emails, and the Next.js App Router for smooth routing and API handling. Dynamic UI elements like Swiper sliders, custom loaders, and modals create a modern, user-friendly experience.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Authentication & Authorization
+- Custom **JWT-based** user registration & login
+- **bcrypt** password hashing for secure credentials
+- Central **Next.js middleware** to protect API routes and pages
 
-## Learn More
+### Donation Management
+- Accept real-time donations with **Stripe Checkout**
+- Automated confirmation emails using **Nodemailer**
+- Donation records securely stored in **MongoDB**
 
-To learn more about Next.js, take a look at the following resources:
+### Admin Panel
+- Manage users and donations through protected admin routes
+- Role-based access control for admins, editors, and volunteers
+- Analytics-ready backend structure for future dashboards
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Modern Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Frontend        | Backend               | Database | Integrations & Tools           |
+|-----------------|-----------------------|----------|--------------------------------|
+| **Next.js App Router** | Next.js API Routes | MongoDB  | **Stripe**, **Nodemailer**     |
+| Zustand (State Mgmt) | Custom Middleware |          | Swiper.js, Axios               |
+| Tailwind CSS    | JWT Auth, bcrypt      |          | Custom Modals, Loaders, Spinners |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Dynamic UI & Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-  **Custom Alerts & Modals** — Reusable components for consistent UX
+-  **Loading Spinner** — Smooth loading feedback for API operations
+-  **Swiper Slider** — Dynamic image sliders for campaign showcases
+-  **Protected Routes** — Centralized middleware ensures secure access
+
+---
+
+## Backend Highlights
+
+- Built-in **Next.js API** for server-side operations
+- Secure authentication with **JWT**, **bcrypt**, and custom logic
+- Automated email system using **Nodemailer**
+- **Stripe** integration for trusted payment processing
+
+---
+
+## Roadmap
+
+- [ ] Admin dashboard with donation analytics
+- [ ] Email templates for different triggers (registration, donation receipt)
+- [ ] Multi-role volunteer management system
+- [ ] Pagination & advanced search for donation records
+- [ ] Public success stories and campaign pages
+- [ ] User profile pages with donation history
+
+---
+
+## Author
+
+**Ashraf Ali**
+
+---
+
+## Live Demo & Code
+
+- **Live Site:** [CareLink Live](#)
+- **GitHub Repo:** [CareLink GitHub](#)
+
+---
+
+## Tech Keywords
+
+`nextjs` `fullstack` `jwt-auth` `bcrypt` `stripe` `nodemailer` `zustand` `mongodb` `tailwindcss` `swiperjs` `charity-platform` `donation-management`
+

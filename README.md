@@ -1,12 +1,13 @@
-# CareLink — Full-Stack Charity Management Platform
+# CareLink — A Full-Stack Charity Management Platform
 
-A modern, full-stack Next.js charity management platform built to help people in need on a small, local scale. CareLink makes it easy for anyone to support genuine cases transparently and securely.
+A modern, full-stack **Next.js** charity management platform built to help people in need on a small, local scale. **CareLink** makes it easy for anyone to support genuine cases transparently and securely.
 
-Anyone can apply to become a volunteer through the website. After verification, an admin approves the application. Approved volunteers can submit details of needy cases through a secure dashboard form. These stories are stored in MongoDB and wait for admin review. Once verified, the admin publishes the case on the public site.
+Anyone can apply to become a **volunteer** through the website. After verification, an **admin** approves the application. Approved **volunteers** can submit details of needy cases through a secure **dashboard** form. These stories are stored in **MongoDB** and wait for **admin** review. Once verified, the **admin** publishes the case on the public site.
 
-Visitors can browse approved cases and donate securely using Stripe Checkout. When a case is solved, it’s published as a success story to build trust and show impact. A simple news section keeps the community updated about progress and future plans.
+Visitors can browse approved cases and donate securely using **Stripe Checkout**. When a case is solved, it’s published as a **success story** to build trust and show impact. A simple **news section** keeps the community updated about progress and future plans.
 
-Behind the scenes, CareLink uses custom authentication and authorization, protected API routes, bcrypt for password security, Zustand for state management, Nodemailer for automated emails, and the Next.js App Router for smooth routing and API handling. Dynamic UI elements like Swiper sliders, custom loaders, and modals create a modern, user-friendly experience.
+Behind the scenes, **CareLink** uses **custom authentication and authorization**, **protected API routes**, **bcrypt** for password security, **Zustand** for state management, **Nodemailer** for automated emails, and the **Next.js App Router** for smooth routing and API handling. Dynamic UI elements like **Swiper sliders**, custom **loaders**, and **modals** create a modern, user-friendly experience.
+
 ---
 
 ## Features
@@ -58,27 +59,31 @@ Behind the scenes, CareLink uses custom authentication and authorization, protec
 
 - [ ] Admin dashboard with donation analytics
 - [ ] Email templates for different triggers (registration, donation receipt)
-- [ ] Multi-role volunteer management system
 - [ ] Pagination & advanced search for donation records
-- [ ] Public success stories and campaign pages
 - [ ] User profile pages with donation history
 
 ---
 
 ## Author
 
-**Ashraf Ali**
+**Ashraf Ali**  
+MERN Stack Developer  
+
+- [Portfolio](https://ashraf-portfolio-wd.web.app)
+- [Resume](https://docs.google.com/document/d/1Z7rp08uI8xHl0tulbbvn0-K1c9otI0mfOo34c2c8djM/edit?usp=sharing) 
+- [LinkedIn Profile](https://www.linkedin.com/in/ashrafalibutex42)  
+- [Github Profile](https://github.com/nishathub)  
+- [Email](mailto:ashraf.ali.butex42@gmail.com)  
 
 ---
 
-## Live Demo & Code
+## Live Demo
 
-- **Live Site:** [CareLink Live](#)
-- **GitHub Repo:** [CareLink GitHub](#)
+- **Live Site:** [CareLink Live](https://care-link-ebon.vercel.app/)
 
 ---
 
 ## Tech Keywords
 
-`nextjs` `fullstack` `jwt-auth` `bcrypt` `stripe` `nodemailer` `zustand` `mongodb` `tailwindcss` `swiperjs` `charity-platform` `donation-management`
+`nextjs` `fullstack` `jwt-auth` `bcrypt` `stripe` `nodemailer` `zustand` `mongodb` `tailwindcss` `swiperjs`
 

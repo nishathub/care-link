@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
 import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
@@ -127,78 +126,102 @@ const UpdateImpactStory = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Edit Story"} />
+       <div className="bg-gray-300 rounded-lg shadow-2xl p-4 md:p-6 relative">
+        {isSubmitting && <OverlayLoader message="Submitting..." />}
 
-      <div className="bg-gray-300 p-6 rounded-md relative">
-        {isSubmitting && <OverlayLoader message="Updating..." />}
+        <h2 className="text-xl md:text-3xl font-semibold text-center capitalize text-gray-900 mb-6">
+          Edit Story
+        </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-          <FormTextInput
-            label="Story Title*"
-            name="title"
-            placeholder="Water for all.."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-
-          <label className="form-control w-full">
-            <span className="label-text text-gray-800">
-              Upload New Image (optional)
-            </span>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setImageFile(e.target.files[0])}
-              className="file-input file-input-bordered w-full bg-white text-gray-800"
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Story Title */}
+            <FormTextInput
+              label="Story Title*"
+              name="title"
+              placeholder="Write a concise title.."
+              register={register}
+              required={true}
+              errors={errors}
             />
-          </label>
+            {/* Image Upload */}
+            <label className="form-control w-full">
+              <span className="label-text text-gray-800">Upload Image*</span>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImageFile(e.target.files[0])}
+                className="file-input file-input-bordered w-full bg-white text-gray-800"
+              />
+            </label>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Related Quote */}
+            <FormTextInput
+              label="Related Quote"
+              name="relatedQuote"
+              placeholder="A motivational quote.."
+              register={register}
+              required={false}
+              errors={errors}
+            />
+            {/* Tag */}
+            <FormSelectInput
+              label="Tag*"
+              name="tag"
+              register={register}
+              required={true}
+              errors={errors}
+              options={[
+                "Livelihood",
+                "Education",
+                "Health",
+                "Shelter",
+                "Emergency",
+              ]}
+            />
+          </div>
 
-          <FormTextInput
-            label="Related Quote"
-            name="relatedQuote"
-            placeholder="A motivational quote.."
-            register={register}
-            required={false}
-            errors={errors}
-          />
-
-          {/* Introduction */}
-          <FormTextAreaInput
-            label="Introduction*"
-            name="introduction"
-            placeholder="Story introduction..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Challenge Part */}
-          <FormTextAreaInput
-            label="Challenge Part*"
-            name="challenge"
-            placeholder="Write about the problem/challenge shortly..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Contribution */}
-          <FormTextAreaInput
-            label="Contribution*"
-            name="contribution"
-            placeholder="How we solved the situation..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Description */}
-          <FormTextAreaInput
-            label="Description*"
-            name="description"
-            placeholder="Story description..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Introduction */}
+            <FormTextAreaInput
+              label="Introduction*"
+              name="introduction"
+              placeholder="Story introduction..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+            {/* Challenge Part */}
+            <FormTextAreaInput
+              label="Challenge Part*"
+              name="challenge"
+              placeholder="Write about the problem/challenge shortly..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Contribution */}
+            <FormTextAreaInput
+              label="Contribution*"
+              name="contribution"
+              placeholder="How we solved the situation..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+            {/* Description */}
+            <FormTextAreaInput
+              label="Description*"
+              name="description"
+              placeholder="Story description..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+          </div>
           {/* Conclusion */}
           <FormTextAreaInput
             label="Conclusion*"
@@ -209,21 +232,7 @@ const UpdateImpactStory = () => {
             errors={errors}
           />
 
-          <FormSelectInput
-            label="Tag*"
-            name="tag"
-            register={register}
-            required={true}
-            errors={errors}
-            options={[
-              "Livelihood",
-              "Education",
-              "Health",
-              "Shelter",
-              "Emergency",
-            ]}
-          />
-
+          {/* Hidden Checkbox*/}
           <FormCheckboxInput
             label="Hide this story"
             name="hidden"
@@ -233,7 +242,7 @@ const UpdateImpactStory = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
+              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Update Story

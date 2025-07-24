@@ -85,111 +85,121 @@ const AddOngoingProjects = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Add a new Project"}></SectionHeading>
-
-      <div className="bg-gray-300 p-6 rounded-md relative">
+      <div className="bg-gray-300 rounded-lg shadow-2xl p-4 md:p-6 relative">
         {isSubmitting && <OverlayLoader message="Submitting..." />}
 
+        <h2 className="text-xl md:text-3xl font-semibold text-center capitalize text-gray-900 mb-6">
+          Add a new Project
+        </h2>
+
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-          {/* Project Title */}
-          <FormTextInput
-            label="Project Title*"
-            name="title"
-            placeholder="Water for all.."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Image Upload */}
-          <label className="form-control w-full">
-            <span className="label-text text-gray-800">Upload Image*</span>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setImageFile(e.target.files[0])}
-              className="file-input file-input-bordered w-full bg-white text-gray-800"
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Project Title */}
+            <FormTextInput
+              label="Project Title*"
+              name="title"
+              placeholder="Water for all.."
+              register={register}
+              required={true}
+              errors={errors}
             />
-          </label>
+            {/* Image Upload */}
+            <label className="form-control w-full">
+              <span className="label-text text-gray-800">Upload Image*</span>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImageFile(e.target.files[0])}
+                className="file-input file-input-bordered w-full bg-white text-gray-800"
+              />
+            </label>
+          </div>
 
-          {/* Related Quote */}
-          <FormTextInput
-            label="Related Quote"
-            name="relatedQuote"
-            placeholder="A motivational quote.."
-            register={register}
-            required={false}
-            errors={errors}
-          />
-
-          {/* Expense Categories */}
-          <FormDynamicFieldList
-            control={control}
-            register={register}
-            required={true}
-            name="expenseCategories"
-            label="Expense Categories"
-          />
-
-          {/* Background / Context */}
-          <FormTextAreaInput
-            label="Background / Context*"
-            name="context"
-            placeholder="Write about the context/situation shortly..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Goal */}
-          <FormTextAreaInput
-            label="Goal*"
-            name="goal"
-            placeholder="What we are focusing to solve..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Strategy */}
-          <FormTextAreaInput
-            label="Strategy*"
-            name="strategy"
-            placeholder="How we are working..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Call for Support */}
-          <FormTextAreaInput
-            label="Call for Support*"
-            name="appeal"
-            placeholder="How people can participate..."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Expected Outcome */}
-          <FormTextAreaInput
-            label="Numeric Details*"
-            name="numericDetails"
-            placeholder="50 bags for distribution../ 2 living rooms to build.. according to expense categories"
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          {/* Tag */}
-          <FormSelectInput
-            label="Tag*"
-            name="tag"
-            register={register}
-            required={true}
-            errors={errors}
-            options={[
-              "Livelihood",
-              "Education",
-              "Health",
-              "Shelter",
-              "Emergency",
-            ]}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Related Quote */}
+            <FormTextInput
+              label="Related Quote"
+              name="relatedQuote"
+              placeholder="A motivational quote.."
+              register={register}
+              required={false}
+              errors={errors}
+            />
+            {/* Tag */}
+            <FormSelectInput
+              label="Tag*"
+              name="tag"
+              register={register}
+              required={true}
+              errors={errors}
+              options={[
+                "Livelihood",
+                "Education",
+                "Health",
+                "Shelter",
+                "Emergency",
+              ]}
+            />
+          </div>
+            {/* Expense Categories */}
+            <FormDynamicFieldList
+              control={control}
+              register={register}
+              required={true}
+              name="expenseCategories"
+              label="Expense Categories"
+            />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+          </div>
+            {/* Background / Context */}
+            <FormTextAreaInput
+              label="Background / Context*"
+              name="context"
+              placeholder="Write about the context/situation shortly..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Goal */}
+            <FormTextAreaInput
+              label="Goal*"
+              name="goal"
+              placeholder="What we are focusing to solve..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+            {/* Strategy */}
+            <FormTextAreaInput
+              label="Strategy*"
+              name="strategy"
+              placeholder="How we are working..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Numeric Details */}
+            <FormTextAreaInput
+              label="Numeric Details*"
+              name="numericDetails"
+              placeholder="50 bags for distribution../ 2 living rooms to build.. according to expense categories"
+              register={register}
+              required={true}
+              errors={errors}
+            />
+            {/* Call for Support */}
+            <FormTextAreaInput
+              label="Call for Support*"
+              name="appeal"
+              placeholder="How people can participate..."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+          </div>
 
           {/* Hidden Checkbox*/}
           <FormCheckboxInput
@@ -202,7 +212,7 @@ const AddOngoingProjects = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
+              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Add Project

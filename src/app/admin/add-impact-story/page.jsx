@@ -83,7 +83,7 @@ const AddImpactStory = () => {
       <div className="bg-gray-300 rounded-lg shadow-2xl p-4 md:p-6 relative">
         {isSubmitting && <OverlayLoader message="Submitting..." />}
 
-        <h2 className="text-xl md:text-3xl font-semibold text-center text-gray-900 mb-6">
+        <h2 className="text-xl md:text-3xl font-semibold text-center capitalize text-gray-900 mb-6">
           Add a new Story
         </h2>
 

@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }) => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        <main className="flex-1 overflow-y-auto px-2 pt-4 lg:pt-8 lg:px-0 max-w-7xl mx-auto w-full">
+        <main className="flex-1 overflow-y-auto px-4 pt-16 pb-8 lg:pt-8 lg:px-0 max-w-7xl mx-auto w-full">
           {children}
         </main>
       </div>

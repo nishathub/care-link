@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import { getNews } from "@/lib/getNews";
 import ComponentsClient from "./ComponentsClient";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 const NewsComponent = async ({ isHomePage = false }) => {
   let renderItems = [];
@@ -42,7 +43,7 @@ const NewsComponent = async ({ isHomePage = false }) => {
             className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
             href={"/news-updates"}
           >
-            More
+            View All <SquareArrowOutUpRight className="w-4"/>
           </Link>
         </div>
       )}

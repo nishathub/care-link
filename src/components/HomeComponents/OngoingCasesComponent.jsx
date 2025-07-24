@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import { getOngoingProjects } from "@/lib/getOngoingProjects";
 import ComponentsClient from "./ComponentsClient";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 const OngoingCasesComponent = async ({ isHomePage = false }) => {
   let renderItems = [];
@@ -41,7 +42,7 @@ const OngoingCasesComponent = async ({ isHomePage = false }) => {
             className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
             href={"/ongoing-cases"}
           >
-            More
+            View All <SquareArrowOutUpRight className="w-4"/>
           </Link>
         )}
       </div>

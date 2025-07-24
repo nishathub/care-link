@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import uploadImageToCloudinary from "@/utils/uploadImageToCloudinary";
 import FormTextInput from "@/components/FormInput/FormTextInput";
 import FormTextAreaInput from "@/components/FormInput/FormTextAreaInput";
@@ -78,16 +77,15 @@ const VolunteerRegistration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-sky-800 pt-12 px-2 lg:px-0">
-      <SectionHeading heading={"Volunteer Registration"} />
-      <div className="max-w-4xl mx-auto max-h-[calc(100vh-150px)] overflow-auto">
-        <div className="bg-gray-300 p-6 rounded-md relative">
-          {isSubmitting && <OverlayLoader message="Submitting..." />}
+    <div className="max-w-4xl mx-auto bg-sky-100 rounded-xl shadow-2xl p-4 md:p-8 relative">
+      <h2 className="text-xl md:text-3xl font-semibold text-center text-gray-900 mb-6">
+        Volunteer Registration
+      </h2>
+      <div className="">
+        {isSubmitting && <OverlayLoader message="Submitting..." />}
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-2"
-          >
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Full Name */}
             <FormTextInput
               label="Full Name*"
@@ -108,6 +106,8 @@ const VolunteerRegistration = () => {
               required={true}
               errors={errors}
             />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Password */}
             <div className="relative">
               <button
@@ -137,6 +137,8 @@ const VolunteerRegistration = () => {
               required={true}
               errors={errors}
             />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Occupation */}
             <FormTextInput
               label="Occupation"
@@ -149,9 +151,9 @@ const VolunteerRegistration = () => {
 
             {/* Profile Photo */}
             <label className="form-control w-full">
-              <span className="label-text text-gray-800">
+              <p className="label-text text-gray-800 mb-1">
                 Profile Photo (optional)
-              </span>
+              </p>
               <input
                 type="file"
                 accept="image/*"
@@ -159,17 +161,18 @@ const VolunteerRegistration = () => {
                 className="file-input file-input-bordered w-full bg-white text-gray-800"
               />
             </label>
+          </div>
 
-            {/* Address */}
-            <FormTextAreaInput
-              label="Address*"
-              name="address"
-              placeholder="House ##, Road 10, Gulshan-1, Dhaka-1212"
-              register={register}
-              required={true}
-              errors={errors}
-            />
-
+          {/* Address */}
+          <FormTextAreaInput
+            label="Address*"
+            name="address"
+            placeholder="House ##, Road 10, Gulshan-1, Dhaka-1212"
+            register={register}
+            required={true}
+            errors={errors}
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Interest Area */}
             <FormSelectInput
               label="Area of Interest*"
@@ -195,25 +198,25 @@ const VolunteerRegistration = () => {
               required={true}
               errors={errors}
             />
-            {/* Availability Checkbox */}
-            <FormCheckboxInput
-              label="I am available to volunteer immediately"
-              name="availableNow"
-              register={register}
-            />
+          </div>
+          {/* Availability Checkbox */}
+          <FormCheckboxInput
+            label="I am available to volunteer immediately"
+            name="availableNow"
+            register={register}
+          />
 
-            {/* Submit */}
-            <div>
-              <button
-                type="submit"
-                className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
-                disabled={isSubmitting}
-              >
-                Register as Volunteer
-              </button>
-            </div>
-          </form>
-        </div>
+          {/* Submit */}
+          <div>
+            <button
+              type="submit"
+              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full mt-2"
+              disabled={isSubmitting}
+            >
+              Register as Volunteer
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

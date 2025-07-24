@@ -8,7 +8,7 @@ const FormTextInput = ({
   ...rest
 }) => (
   <label className="form-control w-full">
-    <span className="label-text text-gray-800">{label}</span>
+    <p className="label-text text-gray-800 mb-1">{label}</p>
     <input
       type={type}
       {...register(name, { required })}

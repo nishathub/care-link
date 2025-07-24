@@ -76,17 +76,17 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
       {/* Email */}
       <div>
-        <label className="label">
+        <label className="label mb-1">
           <span className="label-text text-sky-800 font-semibold">Email</span>
         </label>
         <input
           type="email"
           placeholder="Email"
           {...register("email", { required: "Email is required" })}
-          className="input input-bordered w-full bg-gray-100 text-gray-900"
+          className="input input-bordered w-full bg-white text-gray-900"
         />
         {errors.email && (
           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -95,7 +95,7 @@ const LoginForm = () => {
 
       {/* Password */}
       <div>
-        <label className="label">
+        <label className="label mb-1">
           <span className="label-text text-sky-800 font-semibold">
             Password
           </span>
@@ -105,7 +105,7 @@ const LoginForm = () => {
             type={showPassword ? "text" : "password"}
             placeholder="••••••••"
             {...register("password", { required: "Password is required" })}
-            className="input input-bordered w-full bg-gray-100 text-gray-900 pr-10"
+            className="input input-bordered w-full bg-white text-gray-900 pr-10"
           />
           <button
             type="button"
@@ -123,7 +123,7 @@ const LoginForm = () => {
       {/* Submit */}
       <button
         disabled={isLoginLoading}
-        className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white"
+        className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white mt-2"
       >
         {isLoginLoading ? "Logging in..." : "Log In"}
       </button>

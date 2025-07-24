@@ -77,7 +77,7 @@ const VolunteerRegistration = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-sky-100 rounded-xl shadow-2xl p-4 md:p-8 relative">
+    <div className="max-w-4xl mx-auto bg-gray-300 rounded-xl shadow-2xl p-4 md:p-8 relative">
       <h2 className="text-xl md:text-3xl font-semibold text-center text-gray-900 mb-6">
         Volunteer Registration
       </h2>
@@ -213,7 +213,7 @@ const VolunteerRegistration = () => {
               className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full mt-2"
               disabled={isSubmitting}
             >
-              Register as Volunteer
+              Register
             </button>
           </div>
         </form>

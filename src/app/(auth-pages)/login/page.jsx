@@ -4,7 +4,7 @@ import Link from "next/link";
 const Login = () => {
   return (
     
-    <div className="w-full max-w-2xl m-auto bg-sky-100 rounded-xl shadow-2xl p-4 sm:p-8 mt-20">
+    <div className="w-full max-w-2xl m-auto bg-gray-300 rounded-xl shadow-2xl p-4 sm:p-8 mt-20">
       <h2 className="text-xl md:text-3xl font-semibold text-center text-gray-900 mb-6">
         Login Here
       </h2>

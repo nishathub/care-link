@@ -10,7 +10,7 @@ export default function PublicPageLayout({ children }) {
       </header>
       <main className={`mt-16 lg:mt-20 flex-grow bg-sky-200 text-gray-800`}>
         <div className="min-h-screen">
-          <div className="max-w-7xl mx-auto px-2 lg:px-0 py-8">{children}</div>
+          <div className="max-w-7xl mx-auto px-4 lg:px-0 py-8">{children}</div>
         </div>
       </main>
       <footer>

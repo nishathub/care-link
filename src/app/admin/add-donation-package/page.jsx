@@ -79,13 +79,15 @@ const AddDonationPackage = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Add a new Package"}></SectionHeading>
-
-      <div className="bg-gray-300 p-6 rounded-md relative">
+      <div className="bg-gray-300 rounded-lg shadow-2xl p-4 md:p-6 relative">
         {isSubmitting && <OverlayLoader message="Submitting..." />}
 
+        <h2 className="text-xl md:text-3xl font-semibold text-center capitalize text-gray-900 mb-6">
+          Add a new donation package
+        </h2>
+
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-          {/* Story Title */}
+          {/* Package Title */}
           <FormTextInput
             label="Package Title*"
             name="title"
@@ -104,24 +106,25 @@ const AddDonationPackage = () => {
               className="file-input file-input-bordered w-full bg-white text-gray-800"
             />
           </label>
-
-          {/* Related Quote */}
-          <FormTextInput
-            label="Quote 1"
-            name="quote1"
-            placeholder="A motivational quote.."
-            register={register}
-            required={true}
-            errors={errors}
-          />
-          <FormTextInput
-            label="Quote 2"
-            name="quote2"
-            placeholder="A motivational quote.."
-            register={register}
-            required={false}
-            errors={errors}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+            {/* Related Quote */}
+            <FormTextInput
+              label="Quote 1"
+              name="quote1"
+              placeholder="A motivational quote.."
+              register={register}
+              required={true}
+              errors={errors}
+            />
+            <FormTextInput
+              label="Quote 2"
+              name="quote2"
+              placeholder="A motivational quote.."
+              register={register}
+              required={false}
+              errors={errors}
+            />
+          </div>
 
           {/* Description */}
           <FormTextAreaInput
@@ -161,7 +164,7 @@ const AddDonationPackage = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
+              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Add Package

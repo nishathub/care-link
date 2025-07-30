@@ -126,7 +126,7 @@ const UpdateDonationPackage = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Edit Project"} />
+      <SectionHeading heading={"Edit Package"} />
 
       <div className="bg-gray-300 p-6 rounded-md relative">
         {isSubmitting && <OverlayLoader message="Updating..." />}
@@ -208,7 +208,7 @@ const UpdateDonationPackage = () => {
           <div>
             <button
               type="submit"
-              className="btn font-cinzel bg-sky-600 text-white hover:bg-sky-700 border-0"
+              className="btn font-cinzel bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Update Package

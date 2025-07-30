@@ -75,7 +75,7 @@ const Card = ({
           {donateLink && (
             <Link
               href={donateLink}
-              className={`btn bg-sky-800 hover:bg-sky-700 text-white w-full`}
+              className={`btn font-cinzel bg-sky-800 hover:bg-sky-700 text-white w-full`}
             >
               Details
             </Link>

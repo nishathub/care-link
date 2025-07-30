@@ -63,14 +63,14 @@ const DeleteConfirmModal = ({
         </p>
         <div className="flex gap-6">
           <button
-            className="btn btn-error text-white"
+            className="btn font-cinzel btn-error text-white"
             onClick={handleConfirmDelete}
             disabled={isDeleteLoading}
           >
             Delete
           </button>
           <button
-            className="btn text-gray-200"
+            className="btn font-cinzel text-gray-200"
             onClick={() => setDeleteModalOpen(false)}
             disabled={isDeleteLoading}
           >

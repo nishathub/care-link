@@ -33,7 +33,7 @@ const FormDynamicFieldList = ({
         <button
           type="button"
           onClick={() => append("")}
-          className="btn btn-sm bg-gray-700 text-white mt-2"
+          className="btn font-cinzel btn-sm bg-gray-700 text-white mt-2"
         >
           + Add {label}
         </button>

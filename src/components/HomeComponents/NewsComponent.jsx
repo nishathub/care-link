@@ -40,10 +40,10 @@ const NewsComponent = async ({ isHomePage = false }) => {
       {isHomePage && (
         <div className="w-fit mx-auto mt-6">
           <Link
-            className="btn bg-sky-800 hover:bg-sky-700 text-white w-40"
+            className="btn font-cinzel bg-sky-800 hover:bg-sky-700 text-white w-40"
             href={"/news-updates"}
           >
-            View All <SquareArrowOutUpRight className="w-4"/>
+            View All <SquareArrowOutUpRight className="w-4" />
           </Link>
         </div>
       )}

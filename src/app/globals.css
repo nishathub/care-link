@@ -10,6 +10,7 @@ body {
 }
 .font-cinzel {
   font-family: var(--font-cinzel), Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
 }
 .font-domine {
   font-family: var(--font-domine), Arial, Helvetica, sans-serif;

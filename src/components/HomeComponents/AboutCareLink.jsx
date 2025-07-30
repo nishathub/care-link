@@ -36,7 +36,7 @@ const AboutCareLink = () => {
           </div>
           <Link
             href={"/donate-now"}
-            className="btn bg-sky-800 hover:bg-sky-700 text-white w-full sm:w-fit mt-4 lg:mt-6"
+            className="btn font-cinzel bg-sky-800 hover:bg-sky-700 text-white w-full sm:w-fit mt-4 lg:mt-6"
           >
             Donate Now
           </Link>

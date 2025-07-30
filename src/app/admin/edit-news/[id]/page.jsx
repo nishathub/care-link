@@ -223,7 +223,7 @@ const UpdateNews = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
+              className="btn font-cinzel bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Update News

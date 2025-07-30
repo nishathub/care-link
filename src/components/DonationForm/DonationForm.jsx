@@ -10,7 +10,7 @@ import StripePaymentModal from "../StripePaymentModal/StripePaymentModal";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK);
 
-export default function DonationForm({title, tag}) {
+export default function DonationForm({ title, tag }) {
   const presetAmounts = [10, 25, 50, 100];
   const user = useUserStore((state) => state?.user);
   const [formData, setFormData] = useState(null);
@@ -73,7 +73,9 @@ export default function DonationForm({title, tag}) {
         />
 
         <div>
-          <p className="mb-2 text-sm"><label >Name</label></p>
+          <p className="mb-2 text-sm">
+            <label>Name</label>
+          </p>
           <input
             type="text"
             placeholder="Your Name"
@@ -86,7 +88,9 @@ export default function DonationForm({title, tag}) {
         </div>
 
         <div>
-          <p className="mb-2 text-sm"><label >Contact</label></p>
+          <p className="mb-2 text-sm">
+            <label>Contact</label>
+          </p>
           <input
             type="text"
             placeholder="Email or Phone"
@@ -101,7 +105,10 @@ export default function DonationForm({title, tag}) {
           )}
         </div>
 
-        <button type="submit" className="btn bg-sky-800 hover:bg-sky-700 text-white w-full">
+        <button
+          type="submit"
+          className="btn font-cinzel bg-sky-800 hover:bg-sky-700 text-white w-full"
+        >
           Donate
         </button>
       </form>

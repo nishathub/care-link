@@ -142,7 +142,7 @@ const UpdateOngoingProject = () => {
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-           <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Project Title */}
             <FormTextInput
               label="Project Title*"
@@ -190,25 +190,24 @@ const UpdateOngoingProject = () => {
               ]}
             />
           </div>
-            {/* Expense Categories */}
-            <FormDynamicFieldList
-              control={control}
-              register={register}
-              required={true}
-              name="expenseCategories"
-              label="Expense Categories"
-            />
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
-          </div>
-            {/* Background / Context */}
-            <FormTextAreaInput
-              label="Background / Context*"
-              name="context"
-              placeholder="Write about the context/situation shortly..."
-              register={register}
-              required={true}
-              errors={errors}
-            />
+          {/* Expense Categories */}
+          <FormDynamicFieldList
+            control={control}
+            register={register}
+            required={true}
+            name="expenseCategories"
+            label="Expense Categories"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4"></div>
+          {/* Background / Context */}
+          <FormTextAreaInput
+            label="Background / Context*"
+            name="context"
+            placeholder="Write about the context/situation shortly..."
+            register={register}
+            required={true}
+            errors={errors}
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-4">
             {/* Goal */}
             <FormTextAreaInput
@@ -257,11 +256,10 @@ const UpdateOngoingProject = () => {
             register={register}
           />
 
-
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
+              className="btn font-cinzel bg-sky-600 text-white hover:bg-sky-700 border-0 w-full"
               disabled={isSubmitting}
             >
               Update Project

@@ -15,7 +15,7 @@ const RegistrationSuccessPage = () => {
           Our team will review your profile and notify you once it is approved.
         </p>
         <div className="mt-12">
-          <Link className="btn" href={"/"}>
+          <Link className="btn font-cinzel" href={"/"}>
             Go to Homepage
           </Link>
         </div>

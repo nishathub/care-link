@@ -208,7 +208,7 @@ const UpdateDonationPackage = () => {
           <div>
             <button
               type="submit"
-              className="btn bg-sky-600 text-white hover:bg-sky-700 border-0"
+              className="btn font-cinzel bg-sky-600 text-white hover:bg-sky-700 border-0"
               disabled={isSubmitting}
             >
               Update Package

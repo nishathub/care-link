@@ -20,7 +20,10 @@ const SideNavbar = () => {
     <>
       {/* Sidebar toggle for mobile */}
       <div className="lg:hidden pt-5 shadow fixed z-10">
-        <button onClick={() => setOpen(!open)} className="btn btn-soft btn-sm">
+        <button
+          onClick={() => setOpen(!open)}
+          className="btn font-cinzel btn-soft btn-sm"
+        >
           <Menu size={24} />
         </button>
       </div>
@@ -40,13 +43,16 @@ const SideNavbar = () => {
           )}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden btn btn-ghost btn-sm"
+            className="lg:hidden btn font-cinzel btn-ghost btn-sm"
           >
             <Menu size={24} className="text-sky-800 hover:text-white" />
           </button>
         </div>
 
-        <SideBarLinkCollection user={user} isUserLoading={isUserLoading}></SideBarLinkCollection>
+        <SideBarLinkCollection
+          user={user}
+          isUserLoading={isUserLoading}
+        ></SideBarLinkCollection>
 
         {/* Profile Info */}
         <div className="p-4 relative">
@@ -55,7 +61,10 @@ const SideNavbar = () => {
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <Image
-              src={user?.imageLink || "https://res.cloudinary.com/dntewbvod/image/upload/v1751861766/user-avatar_vaibmz.png"}
+              src={
+                user?.imageLink ||
+                "https://res.cloudinary.com/dntewbvod/image/upload/v1751861766/user-avatar_vaibmz.png"
+              }
               alt="User Avatar"
               width={40}
               height={40}

@@ -123,7 +123,7 @@ const LoginForm = () => {
       {/* Submit */}
       <button
         disabled={isLoginLoading}
-        className="btn btn-block bg-sky-700 hover:bg-sky-900 text-white mt-2"
+        className="btn font-cinzel btn-block bg-sky-700 hover:bg-sky-900 text-white mt-2"
       >
         {isLoginLoading ? "Logging in..." : "Log In"}
       </button>

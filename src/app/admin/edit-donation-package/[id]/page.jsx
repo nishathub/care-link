@@ -126,10 +126,12 @@ const UpdateDonationPackage = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <SectionHeading heading={"Edit Package"} />
+      <div className="bg-gray-300 rounded-lg shadow-2xl p-4 md:p-6 relative">
+        {isSubmitting && <OverlayLoader message="Submitting..." />}
 
-      <div className="bg-gray-300 p-6 rounded-md relative">
-        {isSubmitting && <OverlayLoader message="Updating..." />}
+        <h2 className="text-xl md:text-3xl font-semibold text-center capitalize text-gray-900 mb-6">
+          Edit Package
+        </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           {/* Story Title */}

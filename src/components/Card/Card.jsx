@@ -20,7 +20,7 @@ const Card = ({
   const descriptionPreview = () => {
     if (introduction.length > 0) {
       return (
-        <p className="text-justify font-lora">
+        <p className="text-justify">
           {introduction?.length > 220
             ? introduction.slice(0, 220) + "..."
             : introduction}
@@ -28,7 +28,7 @@ const Card = ({
       );
     } else if (context.length > 0) {
       return (
-        <p className="text-justify font-lora">
+        <p className="text-justify">
           {context?.length > 220 ? context.slice(0, 220) + "..." : context}
         </p>
       );

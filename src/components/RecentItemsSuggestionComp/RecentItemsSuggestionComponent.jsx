@@ -38,11 +38,11 @@ const RecentItemsSuggestionComponent = ({ itemCollection = [], itemName }) => {
             <div className="flex-1">
               <button
                 onClick={() => handleNewsLink(item?._id, item?.views)}
-                className="font-semibold text-left cursor-pointer hover:text-sky-700 transition-colors"
+                className="font-semibold text-left leading-tight cursor-pointer hover:text-sky-700 transition-colors mb-1"
               >
                 {item?.title}
               </button>
-              <div className="text-sm flex font-lora">
+              <div className="text-sm flex font-domine">
                 {item?.views && (
                   <p className="w-[72px] shrink-0">{item?.views} views</p>
                 )}

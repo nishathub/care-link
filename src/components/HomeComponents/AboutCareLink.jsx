@@ -10,11 +10,11 @@ const AboutCareLink = () => {
           className="max-w-md hidden lg:flex"
         />
         <div>
-          <h2 className="text-2xl lg:text-4xl text-center md:text-left text-sky-700 font-bold ">
+          <h2 className="text-2xl lg:text-4xl text-center md:text-left text-sky-700 font-bold font-cinzel">
             About Us
           </h2>
           <hr className="border-t-2 mt-3" />
-          <div className="space-y-4 mt-4">
+          <div className="space-y-4 mt-4 font-domine">
             <p className="">
               We are moved by the struggles of helpless people in Bangladesh,
               one of the least developed countries. We have been dedicated to

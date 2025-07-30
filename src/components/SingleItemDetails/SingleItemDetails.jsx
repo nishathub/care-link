@@ -1,5 +1,4 @@
 import BankAccountCard from "@/components/BankAccountCard/BankAccountCard";
-import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import Image from "next/image";
 import DonationForm from "../DonationForm/DonationForm";
 import { Quote } from "lucide-react";

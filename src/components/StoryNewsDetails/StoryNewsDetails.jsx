@@ -50,7 +50,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
           </div>
         </div>
         {/* Content Sections */}
-        <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed">
+        <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed font-domine">
           {singleItem?.introduction && (
             <p className="text-justify">{singleItem.introduction}</p>
           )}

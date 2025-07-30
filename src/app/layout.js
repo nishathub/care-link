@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${cinzel.variable} ${lora.variable} ${domine.variable} ${literata.variable} antialiased`}
+        className={`${cinzel.variable} ${lora.variable} ${domine.variable} ${literata.variable} ${caudex.variable} antialiased`}
       >
         <CustomToast />
         <ClientLayout>{children}</ClientLayout>

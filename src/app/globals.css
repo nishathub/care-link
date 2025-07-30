@@ -3,7 +3,7 @@
 
 
 body {
-  font-family: var(--font-lora), Arial, Helvetica, sans-serif;
+  font-family: var(--font-caudex), Arial, Helvetica, sans-serif;
 }
 .font-lora {
   font-family: var(--font-lora), Arial, Helvetica, sans-serif;
@@ -17,4 +17,7 @@ body {
 }
 .font-literata {
   font-family: var(--font-literata), Arial, Helvetica, sans-serif;
+}
+.font-caudex {
+  font-family: var(--font-caudex), Arial, Helvetica, sans-serif;
 }

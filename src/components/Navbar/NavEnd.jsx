@@ -35,8 +35,8 @@ const NavEnd = () => {
       {user ? (
         userButton()
       ) : (
-        <Link className="btn btn-outline" href={"/login"}>
-          Login
+        <Link className="btn btn-outline btn-sm sm:btn-md" href={"/login"}>
+         <p className="font-cinzel tracking-wider">Login</p> 
         </Link>
       )}
     </div>

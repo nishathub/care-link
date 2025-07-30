@@ -1,20 +1,38 @@
-import { Geist, Geist_Mono, Roboto_Mono } from "next/font/google";
+import { Cinzel, Lora, Caudex, Domine, Literata } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout/ClientLayout";
 import CustomToast from "@/components/CustomAlert/CustomToast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cinzel",
+  display: "swap",
+});
+const domine = Domine({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-domine",
+  display: "swap",
+});
+const literata = Literata({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-literata",
+  display: "swap",
+});
+const caudex = Caudex({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-caudex",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lora = Lora({
   subsets: ["latin"],
-});
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
-  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-lora",
+  display: "swap",
 });
 
 export const metadata = {
@@ -29,9 +47,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${robotoMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${cinzel.variable} ${lora.variable} ${domine.variable} ${literata.variable} antialiased`}
       >
-        <CustomToast/>
+        <CustomToast />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

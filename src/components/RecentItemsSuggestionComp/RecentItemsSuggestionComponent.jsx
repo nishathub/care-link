@@ -42,7 +42,7 @@ const RecentItemsSuggestionComponent = ({ itemCollection = [], itemName }) => {
               >
                 {item?.title}
               </button>
-              <div className="text-sm flex">
+              <div className="text-sm flex font-lora">
                 {item?.views && (
                   <p className="w-[72px] shrink-0">{item?.views} views</p>
                 )}

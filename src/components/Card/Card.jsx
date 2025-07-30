@@ -20,7 +20,7 @@ const Card = ({
   const descriptionPreview = () => {
     if (introduction.length > 0) {
       return (
-        <p className="text-justify">
+        <p className="text-justify font-lora">
           {introduction?.length > 220
             ? introduction.slice(0, 220) + "..."
             : introduction}
@@ -28,7 +28,7 @@ const Card = ({
       );
     } else if (context.length > 0) {
       return (
-        <p className="text-justify">
+        <p className="text-justify font-lora">
           {context?.length > 220 ? context.slice(0, 220) + "..." : context}
         </p>
       );
@@ -59,15 +59,15 @@ const Card = ({
         )}
         {date ? (
           <div className="flex justify-between">
-            <p className="text-sky-800 font-medium">
+            <p className="text-sky-800 font-domine">
               {date ? formatDate(date) : ""}
             </p>
-            <p className="text-sky-700 text-sm text-right font-medium capitalize">
+            <p className="text-sky-700 text-sm text-right font-domine capitalize">
               {tag}
             </p>
           </div>
         ) : (
-          <p className="text-sky-700 text-sm font-medium capitalize">{tag}</p>
+          <p className="text-sky-700 text-sm font-domine capitalize">{tag}</p>
         )}
         <h2 className="card-title">{title}</h2>
         {descriptionPreview()}

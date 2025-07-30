@@ -10,7 +10,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-8 px-2">
-      <div className="col-span-1 lg:col-span-3 space-y-8 relative">
+      <div className="col-span-1 lg:col-span-3 space-y-8 relative font-domine">
         <div className="">
           <p className="mb-4 flex items-center gap-2 font-semibold">
             <span>
@@ -18,7 +18,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
             </span>{" "}
             {singleItem?.date ? formatDate(singleItem?.date) : ""}
           </p>
-          <h2 className="text-2xl lg:text-4xl font-bold lg:leading-relaxed">{singleItem?.title}</h2>
+          <h2 className="text-2xl lg:text-4xl font-bold font-caudex lg:leading-relaxed">{singleItem?.title}</h2>
         </div>
         <div className="h-80 lg:h-[450px] rounded-lg overflow-hidden shadow-2xl relative">
           <Image
@@ -50,7 +50,7 @@ const StoryNewsDetails = ({ singleItem, recentItems, itemName }) => {
           </div>
         </div>
         {/* Content Sections */}
-        <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed font-domine">
+        <div className="space-y-6 text-gray-800 text-[14px] lg:text-[16px] leading-relaxed">
           {singleItem?.introduction && (
             <p className="text-justify">{singleItem.introduction}</p>
           )}
